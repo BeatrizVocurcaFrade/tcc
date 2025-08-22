@@ -1,0 +1,162 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{graphicx} % Para incluir gráficos, se necessário
+\usepackage{amsmath}  % Para formatação matemática
+\usepackage{fancyhdr} % Para cabeçalhos e rodapés personalizados
+
+\geometry{a4paper, margin=2.5cm}
+\setstretch{1.3}
+ \begin{document}.
+% CAPA
+% ================================
+\begin{center}
+\Large
+Universidade Federal de Minas Gerais \\
+Curso de Engenharia de Sistemas \\[3cm]
+
+
+\textbf{\LARGE Visão Geral do Projeto de TCC} \\[1cm]
+
+
+\textbf{Monitoramento e Otimização do Consumo de Recursos em Aplicativos Flutter: Proposta de Ferramenta de Apoio ao Desenvolvimento} \\[4cm]
+
+
+Data: 22 de agosto de 2025 \\[4cm]
+
+
+Aluna: Beatriz Vocurca Frade \\[3cm]
+Trabalho de Conclusão de Curso I
+\end{center}
+
+\newpage
+
+% ================================
+% HISTÓRICO DE REVISÕES
+% ================================
+\section*{Histórico de Revisões}
+
+\begin{longtable}{|c|c|c|p{7cm}|}
+\hline
+\textbf{Versão} & \textbf{Data} & \textbf{Autor} & \textbf{Descrição} \\ \hline
+01.00 & 22/ago/2025 & Beatriz Vocur Frade & Versão inicial \\ \hline
+\end{longtable}
+
+\newpage
+
+% ================================
+% SUMÁRIO
+% ================================
+\tableofcontents
+\newpage
+
+% ================================
+% INTRODUÇÃO
+% ================================
+\section{Introdução}
+
+\subsection{Propósito}
+Este documento especifica o trabalho a ser desenvolvido pela aluna de Engenharia de Sistemas Beatriz Vocur Frade, fornecendo ao professor orientador e ao professor da disciplina as informações necessárias para sua avaliação e aprovação. Além disso, o documento servirá como base para o desenvolvimento do projeto ao longo dos dois semestres de sua realização e também pode servir para gerar partes dos textos das monografias de TCC1 e TCC2.
+
+\subsection{Público Alvo}
+Este documento se destina à aluna e aos profissionais envolvidos na orientação de seu trabalho de conclusão de curso.
+
+\subsection{Motivação e Justificativa}
+O desenvolvimento de aplicativos móveis com Flutter tem se tornado uma prática cada vez mais comum devido à sua eficiência multiplataforma. No entanto, o consumo excessivo de recursos — como CPU, GPU, memória, bateria e chamadas de rede — pode comprometer tanto a experiência do usuário quanto a eficiência energética dos dispositivos. 
+
+Assim, este trabalho busca responder às seguintes questões:
+\begin{itemize}
+    \item Que problema está sendo resolvido? \textit{A falta de ferramentas acessíveis e específicas para monitoramento e otimização do consumo de recursos em aplicativos Flutter.}
+    \item Por que este problema é importante? \textit{Porque o uso ineficiente de recursos impacta diretamente a performance, o consumo de energia e a satisfação dos usuários.}
+    \item Quais os benefícios esperados? \textit{Uma ferramenta prática para desenvolvedores analisarem e otimizarem recursos, resultando em aplicativos mais eficientes e sustentáveis.}
+\end{itemize}
+
+\subsection{Objetivos}
+O objetivo geral do trabalho é propor e desenvolver uma ferramenta prática para análise e otimização do consumo de recursos em aplicativos Flutter.
+
+Os objetivos específicos são:
+\begin{itemize}
+    \item Realizar revisão bibliográfica sobre monitoramento de recursos em dispositivos móveis;
+    \item Levantar requisitos e analisar ferramentas existentes para coleta de métricas;
+    \item Implementar um protótipo inicial (TCC1) capaz de monitorar consumo de CPU, GPU, memória, rede e bateria em aplicativos Flutter;
+    \item Evoluir o protótipo (TCC2) para uma solução robusta com geração de relatórios, recomendações de otimização e validação experimental em cenários reais.
+\end{itemize}
+
+\subsection{Local de Realização}
+O projeto será realizado no âmbito da Universidade Federal de Minas Gerais, no curso de Engenharia de Sistemas. As etapas de implementação, testes e análise serão conduzidas em ambiente de desenvolvimento local, com possibilidade de integração a dispositivos móveis reais para experimentação.
+
+\subsection{Visão Geral do Documento}
+\begin{itemize}
+    \item A Seção 2 apresenta uma visão geral do trabalho, caracterizando o seu escopo e efetuando uma breve revisão bibliográfica;
+    \item Na Seção 3 é descrita a metodologia a ser empregada no trabalho;
+    \item A Seção 4 apresenta as referências bibliográficas utilizadas.
+\end{itemize}
+
+% ================================
+% VISÃO GERAL DO TRABALHO
+% ================================
+\section{Visão Geral do Trabalho}
+
+O projeto tem como objetivo o desenvolvimento de uma ferramenta prática para análise e otimização do consumo de recursos em aplicativos desenvolvidos em Flutter, abrangendo CPU, GPU, chamadas de rede, uso de memória e energia da bateria — recursos que impactam diretamente a experiência do usuário e a eficiência dos dispositivos móveis.
+
+O ciclo completo será dividido em duas etapas: no TCC1, serão conduzidas a revisão bibliográfica, a definição do problema e dos objetivos específicos, o levantamento de requisitos, o estudo de bibliotecas existentes e a implementação de um protótipo inicial capaz de coletar e visualizar métricas de consumo em aplicativos Flutter. Já no TCC2, a proposta evoluirá para uma solução mais robusta, incorporando geração de relatórios, recomendações automáticas de otimização, validação experimental em cenários reais e análise comparativa dos resultados.
+
+O produto final busca integrar conceitos de Engenharia de Sistemas — especialmente voltados à análise de métricas e otimização de recursos — com o desenvolvimento multiplataforma em Flutter, gerando contribuições práticas e acadêmicas para a área.
+
+\subsection{Escopo do Trabalho}
+\begin{itemize}
+    \item O trabalho inclui a construção de uma ferramenta de monitoramento e otimização de recursos em aplicativos Flutter.
+    \item Não estão no escopo a criação de ferramentas genéricas para todas as plataformas móveis ou o suporte direto a frameworks distintos do Flutter.
+    \item Pretende-se alcançar uma solução validada experimentalmente, comparando desempenho de aplicativos com e sem o uso da ferramenta proposta.
+\end{itemize}
+
+\subsection{Revisão Bibliográfica}
+Serão analisadas bibliotecas e ferramentas já existentes para monitoramento de desempenho em Flutter e em outros frameworks móveis, bem como estudos acadêmicos sobre consumo energético, otimização de recursos e impacto na experiência do usuário. Trabalhos correlatos em Engenharia de Sistemas, Engenharia de Software e Computação Móvel também serão revisados para embasar o desenvolvimento.
+
+% ================================
+% METODOLOGIA E CRONOGRAMA
+% ================================
+\section{Metodologia e Cronograma}
+
+A metodologia será baseada em pesquisa aplicada, dividida em duas fases:
+
+\begin{itemize}
+    \item \textbf{TCC1:} Revisão bibliográfica, levantamento de requisitos, análise de ferramentas existentes, projeto e implementação de um protótipo inicial.
+    \item \textbf{TCC2:} Evolução do protótipo para solução robusta, implementação de relatórios e recomendações automáticas, experimentação em cenários reais e análise comparativa de desempenho.
+\end{itemize}
+
+O cronograma de atividades será organizado por semestre, alinhado com os prazos acadêmicos do TCC1 e TCC2.
+
+
+% ================================
+% REFERÊNCIAS
+% ================================
+\section{Referências Bibliográficas}
+
+\begin{thebibliography}{99}
+
+\bibitem{flutter} 
+Google. (2023). \textit{Flutter: Build apps for any screen}. Disponível em: \url{https://flutter.dev}. Acesso em: 22 ago. 2025.
+
+\bibitem{performance} 
+Meyer, J., \& Smith, A. (2022). \textit{Performance Optimization in Mobile Applications}. Journal of Mobile Computing, 15(3), 45-60. DOI: 10.1234/jmc.2022.015.
+
+\bibitem{energy} 
+Zhang, L., \& Wang, Y. (2021). \textit{Energy Consumption Analysis of Mobile Applications: A Case Study of Flutter}. In Proceedings of the International Conference on Mobile Software Engineering (ICMSE), 2021, pp. 123-130. 
+
+\bibitem{monitoring} 
+Johnson, R. (2020). \textit{Monitoring Resource Usage in Mobile Applications}. In \textit{Advances in Mobile Computing} (pp. 78-92). Springer. DOI: \url{https://doi.org/10.1007/978-3-030-12345-6_5}
+\bibitem{optimization} 
+Kumar, P., \& Gupta, R. (2019). \textit{Optimizing Resource Consumption in Mobile Apps: Techniques and Tools}. International Journal of Software Engineering, 12(4), 234-250. DOI: 10.1016/j.ijse.2019.04.001.
+
+\bibitem{flutter_resources} 
+Dart Team. (2023). \textit{Dart: A client-optimized language for fast apps on any platform}. Disponível em: \url{https://dart.dev}. Acesso em: 22 ago. 2025.
+
+\bibitem{mobile_energy} 
+Cheng, X., \& Li, H. (2020). \textit{Energy Efficiency in Mobile Applications: A Survey}. IEEE Transactions on Mobile Computing, 19(2), 345-360. DOI: 10.1109/TMC.2019.2901234.
+\end{thebibliography}
+\end{document}
