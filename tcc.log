@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.8.22)  22 AUG 2025 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.9.2)  28 SEP 2025 21:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/usuario/projects/TCC/tcc.tex
-(/home/usuario/projects/TCC/tcc.tex
+**/home/usuario/projects/TCC/tcc/tcc.tex
+(/home/usuario/projects/TCC/tcc/tcc.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-01-16> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -30,14 +30,14 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 Package: babel 2022/12/26 3.84 The Babel package
 \babel@savecnt=\count193
 \U@D=\dimen141
-\l@unhyphenated=\language70
+\l@unhyphenated=\language4
  (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count194
  (/usr/share/texlive/texmf-dist/tex/generic/babel-portuges/brazil.ldf
 Language: portuges 2021/07/09 v1.2t Portuguese support from the babel system
 Package babel Info: Hyphen rules for 'brazil' set to \l@portuguese
-(babel)             (\language18). Reported on input line 111.
+(babel)             (\language3). Reported on input line 111.
 Package babel Info: Making " an active character on input line 143.
 )) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -285,24 +285,24 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 ) (./tcc.aux)
 \openout1 = `tcc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -338,7 +338,7 @@ LaTeX Font Info:    ... okay on input line 14.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 14.
+Package hyperref Info: Link coloring OFF on input line 15.
 (./tcc.out) (./tcc.out)
 \@outlinefile=\write3
 \openout3 = `tcc.out'.
@@ -363,42 +363,47 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./tcc.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (11.13588pt too wide) in alignment at lines 42--46
+ [] [] [] [] 
+ []
+
+[2] (./tcc.toc)
 \tf@toc=\write4
 \openout4 = `tcc.toc'.
 
- [3]
-Overfull \hbox (7.92747pt too wide) in paragraph at lines 83--84
-[]\OT1/cmr/m/n/12 Realizar re-vis~ao bi-bli-ogr^^Safica so-bre mo-ni-to-ra-mento de re-cur-sos em dis-po-si-ti-vos m^^Soveis; 
+ [3] [4] [5]
+Overfull \hbox (8.7108pt too wide) in paragraph at lines 114--115
+[]\OT1/cmr/m/n/12 Estudos so-bre mo-ni-to-ra-mento de re-cur-sos em dis-po-si-ti-vos m^^Soveis, des-ta-cando m^^Setricas
  []
 
-[4] [5] [6]
-Underfull \hbox (badness 4378) in paragraph at lines 160--161
+[6]
+Underfull \hbox (badness 4378) in paragraph at lines 162--163
 []\OT1/cmr/m/n/12 Cheng, X., & Li, H. (2020). \OT1/cmr/m/it/12 Energy Ef-fi-ci-ency in Mo-bile Ap-pli-ca-ti-ons:
  []
 
 
-Underfull \hbox (badness 1968) in paragraph at lines 160--161
+Underfull \hbox (badness 1968) in paragraph at lines 162--163
 \OT1/cmr/m/it/12 A Sur-vey\OT1/cmr/m/n/12 . IEEE Tran-sac-ti-ons on Mo-bile Com-pu-ting, 19(2), 345-360. DOI:
  []
 
 [7] (./tcc.aux)
 Package rerunfilecheck Info: File `tcc.out' has not changed.
-(rerunfilecheck)             Checksum: 33D63FD72C3D7B0D983A1EF56FD19DE9;1824.
+(rerunfilecheck)             Checksum: 107D5A16915749213057B13B90916D0E;1634.
  ) 
 Here is how much of TeX's memory you used:
- 10700 strings out of 476366
- 169240 string characters out of 5802326
- 1859330 words of memory out of 5000000
- 30884 multiletter control sequences out of 15000+600000
+ 10698 strings out of 478031
+ 169196 string characters out of 5840163
+ 1858330 words of memory out of 5000000
+ 30673 multiletter control sequences out of 15000+600000
  518375 words of font info for 53 fonts, out of 8000000 for 9000
- 1018 hyphenation exceptions out of 8191
- 75i,6n,76p,633b,578s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on tcc.pdf (7 pages, 97902 bytes).
+ 16 hyphenation exceptions out of 8191
+ 75i,6n,76p,525b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/usuario/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on tcc.pdf (7 pages, 90707 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 147 PDF objects out of 1000 (max. 8388607)
+ 125 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
