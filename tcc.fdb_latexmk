@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1759330497 "/home/usuario/projects/TCC/tcc/tcc.tex" "tcc.pdf" "tcc" 1759330497 0
+["pdflatex"] 1759346908 "/home/usuario/projects/TCC/tcc/tcc.tex" "tcc.pdf" "tcc" 1759346908 0
   "/etc/texmf/web2c/texmf.cnf" 1755881060 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/usuario/projects/TCC/tcc/tcc.tex" 1759330496 11349 41b373d6e5ce2e9b0a6198ef66e28cc7 ""
+  "/home/usuario/projects/TCC/tcc/tcc.tex" 1759346908 13059 e42e3b0b249ee9fed7e8d33200307625 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -84,10 +84,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1681034085 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1756836982 128079 8307b05160bf39a2fd341a004bf1a4b3 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1756836998 6476182 de9d05ec437d44087d449b1f3e824ce2 ""
-  "tcc.aux" 1759330497 2634 93bfa49b998fb61474c1369887517067 "pdflatex"
-  "tcc.out" 1759330497 1634 107d5a16915749213057b13b90916d0e "pdflatex"
-  "tcc.tex" 1759330496 11349 41b373d6e5ce2e9b0a6198ef66e28cc7 ""
-  "tcc.toc" 1759330497 924 b14551c7f4a979e5c0cadaa8a34507d2 "pdflatex"
+  "tcc.aux" 1759346908 2634 32658c51b9f33f26df2e635158dfd3f1 "pdflatex"
+  "tcc.out" 1759346908 1634 107d5a16915749213057b13b90916d0e "pdflatex"
+  "tcc.tex" 1759346908 13059 e42e3b0b249ee9fed7e8d33200307625 ""
+  "tcc.toc" 1759346908 924 3d771cdd28dfd9fd41bd52a6890ad4ad "pdflatex"
   (generated)
   "tcc.aux"
   "tcc.log"
