@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.9.2)  1 OCT 2025 16:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.9.2)  1 OCT 2025 16:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -381,33 +381,38 @@ Overfull \hbox (13.13585pt too wide) in alignment at lines 43--47
 \tf@toc=\write4
 \openout4 = `tcc.toc'.
 
- [3] [4] [5] [6] [7]
-Underfull \hbox (badness 4378) in paragraph at lines 158--159
+ [3]
+Overfull \hbox (5.60805pt too wide) in paragraph at lines 71--72
+[]\OT1/cmr/m/n/12 Na li-te-ra-tura acad^emica, encontra-se am-pla dis-cuss~ao acerca da ne-ces-si-dade de efici^encia
+ []
+
+[4] [5] [6] [7] [8]
+Underfull \hbox (badness 4378) in paragraph at lines 145--146
 []\OT1/cmr/m/n/12 Cheng, X., & Li, H. (2020). \OT1/cmr/m/it/12 Energy Ef-fi-ci-ency in Mo-bile Ap-pli-ca-ti-ons:
  []
 
 
-Underfull \hbox (badness 1968) in paragraph at lines 158--159
+Underfull \hbox (badness 1968) in paragraph at lines 145--146
 \OT1/cmr/m/it/12 A Sur-vey\OT1/cmr/m/n/12 . IEEE Tran-sac-ti-ons on Mo-bile Com-pu-ting, 19(2), 345-360. DOI:
  []
 
-[8] (./tcc.aux)
+[9] (./tcc.aux)
 Package rerunfilecheck Info: File `tcc.out' has not changed.
-(rerunfilecheck)             Checksum: 107D5A16915749213057B13B90916D0E;1634.
+(rerunfilecheck)             Checksum: 2514D79D21700D32ABA685ACB68D1BD1;1631.
  ) 
 Here is how much of TeX's memory you used:
- 10762 strings out of 478031
- 170176 string characters out of 5840163
- 1865330 words of memory out of 5000000
- 30733 multiletter control sequences out of 15000+600000
+ 10760 strings out of 478031
+ 170160 string characters out of 5840163
+ 1861330 words of memory out of 5000000
+ 30732 multiletter control sequences out of 15000+600000
  518038 words of font info for 52 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 75i,6n,76p,1174b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,76p,1590b,454s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on tcc.pdf (8 pages, 94235 bytes).
+Output written on tcc.pdf (9 pages, 98451 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
+ 162 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
