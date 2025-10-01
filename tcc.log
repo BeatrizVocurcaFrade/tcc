@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.9.2)  28 SEP 2025 21:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.9.2)  1 OCT 2025 11:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -278,31 +278,40 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@erf=\skip64
 \f@nch@O@olf=\skip65
 \f@nch@O@orf=\skip66
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen166
+\ar@mcellbox=\box58
+\extrarowheight=\dimen167
+\NC@list=\toks26
+\extratabsurround=\skip67
+\backup@length=\skip68
+\ar@cellbox=\box59
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count292
-\l__pdf_internal_box=\box58
+\l__pdf_internal_box=\box60
 ) (./tcc.aux)
 \openout1 = `tcc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -338,7 +347,7 @@ LaTeX Font Info:    ... okay on input line 15.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 15.
+Package hyperref Info: Link coloring OFF on input line 16.
 (./tcc.out) (./tcc.out)
 \@outlinefile=\write3
 \openout3 = `tcc.out'.
@@ -346,16 +355,16 @@ Package hyperref Info: Link coloring OFF on input line 15.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count293
-\scratchdimen=\dimen166
-\scratchbox=\box59
+\scratchdimen=\dimen168
+\scratchbox=\box61
 \nofMPsegments=\count294
 \nofMParguments=\count295
-\everyMPshowfont=\toks26
+\everyMPshowfont=\toks27
 \MPscratchCnt=\count296
-\MPscratchDim=\dimen167
+\MPscratchDim=\dimen169
 \MPnumerator=\count297
 \makeMPintoPDFobject=\count298
-\everyMPtoPDFconversion=\toks27
+\everyMPtoPDFconversion=\toks28
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -364,7 +373,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (11.13588pt too wide) in alignment at lines 42--46
+Overfull \hbox (13.13585pt too wide) in alignment at lines 43--47
  [] [] [] [] 
  []
 
@@ -372,38 +381,33 @@ Overfull \hbox (11.13588pt too wide) in alignment at lines 42--46
 \tf@toc=\write4
 \openout4 = `tcc.toc'.
 
- [3] [4] [5]
-Overfull \hbox (8.7108pt too wide) in paragraph at lines 114--115
-[]\OT1/cmr/m/n/12 Estudos so-bre mo-ni-to-ra-mento de re-cur-sos em dis-po-si-ti-vos m^^Soveis, des-ta-cando m^^Setricas
- []
-
-[6]
-Underfull \hbox (badness 4378) in paragraph at lines 162--163
+ [3] [4] [5] [6] [7]
+Underfull \hbox (badness 4378) in paragraph at lines 156--157
 []\OT1/cmr/m/n/12 Cheng, X., & Li, H. (2020). \OT1/cmr/m/it/12 Energy Ef-fi-ci-ency in Mo-bile Ap-pli-ca-ti-ons:
  []
 
 
-Underfull \hbox (badness 1968) in paragraph at lines 162--163
+Underfull \hbox (badness 1968) in paragraph at lines 156--157
 \OT1/cmr/m/it/12 A Sur-vey\OT1/cmr/m/n/12 . IEEE Tran-sac-ti-ons on Mo-bile Com-pu-ting, 19(2), 345-360. DOI:
  []
 
-[7] (./tcc.aux)
+[8] (./tcc.aux)
 Package rerunfilecheck Info: File `tcc.out' has not changed.
 (rerunfilecheck)             Checksum: 107D5A16915749213057B13B90916D0E;1634.
  ) 
 Here is how much of TeX's memory you used:
- 10698 strings out of 478031
- 169196 string characters out of 5840163
- 1858330 words of memory out of 5000000
- 30673 multiletter control sequences out of 15000+600000
- 518375 words of font info for 53 fonts, out of 8000000 for 9000
+ 10762 strings out of 478031
+ 170176 string characters out of 5840163
+ 1864330 words of memory out of 5000000
+ 30733 multiletter control sequences out of 15000+600000
+ 518038 words of font info for 52 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 75i,6n,76p,525b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/usuario/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on tcc.pdf (7 pages, 90707 bytes).
+ 75i,6n,76p,741b,578s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on tcc.pdf (8 pages, 93210 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
- 30 named destinations out of 1000 (max. 500000)
+ 160 PDF objects out of 1000 (max. 8388607)
+ 138 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

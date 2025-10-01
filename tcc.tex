@@ -5,9 +5,10 @@
 \usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{longtable}
-\usepackage{graphicx} % Para incluir gráficos, se necessário
-\usepackage{amsmath}  % Para formatação matemática
-\usepackage{fancyhdr} % Para cabeçalhos e rodapés personalizados
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{array}
 
 \geometry{a4paper, margin=2.5cm}
 \setstretch{1.3}
@@ -59,79 +60,72 @@ Trabalho de Conclusão de Curso I
 \section{Introdução}
 
 \subsection{Propósito}
-Este documento especifica o trabalho a ser desenvolvido pela aluna de Engenharia de Sistemas Beatriz Vocurca Frade, fornecendo ao professor orientador e ao professor da disciplina as informações necessárias para sua avaliação e aprovação. Além disso, o documento servirá como base para o desenvolvimento do projeto ao longo dos dois semestres de sua realização, podendo ser reutilizado e expandido para compor partes das monografias de TCC1 e TCC2.
+Este documento especifica o trabalho a ser desenvolvido pela aluna de Engenharia de Sistemas Beatriz Vocurca Frade, fornecendo ao professor orientador e aos docentes da disciplina as informações necessárias para avaliação e aprovação. Além disso, o documento servirá como base para o desenvolvimento do projeto ao longo dos dois semestres de sua realização, sendo estruturado de forma a poder ser expandido para compor capítulos das monografias de TCC1 e TCC2.
 
 \subsection{Público Alvo}
-O documento se destina à aluna, ao professor orientador, aos professores da disciplina de TCC, bem como a eventuais avaliadores externos. Também pode interessar a pesquisadores e desenvolvedores da área de desenvolvimento móvel.
+O público-alvo deste documento é composto pela aluna, pelo professor orientador, pelos professores da disciplina de TCC e por eventuais avaliadores externos. Também poderá interessar a pesquisadores da área de Engenharia de Software, profissionais de desenvolvimento mobile e estudiosos de eficiência computacional.
 
 \subsection{Motivação e Justificativa}
-O desenvolvimento de aplicativos móveis tem crescido exponencialmente, sendo o Flutter um dos frameworks mais utilizados devido à sua capacidade de compilar aplicações nativas multiplataforma com alta produtividade. Apesar disso, questões relacionadas ao consumo de recursos, como memória, CPU, GPU, rede e bateria, permanecem como desafios críticos, impactando diretamente a experiência do usuário e a vida útil dos dispositivos móveis.
+O crescimento do mercado de aplicativos móveis tem sido exponencial nos últimos anos, consolidando o Flutter como um dos frameworks mais populares devido à sua proposta de desenvolvimento multiplataforma e ao suporte de uma comunidade ativa \cite{flutter}. Entretanto, a execução de aplicativos móveis está diretamente ligada ao consumo de recursos computacionais — CPU, GPU, memória, rede e bateria — que influenciam a experiência do usuário e a durabilidade dos dispositivos \cite{energy, monitoring}.  
 
-A ausência de ferramentas específicas e integradas para o ecossistema Flutter, que permitam tanto o monitoramento detalhado quanto a sugestão de estratégias de otimização, motiva a realização deste trabalho. Sua relevância se justifica pela combinação de impacto acadêmico, ao avançar o conhecimento sobre consumo de recursos em aplicativos móveis, e impacto prático, ao fornecer aos desenvolvedores uma solução acessível e orientada a resultados.
+A literatura acadêmica mostra que a eficiência energética e o uso racional de recursos são preocupações centrais no desenvolvimento de software moderno, com impacto direto tanto no desempenho técnico quanto na sustentabilidade digital \cite{mobile_energy, performance}. Contudo, observa-se uma lacuna significativa no ecossistema Flutter: embora existam ferramentas como DevTools e Perfetto, elas não oferecem integração simplificada com recomendações automáticas de otimização, o que limita sua adoção prática por desenvolvedores em estágios iniciais ou intermediários.  
+
+Assim, este trabalho busca preencher essa lacuna ao propor uma ferramenta que combine monitoramento detalhado com sugestões de otimização orientadas a resultados. O impacto esperado é duplo: no âmbito acadêmico, ao contribuir para o avanço do conhecimento em engenharia de software aplicada a dispositivos móveis; e no âmbito prático, ao fornecer uma solução acessível e útil para a comunidade de desenvolvedores.
 
 \subsection{Objetivos}
-\textbf{Objetivo Geral:}  
-Propor e desenvolver uma ferramenta prática de monitoramento e otimização do consumo de recursos em aplicativos Flutter.
+O objetivo geral é propor e desenvolver uma ferramenta prática de monitoramento e otimização do consumo de recursos em aplicativos Flutter.  
 
-\textbf{Objetivos Específicos:}
-\begin{itemize}
-    \item Realizar uma revisão bibliográfica sobre monitoramento e otimização de recursos em dispositivos móveis;
-    \item Levantar requisitos funcionais e não funcionais da ferramenta proposta;
-    \item Analisar ferramentas existentes no ecossistema Flutter e em outros frameworks móveis;
-    \item Projetar e implementar um protótipo inicial (TCC1) capaz de coletar métricas de uso de CPU, GPU, memória, rede e bateria;
-    \item Evoluir o protótipo (TCC2) em uma solução robusta com geração de relatórios, recomendações automáticas e experimentação em cenários reais;
-    \item Validar a ferramenta por meio de estudos de caso e análise comparativa de desempenho.
-\end{itemize}
+Para atingir esse objetivo, serão realizadas as seguintes ações: levantamento de requisitos funcionais e não funcionais da ferramenta; definição das métricas a serem monitoradas (CPU, GPU, memória, rede e bateria); análise crítica de ferramentas já existentes no ecossistema Flutter e em outros frameworks móveis; projeto e implementação de um protótipo inicial (TCC1); evolução desse protótipo em uma versão robusta (TCC2), com geração de relatórios, recomendações automáticas e experimentação em cenários reais; e, por fim, a validação da ferramenta por meio de estudos de caso e análises comparativas de desempenho.
 
 \subsection{Local de Realização}
-O projeto será realizado no âmbito da Universidade Federal de Minas Gerais (UFMG), no curso de Engenharia de Sistemas. As atividades envolverão ambiente de desenvolvimento local, simulação em emuladores de dispositivos móveis e experimentação em aparelhos reais.
-
+O projeto será conduzido na Universidade Federal de Minas Gerais (UFMG), no curso de Engenharia de Sistemas. Serão utilizados ambientes de desenvolvimento locais, emuladores de dispositivos móveis e experimentação em aparelhos reais, de forma a contemplar diferentes cenários de uso.
 
 % ================================
 % VISÃO GERAL DO TRABALHO
 % ================================
 \section{Visão Geral do Trabalho}
 
-O projeto tem como meta o desenvolvimento de uma ferramenta de apoio ao desenvolvimento de aplicativos Flutter, permitindo monitorar e otimizar o consumo de recursos computacionais. O trabalho será dividido em duas fases:  
+O trabalho será desenvolvido em duas fases complementares. Na primeira (TCC1), a ênfase será em pesquisa, análise e prototipagem inicial: revisão bibliográfica, levantamento de requisitos, análise de ferramentas já existentes e definição de métricas de monitoramento. Na segunda (TCC2), o foco será a evolução do protótipo em uma solução consolidada, com relatórios automáticos, recomendações baseadas em boas práticas de otimização e validação experimental em dispositivos reais.  
 
-\begin{itemize}
-    \item \textbf{TCC1:} Foco na revisão bibliográfica, levantamento de requisitos, análise de ferramentas já existentes, e implementação de um protótipo inicial para monitoramento de métricas.
-    \item \textbf{TCC2:} Expansão do protótipo para uma solução consolidada, incluindo geração de relatórios, recomendações automáticas de otimização, validação experimental e análise comparativa dos resultados.
-\end{itemize}
-
-Espera-se que o produto final contribua para a Engenharia de Sistemas e o desenvolvimento de software, ao propor práticas de eficiência energética e uso racional dos recursos em dispositivos móveis.
+A principal contribuição esperada é uma ferramenta que, além de monitorar recursos, forneça aos desenvolvedores orientações concretas de otimização, promovendo maior eficiência energética e melhor experiência do usuário.
 
 \subsection{Escopo do Trabalho}
-\begin{itemize}
-    \item O trabalho inclui: pesquisa bibliográfica, levantamento de requisitos, análise de ferramentas, implementação de protótipo, testes experimentais e análise de resultados.
-    \item Não estão no escopo: desenvolvimento de ferramentas genéricas para outros frameworks além do Flutter, suporte multiplataforma universal ou integração direta com sistemas de terceiros.
-    \item O trabalho se insere em um contexto maior de Engenharia de Sistemas aplicada ao desenvolvimento multiplataforma e sustentabilidade computacional.
-\end{itemize}
+O escopo inclui a realização de uma revisão bibliográfica ampla, o levantamento de requisitos, a análise comparativa de ferramentas, a definição das métricas de monitoramento, a implementação de protótipo e os testes experimentais. Fora do escopo estão a criação de soluções genéricas para outros frameworks além do Flutter, a implementação de suporte multiplataforma universal e a integração direta com sistemas de terceiros.  
+
+O projeto se insere em uma linha de pesquisa de Engenharia de Sistemas que considera não apenas o desempenho técnico, mas também a sustentabilidade computacional, alinhada a tendências de eficiência energética no desenvolvimento de software.
 
 \subsection{Revisão Bibliográfica}
-A revisão bibliográfica abrangerá três eixos principais:
-\begin{itemize}
-    \item Estudos sobre monitoramento de recursos em dispositivos móveis, destacando métricas de CPU, GPU, memória, rede e bateria;
-    \item Ferramentas e bibliotecas existentes, tanto no ecossistema Flutter (como DevTools e Perfetto) quanto em frameworks concorrentes (Android Studio Profiler, Xcode Instruments);
-    \item Trabalhos acadêmicos sobre eficiência energética, otimização de aplicativos e impacto do consumo de recursos na experiência do usuário.
-\end{itemize}
+A revisão bibliográfica será organizada em três frentes:  
+
+Primeiro, os estudos sobre monitoramento de recursos em dispositivos móveis, que destacam a importância da coleta de métricas como CPU, GPU, memória, rede e bateria \cite{monitoring}. Trabalhos como os de Meyer e Smith (2022) \cite{performance} demonstram que gargalos de desempenho podem ser mitigados a partir de diagnósticos precisos dessas métricas.  
+
+Segundo, a análise de ferramentas e bibliotecas existentes. No ecossistema Flutter, destacam-se o DevTools e o Perfetto, que permitem inspeção detalhada de processos, enquanto em frameworks concorrentes são utilizados recursos como o Android Studio Profiler e o Xcode Instruments \cite{flutter, dart}. Embora úteis, essas ferramentas são complexas e pouco acessíveis a desenvolvedores iniciantes, justificando a necessidade de soluções mais integradas.  
+
+Por fim, estudos sobre eficiência energética e sustentabilidade computacional, como os de Zhang e Wang (2021) \cite{energy} e Cheng e Li (2020) \cite{mobile_energy}, discutem o impacto do consumo de recursos na usabilidade de aplicativos móveis e na durabilidade de dispositivos. Essa literatura fundamenta a proposta deste trabalho, que combina monitoramento técnico com recomendações práticas.
 
 % ================================
 % METODOLOGIA E CRONOGRAMA
 % ================================
 \section{Metodologia e Cronograma}
 
-A metodologia será baseada em pesquisa aplicada, orientada ao desenvolvimento experimental. O ciclo completo do trabalho se divide em duas fases:
+A metodologia adotada é a de pesquisa aplicada, com abordagem exploratória e experimental. A primeira fase será dedicada ao levantamento teórico e ao desenvolvimento do protótipo inicial; a segunda, à evolução da ferramenta e sua validação prática.  
 
-\begin{itemize}
-    \item \textbf{TCC1 (agosto a dezembro de 2025):}  
-    Revisão bibliográfica, definição de requisitos, análise comparativa de ferramentas, projeto arquitetural e implementação de protótipo inicial para monitoramento de recursos em aplicativos Flutter.
-    
-    \item \textbf{TCC2 (fevereiro a junho de 2026):}  
-    Evolução do protótipo, implementação de relatórios automáticos e recomendações, experimentação em cenários reais com dispositivos móveis, validação de resultados e redação da monografia final.
-\end{itemize}
+\subsection*{Cronograma Detalhado}
 
-O cronograma será organizado de acordo com as etapas acadêmicas, prevendo entregas parciais a cada mês e reuniões periódicas com o orientador para acompanhamento e ajustes.
+\begin{longtable}{|c|c|p{10cm}|}
+\hline
+\textbf{Mês} & \textbf{Fase} & \textbf{Atividades} \\ \hline
+Agosto/2025 & TCC1 & Revisão bibliográfica inicial; definição do escopo detalhado do projeto. \\ \hline
+Setembro/2025 & TCC1 & Levantamento de requisitos funcionais e não funcionais; reuniões com orientador para refinamento dos objetivos. \\ \hline
+Outubro/2025 & TCC1 & Análise de ferramentas já existentes; definição das métricas de monitoramento (CPU, GPU, memória, rede e bateria). \\ \hline
+Novembro/2025 & TCC1 & Projeto arquitetural da ferramenta; início da implementação do protótipo de coleta de métricas. \\ \hline
+Dezembro/2025 & TCC1 & Finalização do protótipo inicial; elaboração do relatório parcial (monografia de TCC1). \\ \hline
+Fevereiro/2026 & TCC2 & Planejamento da evolução do protótipo; início da implementação de relatórios automáticos. \\ \hline
+Março/2026 & TCC2 & Desenvolvimento de recomendações automáticas de otimização; integração das novas funcionalidades. \\ \hline
+Abril/2026 & TCC2 & Testes experimentais em dispositivos reais; ajustes no protótipo com base nos resultados. \\ \hline
+Maio/2026 & TCC2 & Validação final da ferramenta; análise comparativa de desempenho entre diferentes cenários. \\ \hline
+Junho/2026 & TCC2 & Redação e entrega da monografia final; preparação para defesa pública do TCC. \\ \hline
+\end{longtable}
 
 % ================================
 % REFERÊNCIAS
