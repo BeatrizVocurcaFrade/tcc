@@ -6,7 +6,7 @@
 \contentsline {subsection}{\numberline {1.4}Objetivos}{5}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Local de Realização}{6}{subsection.1.5}%
 \contentsline {section}{\numberline {2}Visão Geral do Trabalho}{6}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Escopo do Trabalho}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.1}Escopo do Trabalho}{6}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Revisão Bibliográfica}{7}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Metodologia e Cronograma}{8}{section.3}%
 \contentsline {section}{\numberline {4}Referências Bibliográficas}{9}{section.4}%
