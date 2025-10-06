@@ -1,0 +1,453 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{apple2024}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9f6290f4436e5a2351f12e03b6433c3c}{%
+           family={Apple},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{fullhash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{bibnamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authorbibnamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authornamehash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \strng{authorfullhash}{9f6290f4436e5a2351f12e03b6433c3c}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Instruments and Energy Log}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://developer.apple.com/xcode/
+      \endverb
+      \verb{url}
+      \verb https://developer.apple.com/xcode/
+      \endverb
+    \endentry
+    \entry{cheng2020}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=abc46b5b4a2f16ec3430042d04deb309}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={X.},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e2e65bc31792929cfaa15cecf7f23965}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{572a7c4604e8256fcc5edf7fc156b4fa}
+      \strng{fullhash}{572a7c4604e8256fcc5edf7fc156b4fa}
+      \strng{bibnamehash}{572a7c4604e8256fcc5edf7fc156b4fa}
+      \strng{authorbibnamehash}{572a7c4604e8256fcc5edf7fc156b4fa}
+      \strng{authornamehash}{572a7c4604e8256fcc5edf7fc156b4fa}
+      \strng{authorfullhash}{572a7c4604e8256fcc5edf7fc156b4fa}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Mobile Computing}
+      \field{number}{2}
+      \field{title}{Energy Efficiency in Mobile Applications: A Survey}
+      \field{volume}{19}
+      \field{year}{2020}
+      \field{pages}{345\bibrangedash 360}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1109/TMC.2019.2901234
+      \endverb
+    \endentry
+    \entry{android2024}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d242a862c3becd11c3eab68c129ae4a8}{%
+           family={Developers},
+           familyi={D\bibinitperiod},
+           given={Android},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d242a862c3becd11c3eab68c129ae4a8}
+      \strng{fullhash}{d242a862c3becd11c3eab68c129ae4a8}
+      \strng{bibnamehash}{d242a862c3becd11c3eab68c129ae4a8}
+      \strng{authorbibnamehash}{d242a862c3becd11c3eab68c129ae4a8}
+      \strng{authornamehash}{d242a862c3becd11c3eab68c129ae4a8}
+      \strng{authorfullhash}{d242a862c3becd11c3eab68c129ae4a8}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Android Studio Profiler}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://developer.android.com/studio/profile
+      \endverb
+      \verb{url}
+      \verb https://developer.android.com/studio/profile
+      \endverb
+    \endentry
+    \entry{google2024}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8b36e9207c24c76e6719268e49201d94}{%
+           family={Google},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{fullhash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{bibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorbibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authornamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorfullhash}{8b36e9207c24c76e6719268e49201d94}
+      \field{extraname}{1}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Flutter DevTools Overview}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://docs.flutter.dev/tools/devtools
+      \endverb
+      \verb{url}
+      \verb https://docs.flutter.dev/tools/devtools
+      \endverb
+    \endentry
+    \entry{google2023}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8b36e9207c24c76e6719268e49201d94}{%
+           family={Google},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{fullhash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{bibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorbibnamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authornamehash}{8b36e9207c24c76e6719268e49201d94}
+      \strng{authorfullhash}{8b36e9207c24c76e6719268e49201d94}
+      \field{extraname}{2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Flutter: Build apps for any screen}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://flutter.dev
+      \endverb
+      \verb{url}
+      \verb https://flutter.dev
+      \endverb
+    \endentry
+    \entry{ieee2023}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=472abfae8142fdb6f39d081303e8af85}{%
+           family={IEEE},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{fullhash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{bibnamehash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{authorbibnamehash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{authornamehash}{472abfae8142fdb6f39d081303e8af85}
+      \strng{authorfullhash}{472abfae8142fdb6f39d081303e8af85}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{IEEE Guidelines for Sustainable ICT Systems}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://standards.ieee.org/
+      \endverb
+      \verb{url}
+      \verb https://standards.ieee.org/
+      \endverb
+    \endentry
+    \entry{johnson2020}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e68c5fd89fd926beec66f4e899280378}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e68c5fd89fd926beec66f4e899280378}
+      \strng{fullhash}{e68c5fd89fd926beec66f4e899280378}
+      \strng{bibnamehash}{e68c5fd89fd926beec66f4e899280378}
+      \strng{authorbibnamehash}{e68c5fd89fd926beec66f4e899280378}
+      \strng{authornamehash}{e68c5fd89fd926beec66f4e899280378}
+      \strng{authorfullhash}{e68c5fd89fd926beec66f4e899280378}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM Journal on Software Practice}
+      \field{number}{4}
+      \field{title}{Measuring Performance and Resource Use in Mobile Apps}
+      \field{volume}{32}
+      \field{year}{2020}
+      \field{pages}{201\bibrangedash 220}
+      \range{pages}{20}
+    \endentry
+    \entry{kumar2019}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=8aacd22e59b538e218d84bc9cb96c13f}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=70bdc1ea5f8683abeb9fbeb80263d83f}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{14ab21a34a7f36372a89c4e05f2a8ef6}
+      \strng{fullhash}{14ab21a34a7f36372a89c4e05f2a8ef6}
+      \strng{bibnamehash}{14ab21a34a7f36372a89c4e05f2a8ef6}
+      \strng{authorbibnamehash}{14ab21a34a7f36372a89c4e05f2a8ef6}
+      \strng{authornamehash}{14ab21a34a7f36372a89c4e05f2a8ef6}
+      \strng{authorfullhash}{14ab21a34a7f36372a89c4e05f2a8ef6}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Systems and Software}
+      \field{title}{Optimization of Mobile Applications for Energy Efficiency}
+      \field{volume}{156}
+      \field{year}{2019}
+      \field{pages}{1\bibrangedash 13}
+      \range{pages}{13}
+    \endentry
+    \entry{meta2024}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6755d218d5f4e1cef9cce9cc39aeda9}{%
+           family={Meta},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6755d218d5f4e1cef9cce9cc39aeda9}
+      \strng{fullhash}{b6755d218d5f4e1cef9cce9cc39aeda9}
+      \strng{bibnamehash}{b6755d218d5f4e1cef9cce9cc39aeda9}
+      \strng{authorbibnamehash}{b6755d218d5f4e1cef9cce9cc39aeda9}
+      \strng{authornamehash}{b6755d218d5f4e1cef9cce9cc39aeda9}
+      \strng{authorfullhash}{b6755d218d5f4e1cef9cce9cc39aeda9}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Flipper -- Extensible mobile app debugger}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://fbflipper.com/
+      \endverb
+      \verb{url}
+      \verb https://fbflipper.com/
+      \endverb
+    \endentry
+    \entry{meyer2022}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=8e544b338c93d652a84b44044acdb4eb}{%
+           family={Meyer},
+           familyi={M\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d2951e7c5c746f711dc91173afea88b8}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8e7115aa933cf4840d84be4f2cfb32d1}
+      \strng{fullhash}{8e7115aa933cf4840d84be4f2cfb32d1}
+      \strng{bibnamehash}{8e7115aa933cf4840d84be4f2cfb32d1}
+      \strng{authorbibnamehash}{8e7115aa933cf4840d84be4f2cfb32d1}
+      \strng{authornamehash}{8e7115aa933cf4840d84be4f2cfb32d1}
+      \strng{authorfullhash}{8e7115aa933cf4840d84be4f2cfb32d1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM Computing Surveys}
+      \field{number}{6}
+      \field{title}{Software Efficiency and Resource Optimization in Mobile Systems}
+      \field{volume}{54}
+      \field{year}{2022}
+      \field{pages}{45\bibrangedash 67}
+      \range{pages}{23}
+    \endentry
+    \entry{unep2023}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=cd19821fcbbc368e22a286aea5a948ca}{%
+           family={Programme},
+           familyi={P\bibinitperiod},
+           given={UN\bibnamedelima Environment},
+           giveni={U\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cd19821fcbbc368e22a286aea5a948ca}
+      \strng{fullhash}{cd19821fcbbc368e22a286aea5a948ca}
+      \strng{bibnamehash}{cd19821fcbbc368e22a286aea5a948ca}
+      \strng{authorbibnamehash}{cd19821fcbbc368e22a286aea5a948ca}
+      \strng{authornamehash}{cd19821fcbbc368e22a286aea5a948ca}
+      \strng{authorfullhash}{cd19821fcbbc368e22a286aea5a948ca}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Digital Sustainability and Climate Action}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.unep.org/
+      \endverb
+      \verb{url}
+      \verb https://www.unep.org/
+      \endverb
+    \endentry
+    \entry{aosp2024}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=aedf70965050f2e13a063b3d736a9bbb}{%
+           family={Project},
+           familyi={P\bibinitperiod},
+           given={Android\bibnamedelimb Open\bibnamedelima Source},
+           giveni={A\bibinitperiod\bibinitdelim O\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{aedf70965050f2e13a063b3d736a9bbb}
+      \strng{fullhash}{aedf70965050f2e13a063b3d736a9bbb}
+      \strng{bibnamehash}{aedf70965050f2e13a063b3d736a9bbb}
+      \strng{authorbibnamehash}{aedf70965050f2e13a063b3d736a9bbb}
+      \strng{authornamehash}{aedf70965050f2e13a063b3d736a9bbb}
+      \strng{authorfullhash}{aedf70965050f2e13a063b3d736a9bbb}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Perfetto: System profiling tool}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://perfetto.dev
+      \endverb
+      \verb{url}
+      \verb https://perfetto.dev
+      \endverb
+    \endentry
+    \entry{google_sustainability2024}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=63b128651fdcafbf032df4cd7f3a2c02}{%
+           family={Sustainability},
+           familyi={S\bibinitperiod},
+           given={Google},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{63b128651fdcafbf032df4cd7f3a2c02}
+      \strng{fullhash}{63b128651fdcafbf032df4cd7f3a2c02}
+      \strng{bibnamehash}{63b128651fdcafbf032df4cd7f3a2c02}
+      \strng{authorbibnamehash}{63b128651fdcafbf032df4cd7f3a2c02}
+      \strng{authornamehash}{63b128651fdcafbf032df4cd7f3a2c02}
+      \strng{authorfullhash}{63b128651fdcafbf032df4cd7f3a2c02}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Sustainability in Digital Products}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://sustainability.google/
+      \endverb
+      \verb{url}
+      \verb https://sustainability.google/
+      \endverb
+    \endentry
+    \entry{zhang2021}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=6d96d6fbd106e2ffd88ad23ce0119654}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=61ad10c626e1d641e0b1d7b5f48d3233}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{490a006018a98aff1d479a24f8c15ab7}
+      \strng{fullhash}{490a006018a98aff1d479a24f8c15ab7}
+      \strng{bibnamehash}{490a006018a98aff1d479a24f8c15ab7}
+      \strng{authorbibnamehash}{490a006018a98aff1d479a24f8c15ab7}
+      \strng{authornamehash}{490a006018a98aff1d479a24f8c15ab7}
+      \strng{authorfullhash}{490a006018a98aff1d479a24f8c15ab7}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Green Computing}
+      \field{number}{3}
+      \field{title}{Energy-Aware Design for Mobile Applications}
+      \field{volume}{14}
+      \field{year}{2021}
+      \field{pages}{112\bibrangedash 125}
+      \range{pages}{14}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

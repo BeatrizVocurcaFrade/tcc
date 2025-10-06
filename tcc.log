@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.9.2)  5 OCT 2025 23:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.9.2)  6 OCT 2025 00:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -287,323 +287,31 @@ Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
 \extratabsurround=\skip67
 \backup@length=\skip68
 \ar@cellbox=\box59
-) (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
-Package: biblatex 2022/07/12 v3.18b programmable bibliographies (PK/MW)
- (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count292
-) (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
-Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count293
- (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
-File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-)
-\c@tabx@nest=\count294
-\c@listtotal=\count295
-\c@listcount=\count296
-\c@liststart=\count297
-\c@liststop=\count298
-\c@citecount=\count299
-\c@citetotal=\count300
-\c@multicitecount=\count301
-\c@multicitetotal=\count302
-\c@instcount=\count303
-\c@maxnames=\count304
-\c@minnames=\count305
-\c@maxitems=\count306
-\c@minitems=\count307
-\c@citecounter=\count308
-\c@maxcitecounter=\count309
-\c@savedcitecounter=\count310
-\c@uniquelist=\count311
-\c@uniquename=\count312
-\c@refsection=\count313
-\c@refsegment=\count314
-\c@maxextratitle=\count315
-\c@maxextratitleyear=\count316
-\c@maxextraname=\count317
-\c@maxextradate=\count318
-\c@maxextraalpha=\count319
-\c@abbrvpenalty=\count320
-\c@highnamepenalty=\count321
-\c@lownamepenalty=\count322
-\c@maxparens=\count323
-\c@parenlevel=\count324
-\blx@tempcnta=\count325
-\blx@tempcntb=\count326
-\blx@tempcntc=\count327
-\c@blx@maxsection=\count328
-\blx@maxsegment@0=\count329
-\blx@notetype=\count330
-\blx@parenlevel@text=\count331
-\blx@parenlevel@foot=\count332
-\blx@sectionciteorder@0=\count333
-\blx@sectionciteorderinternal@0=\count334
-\blx@entrysetcounter=\count335
-\blx@biblioinstance=\count336
-\labelnumberwidth=\skip69
-\labelalphawidth=\skip70
-\biblabelsep=\skip71
-\bibitemsep=\skip72
-\bibnamesep=\skip73
-\bibinitsep=\skip74
-\bibparsep=\skip75
-\bibhang=\skip76
-\blx@bcfin=\read3
-\blx@bcfout=\write3
-\blx@langwohyphens=\language5
-\c@mincomprange=\count337
-\c@maxcomprange=\count338
-\c@mincompwidth=\count339
-Package biblatex Info: Trying to load biblatex default data model...
-Package biblatex Info: ... file 'blx-dm.def' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def
-File: blx-dm.def 2022/07/12 v3.18b biblatex localization (PK/MW)
-)
-Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'abnt.dbx' not found.
-Package biblatex Info: Trying to load biblatex custom data model...
-Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count340
-\c@savedafterword=\count341
-\c@annotator=\count342
-\c@savedannotator=\count343
-\c@author=\count344
-\c@savedauthor=\count345
-\c@bookauthor=\count346
-\c@savedbookauthor=\count347
-\c@commentator=\count348
-\c@savedcommentator=\count349
-\c@editor=\count350
-\c@savededitor=\count351
-\c@editora=\count352
-\c@savededitora=\count353
-\c@editorb=\count354
-\c@savededitorb=\count355
-\c@editorc=\count356
-\c@savededitorc=\count357
-\c@foreword=\count358
-\c@savedforeword=\count359
-\c@holder=\count360
-\c@savedholder=\count361
-\c@introduction=\count362
-\c@savedintroduction=\count363
-\c@namea=\count364
-\c@savednamea=\count365
-\c@nameb=\count366
-\c@savednameb=\count367
-\c@namec=\count368
-\c@savednamec=\count369
-\c@translator=\count370
-\c@savedtranslator=\count371
-\c@shortauthor=\count372
-\c@savedshortauthor=\count373
-\c@shorteditor=\count374
-\c@savedshorteditor=\count375
-\c@labelname=\count376
-\c@savedlabelname=\count377
-\c@institution=\count378
-\c@savedinstitution=\count379
-\c@lista=\count380
-\c@savedlista=\count381
-\c@listb=\count382
-\c@savedlistb=\count383
-\c@listc=\count384
-\c@savedlistc=\count385
-\c@listd=\count386
-\c@savedlistd=\count387
-\c@liste=\count388
-\c@savedliste=\count389
-\c@listf=\count390
-\c@savedlistf=\count391
-\c@location=\count392
-\c@savedlocation=\count393
-\c@organization=\count394
-\c@savedorganization=\count395
-\c@origlocation=\count396
-\c@savedoriglocation=\count397
-\c@origpublisher=\count398
-\c@savedorigpublisher=\count399
-\c@publisher=\count400
-\c@savedpublisher=\count401
-\c@language=\count402
-\c@savedlanguage=\count403
-\c@origlanguage=\count404
-\c@savedoriglanguage=\count405
-\c@pageref=\count406
-\c@savedpageref=\count407
-\shorthandwidth=\skip77
-\shortjournalwidth=\skip78
-\shortserieswidth=\skip79
-\shorttitlewidth=\skip80
-\shortauthorwidth=\skip81
-\shorteditorwidth=\skip82
-\locallabelnumberwidth=\skip83
-\locallabelalphawidth=\skip84
-\localshorthandwidth=\skip85
-\localshortjournalwidth=\skip86
-\localshortserieswidth=\skip87
-\localshorttitlewidth=\skip88
-\localshortauthorwidth=\skip89
-\localshorteditorwidth=\skip90
-Package biblatex Info: Trying to load compatibility code...
-Package biblatex Info: ... file 'blx-compat.def' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
-File: blx-compat.def 2022/07/12 v3.18b biblatex compatibility (PK/MW)
-)
-Package biblatex Info: Trying to load generic definitions...
-Package biblatex Info: ... file 'biblatex.def' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
-File: biblatex.def 2022/07/12 v3.18b biblatex compatibility (PK/MW)
-\c@textcitecount=\count408
-\c@textcitetotal=\count409
-\c@textcitemaxnames=\count410
-\c@biburlbigbreakpenalty=\count411
-\c@biburlbreakpenalty=\count412
-\c@biburlnumpenalty=\count413
-\c@biburlucpenalty=\count414
-\c@biburllcpenalty=\count415
-\biburlbigskip=\muskip18
-\biburlnumskip=\muskip19
-\biburlucskip=\muskip20
-\biburllcskip=\muskip21
-\c@smartand=\count416
-)
-Package biblatex Info: Trying to load bibliography style 'abnt'...
-Package biblatex Info: ... file 'abnt.bbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/abnt.bbx
-File: abnt.bbx 2018-11-17 v3.4 ABNT BibLaTeX citation style
- (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2023-01-16 L3 programming layer (loader) 
- (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count417
+\l__color_backend_stack_int=\count292
 \l__pdf_internal_box=\box60
-))
-Package: xparse 2023-01-16 L3 Experimental document command parser
-) (/usr/share/texlive/texmf-dist/tex/latex/xpatch/xpatch.sty
-Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
-)
-Package biblatex Info: Trying to load bibliography style 'standard'...
-Package biblatex Info: ... file 'standard.bbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
-File: standard.bbx 2022/07/12 v3.18b biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count418
-\c@bbx:relatedtotal=\count419
-))
-Package biblatex Info: Trying to load citation style 'abnt'...
-Package biblatex Info: ... file 'abnt.cbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/abnt.cbx
-File: abnt.cbx 2018-11-17 v3.4 ABNT BibLaTeX citation style
-Package biblatex Info: Trying to load citation style 'authoryear-comp'...
-Package biblatex Info: ... file 'authoryear-comp.cbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/authoryear-comp.cbx
-File: authoryear-comp.cbx 2022/07/12 v3.18b biblatex citation style (PK/MW)
-Package biblatex Info: Redefining '\cite'.
-Package biblatex Info: Redefining '\parencite'.
-Package biblatex Info: Redefining '\footcite'.
-Package biblatex Info: Redefining '\footcitetext'.
-Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\textcite'.
-Package biblatex Info: Redefining '\textcites'.
-Package biblatex Info: Redefining '\cites'.
-Package biblatex Info: Redefining '\parencites'.
-Package biblatex Info: Redefining '\footcites'.
-Package biblatex Info: Redefining '\footcitetexts'.
-Package biblatex Info: Redefining '\smartcites'.
-)
-Package biblatex Info: Redefining '\cite'.
-Package biblatex Info: Redefining '\cites'.
-Package biblatex Info: Redefining '\footcite'.
-Package biblatex Info: Redefining '\footcites'.
-Package biblatex Info: Redefining '\citetitle'.
-Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\citeauthor'.
-Package biblatex Info: Redefining '\citeyear'.
-)
-Package biblatex Info: Trying to load configuration file...
-Package biblatex Info: ... file 'biblatex.cfg' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg
-File: biblatex.cfg 
-)
-Package biblatex Info: Input encoding 'utf8' detected.
-Package biblatex Info: Document encoding is UTF8 ....
-Package biblatex Info: ... and expl3
-(biblatex)             2023-01-16 L3 programming layer (loader) 
-(biblatex)             is new enough (at least 2020/04/06),
-(biblatex)             setting 'casechanger=expl3'.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
-Package: blx-case-expl3 2022/07/12 v3.18b expl3 case changing code for biblatex
-))
-
-Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
-(biblatex)                Loading 'csquotes' recommended.
-
-\@quotelevel=\count420
-\@quotereset=\count421
-(./tcc.aux
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-)
+) (./tcc.aux)
 \openout1 = `tcc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -639,216 +347,62 @@ LaTeX Font Info:    ... okay on input line 20.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 20.
+Package hyperref Info: Link coloring OFF on input line 16.
 (./tcc.out) (./tcc.out)
-\@outlinefile=\write4
-\openout4 = `tcc.out'.
+\@outlinefile=\write3
+\openout3 = `tcc.out'.
 
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count422
+\scratchcounter=\count293
 \scratchdimen=\dimen168
 \scratchbox=\box61
-\nofMPsegments=\count423
-\nofMParguments=\count424
+\nofMPsegments=\count294
+\nofMParguments=\count295
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count425
+\MPscratchCnt=\count296
 \MPscratchDim=\dimen169
-\MPnumerator=\count426
-\makeMPintoPDFobject=\count427
+\MPnumerator=\count297
+\makeMPintoPDFobject=\count298
 \everyMPtoPDFconversion=\toks28
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-))
-Package biblatex Info: Trying to load language 'brazil' -> 'brazil-abnt'...
-Package biblatex Info: ... file 'brazil-abnt.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/brazil-abnt.lbx
-File: brazil-abnt.lbx 2018-11-17 v3.4 ABNT BibLaTeX citation style
-
-
-Package biblatex Warning: File 'brazilian-abnt-abnt.lbx' not found!
-(biblatex)                Ignoring mapping 'brazilian-abnt' -> 'brazilian-abnt-abnt'.
-
-Package biblatex Info: Trying to load language 'brazilian-abnt'...
-Package biblatex Info: ... file 'brazilian-abnt.lbx' found.
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/brazilian-abnt.lbx
-File: brazilian-abnt.lbx 2018-11-17 v3.4 ABNT BibLaTeX citation style
-Package biblatex Info: Trying to load language 'brazilian' -> 'brazilian-abnt'...
-Package biblatex Info: ... file 'brazilian-abnt.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/brazilian-abnt.lbx
-File: brazilian-abnt.lbx 2018-11-17 v3.4 ABNT BibLaTeX citation style
-Package biblatex Info: Trying to load language 'brazilian'...
-Package biblatex Info: ... file 'brazilian.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/brazilian.lbx
-File: brazilian.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-)))
-Package biblatex Info: Trying to load language 'brazilian-abnt'...
-Package biblatex Info: ... file 'brazilian-abnt.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/brazilian-abnt.lbx
-File: brazilian-abnt.lbx 2018-11-17 v3.4 ABNT BibLaTeX citation style
-Package biblatex Info: Trying to load language 'brazilian' -> 'brazilian-abnt'...
-Package biblatex Info: ... file 'brazilian-abnt.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/brazilian-abnt.lbx
-File: brazilian-abnt.lbx 2018-11-17 v3.4 ABNT BibLaTeX citation style
-Package biblatex Info: Trying to load language 'brazilian'...
-Package biblatex Info: ... file 'brazilian.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/brazilian.lbx
-File: brazilian.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-)
-Package biblatex Info: Trying to load language 'brazil'...
-Package biblatex Info: ... file 'brazil.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/brazil.lbx
-File: brazil.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'brazilian'...
-Package biblatex Info: ... file 'brazilian.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/brazilian.lbx
-File: brazilian.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-)))
-Package biblatex Info: Trying to load language 'brazil'...
-Package biblatex Info: ... file 'brazil.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/brazil.lbx
-File: brazil.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'brazilian' -> 'brazilian-abnt'...
-Package biblatex Info: ... file 'brazilian-abnt.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex-abnt/brazilian-abnt.lbx
-File: brazilian-abnt.lbx 2018-11-17 v3.4 ABNT BibLaTeX citation style
-Package biblatex Info: Trying to load language 'brazilian'...
-Package biblatex Info: ... file 'brazilian.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/brazilian.lbx
-File: brazilian.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-)
-Package biblatex Info: Trying to load language 'brazil'...
-Package biblatex Info: ... file 'brazil.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/brazil.lbx
-File: brazil.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-Package biblatex Info: Trying to load language 'brazilian'...
-Package biblatex Info: ... file 'brazilian.lbx' found.
- (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/brazilian.lbx
-File: brazilian.lbx 2022/07/12 v3.18b biblatex localization (PK/MW)
-))))))
-Package biblatex Info: Input encoding 'utf8' detected.
-Package biblatex Info: Automatic encoding selection.
-(biblatex)             Assuming data encoding 'utf8'.
-\openout3 = `tcc.bcf'.
-
-Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'tcc.bbl' not found.
-
-No file tcc.bbl.
-Package biblatex Info: Reference section=0 on input line 20.
-Package biblatex Info: Reference segment=0 on input line 20.
-[1
+)) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (13.13585pt too wide) in alignment at lines 47--53
+Overfull \hbox (13.13585pt too wide) in alignment at lines 40--46
  [] [] [] [] 
  []
 
 [2] (./tcc.toc)
-\tf@toc=\write5
-\openout5 = `tcc.toc'.
+\tf@toc=\write4
+\openout4 = `tcc.toc'.
 
  [3] [4] [5] [6] [7] [8] [9]
-Underfull \hbox (badness 3108) in paragraph at lines 173--174
-[]\OT1/cmr/m/n/12 Cheng, X.; Li, H. (2020). \OT1/cmr/m/it/12 Energy Ef-fi-ci-ency in Mo-bile Ap-pli-ca-ti-ons: A
+Underfull \hbox (badness 1668) in paragraph at lines 153--154
+[]\OT1/cmr/m/n/12 CHENG, X.; LI, H. Energy Ef-fi-ci-ency in Mo-bile Ap-pli-ca-ti-ons: A Sur-vey.
  []
 
-
-Underfull \hbox (badness 5345) in paragraph at lines 173--174
-\OT1/cmr/m/it/12 Sur-vey\OT1/cmr/m/n/12 . IEEE Tran-sac-ti-ons on Mo-bile Com-pu-ting, 19(2), 345-360. DOI:
- []
-
-[10
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.201 
-      ]
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.202 \bibitem{}
-                 [11
-pdfTeX warning (ext4): destination with the same identifier (name{cite.}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.207 \end{document}
-                    ] (./tcc.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
+[10] [11] (./tcc.aux)
 Package rerunfilecheck Info: File `tcc.out' has not changed.
 (rerunfilecheck)             Checksum: FEEF66CA890740EADBAD663C9F7E0E00;2757.
-Package logreq Info: Writing requests to 'tcc.run.xml'.
-\openout1 = `tcc.run.xml'.
-
  ) 
 Here is how much of TeX's memory you used:
- 18620 strings out of 478031
- 327803 string characters out of 5840163
- 1860330 words of memory out of 5000000
- 38495 multiletter control sequences out of 15000+600000
+ 10789 strings out of 478031
+ 170700 string characters out of 5840163
+ 1861330 words of memory out of 5000000
+ 30746 multiletter control sequences out of 15000+600000
  518375 words of font info for 53 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 77i,6n,80p,906b,4312s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,76p,1174b,574s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/usuario/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on tcc.pdf (11 pages, 103547 bytes).
+Output written on tcc.pdf (11 pages, 99682 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
+ 238 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
  121 words of extra memory for PDF output out of 10000 (max. 10000000)
 
