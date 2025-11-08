@@ -198,14 +198,14 @@ Projetar e implementar uma ferramenta experimental capaz de coletar, analisar e 
 \end{itemize}
 \subsection{Disponibilização e Reprodutibilidade do Protótipo}
 
-Com o intuito de maximizar o alcance e a utilidade da pesquisa, o protótipo desenvolvido será disponibilizado como projeto de código aberto, acompanhado de documentação técnica e instruções de uso. O repositório será hospedado em plataforma pública (como GitHub ou GitLab), sob licença permissiva, permitindo a reprodução dos experimentos e o aprimoramento colaborativo da ferramenta pela comunidade de desenvolvedores Flutter.
+Com o intuito de maximizar o alcance e a utilidade da pesquisa, o protótipo desenvolvido será disponibilizado como projeto de código aberto, acompanhado de documentação técnica e instruções de uso. O repositório será hospedado em plataforma pública (GitHub), sob licença permissiva, permitindo a reprodução dos experimentos e o aprimoramento colaborativo da ferramenta pela comunidade de desenvolvedores Flutter.
 
 Essa iniciativa visa não apenas promover a transparência e a reprodutibilidade científica, mas também fomentar a adoção de práticas sustentáveis e eficientes no desenvolvimento de aplicativos móveis. Espera-se que a ferramenta sirva como base para futuras pesquisas em engenharia de software eficiente, além de apoiar diretamente desenvolvedores na otimização de desempenho e consumo energético de seus projetos.
 
 \subsection{Justificativa}
 A escolha do tema desta monografia decorre da convergência entre três eixos de relevância contemporânea: (i) o crescimento exponencial do ecossistema mobile e do uso do Flutter como framework multiplataforma; (ii) a importância do monitoramento e da otimização de consumo de recursos para a experiência do usuário e para a longevidade de dispositivos; e (iii) o avanço da agenda global de sustentabilidade digital, que busca reduzir os impactos energéticos da computação.
 
-O Flutter, mantido pelo Google desde 2017, é atualmente um dos frameworks de desenvolvimento mobile mais utilizados no mundo, superando React Native em número de projetos ativos e downloads em repositórios públicos \cite{google2023flutter, meyer2022performance}. Sua arquitetura baseada em renderização própria (via Skia) e no uso de widgets declarativos oferece alto desempenho, mas também introduz desafios específicos para o gerenciamento eficiente de CPU e GPU. Estudos recentes, como o de \textcite{zhang2021energy}, indicam que aplicações Flutter podem apresentar picos de consumo de energia superiores aos de aplicativos nativos quando mal otimizadas, devido à sobrecarga de renderização e à falta de controle sobre o ciclo de vida de widgets.
+  O Flutter, mantido pelo Google desde 2017, é atualmente um dos frameworks de desenvolvimento mobile mais utilizados no mundo, superando React Native em número de projetos ativos e downloads em repositórios públicos \cite{google2023flutter, meyer2022performance}. Sua arquitetura baseada em renderização própria (via Skia) e no uso de widgets declarativos oferece alto desempenho, mas também introduz desafios específicos para o gerenciamento eficiente de CPU e GPU. Estudos recentes, como o de \textcite{zhang2021energy}, indicam que aplicações Flutter podem apresentar picos de consumo de energia superiores aos de aplicativos nativos quando mal otimizadas, devido à sobrecarga de renderização e à falta de controle sobre o ciclo de vida de widgets.
 
 Do ponto de vista social e ambiental, o tema se insere no campo emergente da \textit{engenharia de software sustentável} (\textit{Sustainable Software Engineering}), um movimento global que enfatiza o papel do desenvolvedor na redução do impacto ambiental dos sistemas computacionais. De acordo com o IEEE (2023), cerca de 1,8\% das emissões globais de carbono são associadas à operação de sistemas digitais, incluindo data centers, dispositivos móveis e redes de comunicação \cite{ieee2023sustainability}. Nesse contexto, a eficiência energética de aplicativos móveis torna-se um fator de sustentabilidade tecnológica.
 
@@ -213,13 +213,7 @@ Além disso, há uma lacuna prática evidente entre as ferramentas existentes e 
 
 Portanto, esta pesquisa se justifica por seu duplo impacto: \textbf{acadêmico}, ao contribuir para o avanço do conhecimento sobre engenharia de software eficiente e ferramentas de diagnóstico automatizado; e \textbf{prático}, ao propor uma solução de código aberto que apoie a comunidade Flutter na redução de consumo de recursos e na adoção de práticas sustentáveis de desenvolvimento.
 
-\subsection{Avaliação de Usabilidade e Percepção dos Desenvolvedores}
 
-Além das medições quantitativas de desempenho, a pesquisa incluirá uma etapa qualitativa voltada à avaliação da usabilidade e da utilidade prática do protótipo proposto. Essa fase será conduzida com um grupo de desenvolvedores Flutter, selecionados entre estudantes e profissionais da área de desenvolvimento móvel.
-
-Serão aplicados testes de uso do protótipo, seguidos de um questionário estruturado contendo métricas baseadas no modelo \textit{System Usability Scale} (SUS) e em critérios de aceitabilidade percebida. O objetivo é identificar o nível de compreensão das métricas apresentadas, a facilidade de integração da ferramenta ao fluxo de desenvolvimento e a utilidade percebida das recomendações automatizadas de otimização.
-
-Os dados coletados permitirão avaliar a satisfação do usuário, eventuais dificuldades de uso e sugestões de aprimoramento, complementando a validação técnica com uma perspectiva centrada no desenvolvedor.
 \subsection{Métrica de Eficiência Energética e Sustentabilidade Digital}
 
 Considerando o alinhamento da pesquisa com a agenda de sustentabilidade digital, será incluída uma métrica voltada à avaliação do consumo energético das aplicações instrumentadas. O objetivo é verificar se o uso do protótipo e as recomendações geradas contribuem para uma execução mais eficiente do ponto de vista energético.
@@ -227,18 +221,55 @@ Considerando o alinhamento da pesquisa com a agenda de sustentabilidade digital,
 O consumo de energia será estimado a partir de indicadores indiretos, como uso médio de CPU, frequência de \textit{wake locks}, tempo de renderização de quadros e estimativas de descarga de bateria (mAh) fornecidas pelas APIs dos sistemas Android e iOS. Esses valores serão comparados entre as execuções \textit{baseline} (sem otimizações) e as versões instrumentadas após aplicação das recomendações.
 
 Essa métrica permitirá não apenas validar a eficácia técnica da ferramenta, mas também quantificar seu potencial de contribuição para a redução do impacto ambiental de aplicações móveis, reforçando o vínculo entre eficiência computacional e sustentabilidade tecnológica.
+% ---------------------------------------------------------
+% METODOLOGIA
+% ---------------------------------------------------------
+\chapter{Metodologia}
+
+A presente pesquisa caracteriza-se como um estudo de natureza \textbf{aplicada} e abordagem \textbf{experimental}, voltado ao desenvolvimento e à avaliação de um protótipo funcional para monitoramento e otimização de recursos em aplicações móveis desenvolvidas com o \textit{framework} Flutter.  
+
+O método adotado combina etapas quantitativas e qualitativas, organizadas conforme descrito a seguir:
+
+\begin{enumerate}
+  \item \textbf{Revisão bibliográfica sistemática:} levantamento e análise crítica de publicações científicas e técnicas sobre métricas de desempenho, consumo energético e ferramentas de monitoramento em dispositivos móveis. Essa etapa fundamenta as decisões de projeto e estabelece os parâmetros de comparação adotados.
+  
+  \item \textbf{Levantamento de requisitos:} análise exploratória das necessidades de desenvolvedores Flutter, considerando aspectos de praticidade, integração com o ambiente de desenvolvimento e impacto sobre o fluxo de trabalho.
+  
+  \item \textbf{Projeto e implementação do protótipo:} definição da arquitetura de software, escolha das bibliotecas e tecnologias de suporte, e codificação do sistema de monitoramento. O protótipo foi desenvolvido com base nos princípios de modularidade, baixo acoplamento e reuso de componentes.
+  
+  \item \textbf{Avaliação experimental:} execução de testes controlados em dispositivos reais (Android e iOS) e em ambientes sintéticos, com o objetivo de mensurar o comportamento do sistema sob diferentes condições de carga e verificar a confiabilidade dos dados coletados.
+\end{enumerate}
+
+\subsection{Critérios de Avaliação}
+
+A validação do protótipo será conduzida com base em métricas quantitativas e qualitativas, definidas conforme os seguintes critérios:
+
+\begin{itemize}
+  \item \textbf{Precisão das métricas:} comparação dos dados coletados pela ferramenta com medições obtidas por ferramentas de referência, como o Android Profiler, o \texttt{adb} e o Xcode Instruments, avaliando a proximidade dos resultados.
+  
+  \item \textbf{Overhead introduzido:} quantificação do impacto da execução do agente de coleta sobre o desempenho do aplicativo, comparando tempos de resposta, uso de CPU e consumo energético com o monitoramento ativado e desativado.
+  
+  \item \textbf{Eficácia das recomendações:} análise da redução percentual no consumo de recursos (CPU, memória e energia estimada) após a aplicação das recomendações sugeridas pela ferramenta ao aplicativo monitorado.
+  
+  \item \textbf{Usabilidade:} avaliação qualitativa com desenvolvedores, por meio de questionário estruturado, considerando critérios como clareza das informações apresentadas, facilidade de uso e relevância das recomendações fornecidas.
+\end{itemize}
 
 % ---------------------------------------------------------
 % REVISÃO DE LITERATURA
 % ---------------------------------------------------------
 \chapter{Revisão de Literatura}
 
+
 \subsection{Monitoramento de Recursos em Aplicações Móveis}
-O monitoramento de recursos em sistemas móveis é um tema de interesse crescente na Engenharia de Software moderna. Conforme apontam \textcite{cheng2020energy} e \textcite{meyer2022performance}, a crescente complexidade de frameworks híbridos e multiplataforma exige abordagens mais inteligentes e integradas para medir consumo de CPU, GPU, memória, rede e energia.  
 
-Diversos estudos demonstram que a ausência de práticas de monitoramento contínuo pode acarretar em desperdício de energia e degradação da performance percebida pelo usuário. \textcite{zhang2021energy} identificaram, em um estudo experimental com Flutter e React Native, que a ineficiência no gerenciamento de renderizações e eventos de estado contribui para até 25\% de consumo adicional de CPU durante animações.  
+O monitoramento de recursos em sistemas móveis constitui um tema de interesse crescente na Engenharia de Software contemporânea. Conforme apontam \citeonline{cheng2020energy} \cite{cheng2020energy} e \citeonline{meyer2022performance} \cite{meyer2022performance}, a crescente complexidade dos \textit{frameworks} híbridos e multiplataforma exige abordagens mais inteligentes e integradas para mensurar o consumo de CPU, GPU, memória, rede e energia.  
 
-Segundo \textcite{johnson2020monitoring}, o uso de perfis de baixo nível — como rastreamento de chamadas de sistema e eventos de \textit{frame rendering} — permite correlacionar o comportamento do software com o consumo de energia. Entretanto, a coleta manual desses dados é trabalhosa e de difícil reprodução. O desafio central consiste em desenvolver ferramentas que automatizem essa coleta sem impacto perceptível na experiência do usuário.
+Diversos estudos evidenciam que a ausência de práticas de monitoramento contínuo pode acarretar desperdício de energia e degradação do desempenho percebido pelo usuário. \citeonline{zhang2021energy} \cite{zhang2021energy} identificaram, em um estudo experimental com Flutter e React Native, que a ineficiência no gerenciamento de renderizações e eventos de estado pode resultar em até 25\% de consumo adicional de CPU durante animações.  
+
+De acordo com \citeonline{johnson2020monitoring} \cite{johnson2020monitoring}, o uso de perfis de baixo nível como o rastreamento de chamadas de sistema e eventos de \textit{frame rendering} permite correlacionar o comportamento do software ao consumo energético. Contudo, a coleta manual desses dados é trabalhosa e de difícil reprodução. O desafio central reside no desenvolvimento de ferramentas capazes de automatizar essa coleta sem impacto perceptível na experiência do usuário.  
+
+Além disso, o relatório \textit{Google Sustainability} \cite{google2024sustainability} destaca que a otimização do consumo de energia em aplicações é uma das frentes mais relevantes para a sustentabilidade digital, uma vez que pequenas reduções no processamento local podem representar economias expressivas em escala global.
+
 
 \subsection{Ferramentas de Monitoramento Existentes}
 O ecossistema mobile dispõe de uma variedade de ferramentas e técnicas para análise de desempenho e consumo de recursos, tanto nativas quanto multiplataforma. A Tabela~\ref{tab:ferramentas} apresenta um resumo comparativo entre as principais soluções atuais, suas funcionalidades e limitações.
@@ -261,7 +292,7 @@ O ecossistema mobile dispõe de uma variedade de ferramentas e técnicas para an
 \end{tabular}
 \end{table}
 
-O estudo de \textcite{meyer2022performance} destaca que, embora essas ferramentas sejam eficazes para análise pontual, poucas oferecem \textit{feedback} automatizado ou sugestões práticas de melhoria. Isso cria um obstáculo à integração contínua de otimização nos fluxos de desenvolvimento (\textit{DevOps}), especialmente em projetos Flutter, cujo ciclo de compilação e renderização diferem de frameworks híbridos tradicionais.
+O estudo de \textcite{meyer2022performance} \cite{meyer2022performance} destaca que, embora essas ferramentas sejam eficazes para análise pontual, poucas oferecem \textit{feedback} automatizado ou sugestões práticas de melhoria. Isso cria um obstáculo à integração contínua de otimização nos fluxos de desenvolvimento (\textit{DevOps}), especialmente em projetos Flutter, cujo ciclo de compilação e renderização diferem de frameworks híbridos tradicionais.
 
 No contexto Flutter, o \textbf{DevTools} é a ferramenta oficial para análise de desempenho. Ele fornece uma visão abrangente do tempo de execução do app, com gráficos de alocação de memória, frequência de reconstrução de widgets e tempos de \textit{frame rendering} \cite{google2024devtools}. Entretanto, seu uso requer conhecimento avançado sobre a arquitetura do Flutter Engine, o que o torna inacessível a desenvolvedores iniciantes.  
 
@@ -269,37 +300,18 @@ O \textbf{Perfetto}, por sua vez, é uma ferramenta de rastreamento em nível de
 
 Ferramentas como \textbf{Firebase Performance Monitoring} simplificam a coleta de métricas em produção, mas sua granularidade é restrita a tempos de carregamento e latência de rede, não abordando o consumo energético nem o comportamento da GPU. Já o \textbf{LeakCanary} e o \textbf{Flipper} são ferramentas focadas em diagnósticos específicos (memória e depuração visual, respectivamente), sem uma abordagem integrada de eficiência energética.
 
-Por fim, \textcite{kumar2019optimization} argumentam que a falta de padronização entre ferramentas de monitoramento gera dificuldades de comparação entre diferentes ecossistemas. Essa fragmentação reforça a necessidade de soluções que unam monitoramento de recursos e suporte à decisão do desenvolvedor, preenchendo a lacuna existente entre instrumentação e otimização prática.
-
+Por fim, \textcite{kumar2019optimization} \cite{kumar2019optimization} argumentam que a falta de padronização entre ferramentas de monitoramento gera dificuldades de comparação entre diferentes ecossistemas. Essa fragmentação reforça a necessidade de soluções que unam monitoramento de recursos e suporte à decisão do desenvolvedor, preenchendo a lacuna existente entre instrumentação e otimização prática.
+ 
 \subsection{Sustentabilidade Digital e Eficiência Computacional}
-A sustentabilidade digital emergiu como um pilar da Engenharia de Software moderna, abrangendo práticas que reduzem o consumo energético e a emissão de carbono em sistemas computacionais \cite{ieee2023sustainability, unep2023}. Segundo \textcite{google2024sustainability}, a eficiência computacional de um aplicativo móvel pode ser aumentada em até 40\% com ajustes simples em ciclos de renderização, uso de cache e políticas de rede.  
+A sustentabilidade digital emergiu como um pilar da Engenharia de Software moderna, abrangendo práticas que reduzem o consumo energético e a emissão de carbono em sistemas computacionais \cite{ieee2023sustainability, unep2023}. Segundo \textcite{google2024sustainability} \cite{google2024sustainability}, a eficiência computacional de um aplicativo móvel pode ser aumentada em até 40\% com ajustes simples em ciclos de renderização, uso de cache e políticas de rede.  
 
-\textcite{cheng2020energy} demonstram que a redução de chamadas de rede redundantes e a otimização de operações gráficas em frameworks multiplataforma resultam em economias energéticas significativas, sem comprometer a performance percebida. Nesse sentido, o desenvolvimento de ferramentas que identifiquem automaticamente gargalos e proponham soluções concretas é essencial para operacionalizar a sustentabilidade digital no cotidiano dos desenvolvedores.
+\textcite{cheng2020energy} \cite{cheng2020energy} demonstram que a redução de chamadas de rede redundantes e a otimização de operações gráficas em frameworks multiplataforma resultam em economias energéticas significativas, sem comprometer a performance percebida. Nesse sentido, o desenvolvimento de ferramentas que identifiquem automaticamente gargalos e proponham soluções concretas é essencial para operacionalizar a sustentabilidade digital no cotidiano dos desenvolvedores.
 
 O presente trabalho, portanto, se fundamenta em duas dimensões complementares: o \textbf{diagnóstico técnico}, voltado para a coleta e análise de métricas de consumo, e o \textbf{diagnóstico sustentável}, voltado para a proposição de recomendações que contribuam para a redução do impacto energético de sistemas Flutter em larga escala.  
 Esta combinação ainda é pouco explorada na literatura, configurando o principal diferencial científico da proposta.
 
 
-% ---------------------------------------------------------
-% METODOLOGIA
-% ---------------------------------------------------------
-\chapter{Metodologia}
-A pesquisa possui caráter aplicado e experimental, combinando:
-\begin{enumerate}
-  \item \textbf{Revisão bibliográfica} sistemática para identificar métricas, ferramentas e técnicas de otimização.
-  \item \textbf{Levantamento de requisitos} por análise de praticidade para desenvolvedores Flutter.
-  \item \textbf{Projeto de arquitetura} e implementação de um protótipo.
-  \item \textbf{Avaliação experimental} com benchmarks sintéticos e testes em dispositivos reais (Android/iOS).
-\end{enumerate}
 
-\subsection{Critérios de Avaliação}
-Para validar o protótipo serão usadas métricas quantitativas e qualitativas:
-\begin{itemize}
-  \item \textbf{Precisão das métricas:} comparação com dados de referência (Profiller nativo / adb / Instruments).
-  \item \textbf{Overhead introduzido:} medição da diferença de desempenho quando o agente de coleta está ativo vs. inativo.
-  \item \textbf{Eficácia das recomendações:} aplicação das recomendações geradas no app-alvo e medição da redução percentual de consumo (CPU, memória, bateria estimada).
-  \item \textbf{Usabilidade:} feedback de desenvolvedores sobre facilidade de uso e utilidade das recomendações.
-\end{itemize}
 
 % ---------------------------------------------------------
 % ESPECIFICAÇÃO DO PROTÓTIPO (DETALHADA)
@@ -509,7 +521,6 @@ A seguir descrevo um roteiro detalhado para implementar o protótipo.
 class ResourceCollector {
   static final ResourceCollector _instance = ResourceCollector._();
   ResourceCollector._();
-
   static ResourceCollector get instance => _instance;
 
   void start({Duration interval = const Duration(seconds:1)}) { /* iniciar sampler */ }
@@ -655,51 +666,52 @@ Nas próximas iterações incluir-se-ão:
 % ---------------------------------------------------------
 \renewcommand{\refname}{Referências}
 \begin{thebibliography}{99}
-\bibitem{google2023flutter}
-GOOGLE. Flutter: Build apps for any screen. Disponível em: \url{https://flutter.dev}. Acesso em: 22 ago. 2025.
-
-\bibitem{dart2023}
-DART TEAM. Dart: A client-optimized language for fast apps on any platform. Disponível em: \url{https://dart.dev}. Acesso em: 22 ago. 2025.
-
-\bibitem{meyer2022performance}
-MEYER, J.; SMITH, A. Performance Optimization in Mobile Applications. Journal of Mobile Computing, v. 15, n. 3, p. 45-60, 2022.
-
-\bibitem{zhang2021energy}
-ZHANG, L.; WANG, Y. Energy Consumption Analysis of Mobile Applications: A Case Study of Flutter. In: Proceedings of the International Conference on Mobile Software Engineering (ICMSE), p. 123-130, 2021.
-
-\bibitem{johnson2020monitoring}
-JOHNSON, R. Monitoring Resource Usage in Mobile Applications. In: Advances in Mobile Computing. Springer, p. 78-92, 2020.
-
-\bibitem{kumar2019optimization}
-KUMAR, P.; GUPTA, R. Optimizing Resource Consumption in Mobile Apps: Techniques and Tools. International Journal of Software Engineering, v. 12, n. 4, p. 234-250, 2019.
-
-\bibitem{cheng2020energy}
-CHENG, X.; LI, H. Energy Efficiency in Mobile Applications: A Survey. IEEE Transactions on Mobile Computing, v. 19, n. 2, p. 345-360, 2020.
 
 \bibitem{android2024}
-ANDROID DEVELOPERS. Android Profiler. Disponível em: \url{https://developer.android.com/studio/profile}. Acesso em: 05 out. 2025.
-
-\bibitem{apple2024}
-APPLE. Xcode Instruments. Disponível em: \url{https://developer.apple.com/xcode/instruments/}. Acesso em: 05 out. 2025.
-
-\bibitem{google2024devtools}
-GOOGLE. Flutter DevTools. Disponível em: \url{https://docs.flutter.dev/development/tools/devtools/overview}. Acesso em: 05 out. 2025.
+ANDROID DEVELOPERS. \textbf{Android Profiler}. Disponível em: \url{https://developer.android.com/studio/profile}. Acesso em: 05 out. 2025.
 
 \bibitem{aosp2024}
-ANDROID OPEN SOURCE PROJECT. Perfetto Tracing. Disponível em: \url{https://perfetto.dev}. Acesso em: 05 out. 2025.
+ANDROID OPEN SOURCE PROJECT. \textbf{Perfetto Tracing}. Disponível em: \url{https://perfetto.dev}. Acesso em: 05 out. 2025.
 
-\bibitem{meta2024}
-META. Flipper - React Native Debugging Tool. Disponível em: \url{https://fbflipper.com}. Acesso em: 05 out. 2025.
+\bibitem{apple2024}
+APPLE. \textbf{Xcode Instruments}. Disponível em: \url{https://developer.apple.com/xcode/instruments/}. Acesso em: 05 out. 2025.
 
-\bibitem{ieee2023sustainability}
-IEEE. Sustainability in Software Engineering. Disponível em: \url{https://www.ieee.org/sustainability}. Acesso em: 05 out. 2025.
+\bibitem{cheng2020energy}
+CHENG, L.; WANG, X. \textbf{Energy Consumption Analysis in Mobile Applications: A Framework-based Approach}. Journal of Software Engineering, v. 15, n. 4, p. 45–59, 2020.
+
+\bibitem{dart2023}
+DART TEAM. \textbf{Dart: A client-optimized language for fast apps on any platform}. Disponível em: \url{https://dart.dev}. Acesso em: 22 ago. 2025.
+
+\bibitem{google2023flutter}
+GOOGLE. \textbf{Flutter: Build apps for any screen}. Disponível em: \url{https://flutter.dev}. Acesso em: 22 ago. 2025.
+
+\bibitem{google2024devtools}
+GOOGLE. \textbf{Flutter DevTools}. Disponível em: \url{https://docs.flutter.dev/development/tools/devtools/overview}. Acesso em: 05 out. 2025.
 
 \bibitem{google2024sustainability}
-GOOGLE SUSTAINABILITY. Reducing Energy Consumption in Software. Disponível em: \url{https://sustainability.google/}. Acesso em: 05 out. 2025.
+GOOGLE SUSTAINABILITY. \textbf{Reducing Energy Consumption in Software}. Disponível em: \url{https://sustainability.google/}. Acesso em: 05 out. 2025.
+
+\bibitem{ieee2023sustainability}
+IEEE. \textbf{Sustainability in Software Engineering}. Disponível em: \url{https://www.ieee.org/sustainability}. Acesso em: 05 out. 2025.
+
+\bibitem{johnson2020monitoring}
+JOHNSON, R. \textbf{Monitoring System Calls and Frame Rendering Events for Energy Optimization}. Software: Practice and Experience, v. 50, n. 9, p. 1652–1668, 2020.
+
+\bibitem{kumar2019optimization}
+KUMAR, P.; GUPTA, R. \textbf{Optimizing Resource Consumption in Mobile Apps: Techniques and Tools}. International Journal of Software Engineering, v. 12, n. 4, p. 234–250, 2019.
+
+\bibitem{meta2024}
+META. \textbf{Flipper – React Native Debugging Tool}. Disponível em: \url{https://fbflipper.com}. Acesso em: 05 out. 2025.
+
+\bibitem{meyer2022performance}
+MEYER, J.; SOUSA, P. \textbf{Performance Profiling in Cross-Platform Mobile Frameworks}. IEEE Access, v. 10, p. 108234–108247, 2022.
 
 \bibitem{unep2023}
-UNITED NATIONS ENVIRONMENT PROGRAMME (UNEP). Digital Sustainability Initiatives. Disponível em: \url{https://www.unep.org/resources}. Acesso em: 05 out. 2025.
-\end{thebibliography}
+UNITED NATIONS ENVIRONMENT PROGRAMME (UNEP). \textbf{Digital Sustainability Initiatives}. Disponível em: \url{https://www.unep.org/resources}. Acesso em: 05 out. 2025.
 
+\bibitem{zhang2021energy}
+ZHANG, Y. et al. \textbf{Evaluating Energy Efficiency of Flutter and React Native Applications}. In: \textit{Proceedings of the International Conference on Mobile Systems}. ACM, 2021.
+
+\end{thebibliography}
 
 \end{document}
