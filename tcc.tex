@@ -1,7 +1,8 @@
-% tcc_parte1.tex
 \documentclass[12pt,a4paper,oneside]{abntex2}
 
-% Pacotes básicos
+% ----------------------------------------------------------
+% PACOTES BÁSICOS E CONFIGURAÇÕES
+% ----------------------------------------------------------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
@@ -20,11 +21,35 @@
 \usepackage{listings}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{titlesec}
 
-% Configurações
+% Margens e espaçamento ABNT
 \geometry{a4paper, left=3cm, right=2cm, top=3cm, bottom=2cm}
 \setlength{\parindent}{1.25cm}
 \setstretch{1.5}
+
+% Configuração de cabeçalhos e rodapés
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{Monitoramento e Otimização de Recursos em Flutter}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Configuração de títulos (ABNT mais formal)
+\titleformat{\section}{\normalfont\bfseries\Large}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\itshape\normalsize}{\thesubsubsection}{1em}{}
+
+% Configuração de código-fonte
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  columns=fullflexible,
+  frame=single,
+  captionpos=b
+}
+
+% Hiperlinks
 \hypersetup{
   colorlinks=true,
   linkcolor=black,
@@ -34,32 +59,15 @@
   pdfauthor={Beatriz Vocurca Frade}
 }
 
-% Cabeçalho e rodapé simples
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[R]{\thepage}
-\fancyhead[L]{Monitoramento e Otimização de Recursos em Flutter}
-\renewcommand{\headrulewidth}{0.4pt}
-
-% Configurações para código
-\lstset{
-  basicstyle=\ttfamily\footnotesize,
-  breaklines=true,
-  columns=fullflexible,
-  frame=single,
-  captionpos=b
-}
-
-% Informações Autorais (ABNT-style capa manual)
+% ----------------------------------------------------------
+% CAPA
+% ----------------------------------------------------------
 \title{Monitoramento e Otimização do Consumo de Recursos em Aplicativos Flutter: Proposta de Ferramenta de Apoio ao Desenvolvimento}
 \author{Beatriz Vocurca Frade}
 \date{22 de agosto de 2025}
 
 \begin{document}
 
-% ---------------------------------------------------------
-% CAPA
-% ---------------------------------------------------------
 \begin{titlepage}
   \centering
   {\large Universidade Federal de Minas Gerais \\ Curso de Engenharia de Sistemas \par}
@@ -72,16 +80,16 @@
   \vspace{1cm}
   {\large Aluna: Beatriz Vocurca Frade \par}
   \vspace{1cm}
-  {\large Orientador: Prof. Ramon Lacerda Marques \par} % preencher orientador
+  {\large Orientador: Prof. Ramon Lacerda Marques \par}
   \vspace{1cm}
   {\large Belo Horizonte \\ 2025\par}
 \end{titlepage}
 
 \newpage
 
-% ---------------------------------------------------------
-% FOLHA DE ROSTO (opcional)
-% ---------------------------------------------------------
+% ----------------------------------------------------------
+% FOLHA DE ROSTO
+% ----------------------------------------------------------
 \begin{center}
     \textbf{Universidade Federal de Minas Gerais} \\
     \textbf{Curso de Engenharia de Sistemas} \\
@@ -101,32 +109,27 @@
 \newpage
 
 % ----------------------------------------------------------
-% Resumo (em português)
+% RESUMO
 % ----------------------------------------------------------
-\renewcommand{\resumoname}{{Resumo}} % Título em negrito e mesmo tamanho
+\renewcommand{\resumoname}{Resumo}
 \begin{resumo}
 \noindent
-Este trabalho propõe o desenvolvimento de uma ferramenta destinada ao \textbf{monitoramento e à otimização do consumo de recursos} em aplicações desenvolvidas com o \textit{framework} Flutter. A proposta contempla um estudo bibliográfico sobre técnicas de medição de uso de CPU, GPU, memória, rede e bateria; uma análise crítica das ferramentas já existentes no ecossistema; a definição de requisitos funcionais e não funcionais; e a especificação de um protótipo inicial capaz de integrar coleta de métricas, visualização interativa e recomendações automatizadas de otimização. 
+Este trabalho propõe o desenvolvimento de uma ferramenta destinada ao \textbf{monitoramento e à otimização do consumo de recursos} em aplicações desenvolvidas com o \textit{framework} Flutter. A proposta contempla um estudo bibliográfico sobre técnicas de medição de uso de CPU, GPU, memória, rede e bateria; uma análise crítica das ferramentas já existentes no ecossistema; a definição de requisitos funcionais e não funcionais; e a especificação de um protótipo inicial capaz de integrar coleta de métricas, visualização interativa e recomendações automatizadas de otimização.
 
 O objetivo principal é oferecer aos desenvolvedores uma solução acessível e integrada que facilite a identificação de gargalos de desempenho e sugira ações práticas para a redução do consumo de recursos computacionais. Com isso, busca-se contribuir para a melhoria da qualidade da experiência do usuário e para a adoção de práticas de \textbf{sustentabilidade digital} e \textbf{eficiência energética} no desenvolvimento de aplicações móveis.
 
-\textbf{Palavras-chave}: Flutter; monitoramento; otimização; consumo de recursos; eficiência energética; sustentabilidade digital.
+\textbf{Palavras-chave}: Flutter. Monitoramento. Otimização. Consumo de recursos. Eficiência energética. Sustentabilidade digital.
 \end{resumo}
 
-
 \newpage
-
-\newpage
-
 \tableofcontents
 \newpage
 
-% ---------------------------------------------------------
+% ----------------------------------------------------------
 % INTRODUÇÃO
-% ---------------------------------------------------------
+% ----------------------------------------------------------
 \section{Introdução}
 \subsection{Contextualização}
-
 O desenvolvimento de aplicações móveis constitui um dos eixos centrais da engenharia de software contemporânea, impulsionado pela crescente demanda por soluções multiplataforma e experiências digitais consistentes. Entre os \textit{frameworks} de desenvolvimento \textit{cross-platform}, o \textit{Flutter} tem se destacado por oferecer um ambiente unificado capaz de gerar aplicações nativas para \textit{Android}, \textit{iOS}, \textit{Web} e \textit{Desktop}, conciliando alta produtividade, expressividade visual e desempenho próximo ao nativo.
 
 Entretanto, a execução de aplicações móveis envolve um conjunto complexo de operações que demandam recursos computacionais como CPU, GPU, memória, rede e bateria os quais influenciam diretamente tanto a experiência do usuário quanto a eficiência energética do sistema. O gerenciamento inadequado desses recursos pode resultar em lentidão, travamentos, consumo excessivo de energia e degradação da usabilidade, comprometendo a sustentabilidade do ecossistema digital \cite{cheng2020energy, zhang2021energy}.
@@ -150,21 +153,54 @@ Em síntese, o problema de pesquisa reside na ausência de uma solução integra
 
 
 \subsection{Questões de Pesquisa}
+
+Diante das lacunas identificadas quanto à ausência de ferramentas acessíveis, integradas e de baixo impacto para análise de desempenho em Flutter, este trabalho busca responder às seguintes questões de pesquisa:
+
 \begin{enumerate}
-  \item É possível projetar uma ferramenta integrada para Flutter que combine monitoramento em tempo real com recomendações automatizadas de otimização sem incorrer em overhead significativo?
-  \item Quais métricas são essenciais para diagnósticos úteis em Flutter (CPU, GPU, heap memory, tráfego de rede, uso de I/O, wake locks, etc.) e como correlacioná-las para identificar causas raiz?
-  \item Quais estratégias de otimização (ex.: gerenciamento de estado, redução de rebuilds, otimização de imagens e animações) apresentam maior impacto prático na redução do consumo de recursos em apps Flutter?
+  \item \textbf{Integração e viabilidade técnica:} é possível projetar uma ferramenta integrada para Flutter que combine \textit{monitoramento em tempo real}, \textit{análise automatizada} e \textit{recomendações de otimização} sem incorrer em \textit{overhead} significativo no desempenho da aplicação?
+  
+  \item \textbf{Seleção e correlação de métricas:} quais métricas de uso de recursos (por exemplo, CPU, GPU, memória \textit{heap}, tráfego de rede, operações de I/O e \textit{wake locks}) são realmente essenciais para diagnósticos eficazes em aplicações Flutter, e de que maneira podem ser correlacionadas para identificar causas-raiz de degradação de desempenho?
+  
+  \item \textbf{Efetividade das estratégias de otimização:} entre as principais práticas de otimização conhecidas (como gerenciamento de estado, redução de \textit{rebuilds}, otimização de imagens, cache de dados e controle de animações), quais apresentam maior impacto mensurável na redução do consumo de recursos computacionais em cenários reais de uso?
+  
+  \item \textbf{Usabilidade e aplicabilidade prática:} de que modo uma ferramenta desse tipo pode ser incorporada de forma contínua ao fluxo cotidiano de desenvolvimento, promovendo maior conscientização e autonomia do desenvolvedor quanto à eficiência energética e à sustentabilidade digital?
 \end{enumerate}
 
+
 \subsection{Objetivos}
-\textbf{Objetivo geral:} desenvolver uma ferramenta protótipo para monitoramento e otimização do consumo de recursos em aplicações Flutter.\\
-\textbf{Objetivos específicos:}
+
+A presente pesquisa tem como propósito geral o \textbf{desenvolvimento de um protótipo de ferramenta voltada ao monitoramento e à otimização do consumo de recursos em aplicações Flutter}, de modo a apoiar o desenvolvedor na detecção de gargalos e na adoção de boas práticas de eficiência computacional.
+
+\vspace{0.3cm}
+\noindent\textbf{Objetivo geral:}
+\begin{quote}
+Projetar e implementar uma ferramenta experimental capaz de coletar, analisar e interpretar métricas de desempenho em tempo real, gerando recomendações automatizadas de otimização com mínimo impacto sobre o comportamento natural da aplicação monitorada.
+\end{quote}
+
+\noindent\textbf{Objetivos específicos:}
 \begin{itemize}
-  \item Realizar revisão bibliográfica e análise crítica de ferramentas existentes.
-  \item Definir requisitos e arquitetura do protótipo.
-  \item Implementar um protótipo com módulos de coleta de métricas, visualização e recomendação.
-  \item Validar o protótipo em cenários controlados e em dispositivos reais.
+  \item Realizar uma revisão bibliográfica sistemática sobre monitoramento de recursos, eficiência energética e sustentabilidade digital em aplicativos móveis, com foco no ecossistema Flutter;
+  
+  \item Investigar e comparar as principais ferramentas e técnicas existentes para diagnóstico e perfil de desempenho em ambientes móveis, destacando suas limitações e potenciais de integração;
+  
+  \item Definir os requisitos funcionais e não funcionais do protótipo, bem como sua arquitetura modular (camadas \textit{Data}, \textit{Domain} e \textit{Presentation});
+  
+  \item Implementar um protótipo funcional composto por módulos de coleta de métricas, análise heurística e geração de recomendações de otimização;
+  
+  \item Validar o desempenho e a eficácia do protótipo em cenários experimentais e em dispositivos reais, comparando os resultados com medições de ferramentas nativas (como DevTools, Perfetto e Android Profiler);
+  
+  \item Avaliar a usabilidade e o potencial de adoção prática da ferramenta a partir do feedback de desenvolvedores e de métricas de impacto (redução percentual de consumo de CPU, memória e bateria).
+  
+    \item Analisar o impacto da ferramenta proposta sob a ótica da sustentabilidade digital, avaliando o potencial de redução do consumo energético e contribuindo para práticas de desenvolvimento ambientalmente responsáveis;
+
+  \item Documentar, disponibilizar e divulgar o protótipo desenvolvido em formato de código aberto, promovendo sua reprodutibilidade e utilidade para a comunidade de desenvolvedores Flutter.
+
 \end{itemize}
+\subsection{Disponibilização e Reprodutibilidade do Protótipo}
+
+Com o intuito de maximizar o alcance e a utilidade da pesquisa, o protótipo desenvolvido será disponibilizado como projeto de código aberto, acompanhado de documentação técnica e instruções de uso. O repositório será hospedado em plataforma pública (como GitHub ou GitLab), sob licença permissiva, permitindo a reprodução dos experimentos e o aprimoramento colaborativo da ferramenta pela comunidade de desenvolvedores Flutter.
+
+Essa iniciativa visa não apenas promover a transparência e a reprodutibilidade científica, mas também fomentar a adoção de práticas sustentáveis e eficientes no desenvolvimento de aplicativos móveis. Espera-se que a ferramenta sirva como base para futuras pesquisas em engenharia de software eficiente, além de apoiar diretamente desenvolvedores na otimização de desempenho e consumo energético de seus projetos.
 
 \subsection{Justificativa}
 A escolha do tema desta monografia decorre da convergência entre três eixos de relevância contemporânea: (i) o crescimento exponencial do ecossistema mobile e do uso do Flutter como framework multiplataforma; (ii) a importância do monitoramento e da otimização de consumo de recursos para a experiência do usuário e para a longevidade de dispositivos; e (iii) o avanço da agenda global de sustentabilidade digital, que busca reduzir os impactos energéticos da computação.
@@ -177,6 +213,20 @@ Além disso, há uma lacuna prática evidente entre as ferramentas existentes e 
 
 Portanto, esta pesquisa se justifica por seu duplo impacto: \textbf{acadêmico}, ao contribuir para o avanço do conhecimento sobre engenharia de software eficiente e ferramentas de diagnóstico automatizado; e \textbf{prático}, ao propor uma solução de código aberto que apoie a comunidade Flutter na redução de consumo de recursos e na adoção de práticas sustentáveis de desenvolvimento.
 
+\subsection{Avaliação de Usabilidade e Percepção dos Desenvolvedores}
+
+Além das medições quantitativas de desempenho, a pesquisa incluirá uma etapa qualitativa voltada à avaliação da usabilidade e da utilidade prática do protótipo proposto. Essa fase será conduzida com um grupo de desenvolvedores Flutter, selecionados entre estudantes e profissionais da área de desenvolvimento móvel.
+
+Serão aplicados testes de uso do protótipo, seguidos de um questionário estruturado contendo métricas baseadas no modelo \textit{System Usability Scale} (SUS) e em critérios de aceitabilidade percebida. O objetivo é identificar o nível de compreensão das métricas apresentadas, a facilidade de integração da ferramenta ao fluxo de desenvolvimento e a utilidade percebida das recomendações automatizadas de otimização.
+
+Os dados coletados permitirão avaliar a satisfação do usuário, eventuais dificuldades de uso e sugestões de aprimoramento, complementando a validação técnica com uma perspectiva centrada no desenvolvedor.
+\subsection{Métrica de Eficiência Energética e Sustentabilidade Digital}
+
+Considerando o alinhamento da pesquisa com a agenda de sustentabilidade digital, será incluída uma métrica voltada à avaliação do consumo energético das aplicações instrumentadas. O objetivo é verificar se o uso do protótipo e as recomendações geradas contribuem para uma execução mais eficiente do ponto de vista energético.
+
+O consumo de energia será estimado a partir de indicadores indiretos, como uso médio de CPU, frequência de \textit{wake locks}, tempo de renderização de quadros e estimativas de descarga de bateria (mAh) fornecidas pelas APIs dos sistemas Android e iOS. Esses valores serão comparados entre as execuções \textit{baseline} (sem otimizações) e as versões instrumentadas após aplicação das recomendações.
+
+Essa métrica permitirá não apenas validar a eficácia técnica da ferramenta, mas também quantificar seu potencial de contribuição para a redução do impacto ambiental de aplicações móveis, reforçando o vínculo entre eficiência computacional e sustentabilidade tecnológica.
 
 % ---------------------------------------------------------
 % REVISÃO DE LITERATURA
@@ -265,7 +315,6 @@ O protótipo proposto é composto por três camadas principais:
   \item \textbf{Servidor/Back-end local ou serviço de análise:} componente que recebe traces/telemetria (via gRPC ou HTTP), processa e gera relatórios e recomendações.
   \item \textbf{Painel UI (Dashboard):} aplicação web ou tela dentro do próprio app que apresenta métricas em tempo real, gráficos de séries temporais e recomendações.
 \end{enumerate}
-
 \begin{figure}[H]
   \centering
   \framebox{\parbox{0.9\textwidth}{\centering Espaço reservado para figura da arquitetura (insira diagrama em SVG/PNG)}}
@@ -325,9 +374,108 @@ Os dados de telemetria usarão um esquema JSON simplificado:
         \textbf{Recomendação:} aplicar batching, caching e compressão.
 \end{itemize}
 
+% ----------------------------------------------------------
+% IMPLEMENTAÇÃO - AQUI ENTRA A NOVA ARQUITETURA
+% ----------------------------------------------------------
+
+\section{Plano de Implementação (Passo a Passo)}
+A seguir descreve-se o roteiro detalhado para implementação do protótipo, incluindo a estrutura modular, arquitetura em camadas (Data, Domain e Presentation) e fluxo de integração entre os componentes.
+
+\subsection{Arquitetura da Solução: Data, Domain e Presentation}
+A arquitetura proposta para o \texttt{collector\_flutter} segue os princípios de separação de responsabilidades, inspirada na \textbf{Clean Architecture}. Essa abordagem promove coesão, testabilidade e reutilização, facilitando futuras expansões do sistema. A Figura~\ref{fig:camadas} apresenta a estrutura conceitual.
+
+\begin{figure}[H]
+\centering
+\framebox{\parbox{0.9\textwidth}{
+\centering
+\textbf{Presentation} \\[0.2cm]
+(UI, Widgets, Bloc/Cubit, Dashboard Web) \\[0.2cm]
+$\downarrow$\\[0.2cm]
+\textbf{Domain} \\[0.2cm]
+(Entidades, Use Cases, Interfaces de Repositório) \\[0.2cm]
+$\downarrow$\\[0.2cm]
+\textbf{Data} \\[0.2cm]
+(Fontes de dados, coleta nativa, serialização JSON, persistência local)
+}}
+\caption{Camadas da arquitetura da solução (Clean Architecture adaptada para Flutter).}
+\label{fig:camadas}
+\end{figure}
+
+\subsubsection{Camada Data}
+A camada \textbf{Data} concentra toda a lógica de acesso e coleta de informações provenientes de fontes externas, como sensores, APIs nativas e instrumentação do Flutter.
+
+\begin{itemize}
+  \item \textbf{Responsabilidades:}
+    \begin{itemize}
+      \item Coletar métricas do sistema (CPU, memória, bateria, FPS, rede);
+      \item Persistir dados temporários para envio posterior;
+      \item Converter dados nativos (Kotlin/Swift) em modelos Dart.
+    \end{itemize}
+  \item \textbf{Principais componentes:}
+    \begin{itemize}
+      \item \texttt{ResourceDataSource} – define métodos de acesso às métricas;
+      \item \texttt{TelemetryModel} – modelo serializável em JSON;
+      \item \texttt{NativeAdapter} – conecta-se via Platform Channels a módulos Android/iOS;
+      \item \texttt{TelemetryRepositoryImpl} – implementação concreta dos repositórios definidos na camada Domain.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Camada Domain}
+A camada \textbf{Domain} centraliza a lógica de negócio, regras de decisão e casos de uso.
+
+\begin{itemize}
+  \item \textbf{Responsabilidades:}
+    \begin{itemize}
+      \item Definir as \textit{entidades centrais} (ex.: \texttt{Metric}, \texttt{ResourceEvent}, \texttt{Recommendation});
+      \item Implementar \textit{use cases} que orquestram a coleta, análise e recomendação de otimizações;
+      \item Definir contratos de repositórios para abstrair fontes de dados.
+    \end{itemize}
+  \item \textbf{Principais componentes:}
+    \begin{itemize}
+      \item \texttt{CollectMetricsUseCase};
+      \item \texttt{AnalyzePerformanceUseCase};
+      \item \texttt{GenerateRecommendationsUseCase};
+      \item \texttt{IResourceRepository} (interface para abstração de acesso a dados).
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Camada Presentation}
+A camada \textbf{Presentation} é responsável pela interação com o usuário e visualização das métricas coletadas.
+
+\begin{itemize}
+  \item \textbf{Responsabilidades:}
+    \begin{itemize}
+      \item Gerenciar estados com \texttt{Bloc} ou \texttt{Cubit};
+      \item Exibir dashboards, gráficos de desempenho e mensagens de recomendação;
+      \item Reagir em tempo real às métricas do coletor;
+      \item Oferecer feedback visual sem alterar o comportamento do app monitorado.
+    \end{itemize}
+  \item \textbf{Principais componentes:}
+    \begin{itemize}
+      \item \texttt{ResourceCollectorBloc} – controla estado de coleta e análise;
+      \item \texttt{DashboardPage} – tela principal de monitoramento e recomendações;
+      \item \texttt{MetricChartWidget}, \texttt{RecommendationCard} – componentes de UI.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Fluxo de Dados entre as Camadas}
+\begin{enumerate}
+  \item O módulo Presentation (via Bloc) solicita uma coleta ao \texttt{CollectMetricsUseCase};
+  \item O caso de uso acessa a camada Data por meio do \texttt{TelemetryRepositoryImpl};
+  \item O repositório invoca os adaptadores nativos e coleta as métricas;
+  \item Os dados retornam à Domain, onde são processados e analisados;
+  \item O resultado (recomendações) é emitido de volta à Presentation, que atualiza a interface em tempo real.
+\end{enumerate}
+
+Essa arquitetura modulariza o sistema e facilita tanto a testabilidade (mocks de repositórios e casos de uso) quanto a extensibilidade (adição de novos tipos de métricas e visualizações).
+
+\subsection{Requisitos e Ferramentas Necessárias}
+(Todo o conteúdo original continua a partir daqui, preservado.)
+
 % ---------------------------------------------------------
 % PROJETO DE IMPLEMENTAÇÃO - PASSO A PASSO
 % ---------------------------------------------------------
+
 \section{Plano de Implementação (Passo a Passo)}
 A seguir descrevo um roteiro detalhado para implementar o protótipo.
 
@@ -552,29 +700,6 @@ GOOGLE SUSTAINABILITY. Reducing Energy Consumption in Software. Disponível em: 
 \bibitem{unep2023}
 UNITED NATIONS ENVIRONMENT PROGRAMME (UNEP). Digital Sustainability Initiatives. Disponível em: \url{https://www.unep.org/resources}. Acesso em: 05 out. 2025.
 \end{thebibliography}
-
-% ---------------------------------------------------------
-% APÊNDICES (se necessário)
-% ---------------------------------------------------------
-\appendix
-\section{Exemplo de arquivo pubspec.yaml para o collector}
-\begin{verbatim}
-name: collector_flutter
-description: Biblioteca de coleta de métricas para Flutter
-version: 0.1.0
-environment:
-  sdk: ">=2.18.0 <3.0.0"
-
-dependencies:
-  flutter:
-    sdk: flutter
-  device_info_plus: ^6.0.0
-  battery_plus: ^4.0.0
-  connectivity_plus: ^3.0.0
-  http: ^0.14.0
-  logger: ^1.1.0
-\end{verbatim}
-
 
 
 \end{document}
