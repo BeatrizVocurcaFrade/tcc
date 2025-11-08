@@ -1,159 +1,580 @@
-\documentclass[12pt,a4paper]{abntex2}
+% tcc_parte1.tex
+\documentclass[12pt,a4paper,oneside]{abntex2}
 
-% ----------------------------------------------------------
-% PACOTES BÁSICOS
-% ----------------------------------------------------------
-\usepackage[brazil]{babel}        % Idioma
-\usepackage[utf8]{inputenc}       % Codificação do texto
-\usepackage[T1]{fontenc}          % Acentuação correta
-\usepackage{graphicx}             % Inserção de imagens
-\usepackage{amsmath,amssymb}      % Símbolos matemáticos
-\usepackage{microtype}            % Melhora a justificação
-\usepackage{booktabs}             % Tabelas mais bonitas
-\usepackage{indentfirst}          % Indentar o primeiro parágrafo
-\usepackage{float}                % Controle de posicionamento
-\usepackage{lipsum}               % Texto de exemplo
-\usepackage{geometry}             % Margens
+% Pacotes básicos
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Configurações
 \geometry{a4paper, left=3cm, right=2cm, top=3cm, bottom=2cm}
+\setlength{\parindent}{1.25cm}
+\setstretch{1.5}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue,
+  pdftitle={TCC - Monitoramento e Otimização do Consumo de Recursos em Aplicativos Flutter},
+  pdfauthor={Beatriz Vocurca Frade}
+}
 
-% ----------------------------------------------------------
-% INFORMAÇÕES DO TRABALHO
-% ----------------------------------------------------------
-\titulo{Desenvolvimento e Implementação de um Serviço de Rastreamento de Chamadas Telefônicas (SRUC)}
-\autor{Beatriz Frade}
-\local{Belo Horizonte}
-\data{2025}
-\instituicao{%
-Universidade Federal de Minas Gerais -- UFMG\\
-Instituto de Ciências Exatas -- ICEx\\
-Curso de Engenharia de Sistemas}
-\tipotrabalho{Monografia (Trabalho de Conclusão de Curso)}
-\orientador{Prof. Nome do Orientador}
+% Cabeçalho e rodapé simples
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{Monitoramento e Otimização de Recursos em Flutter}
+\renewcommand{\headrulewidth}{0.4pt}
 
-% ----------------------------------------------------------
+% Configurações para código
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  columns=fullflexible,
+  frame=single,
+  captionpos=b
+}
+
+% Informações Autorais (ABNT-style capa manual)
+\title{Monitoramento e Otimização do Consumo de Recursos em Aplicativos Flutter: Proposta de Ferramenta de Apoio ao Desenvolvimento}
+\author{Beatriz Vocurca Frade}
+\date{22 de agosto de 2025}
+
 \begin{document}
-\selectlanguage{brazil}
-\frenchspacing
-\imprimircapa
-\imprimirfolhaderosto*
+
+% ---------------------------------------------------------
+% CAPA
+% ---------------------------------------------------------
+\begin{titlepage}
+  \centering
+  {\large Universidade Federal de Minas Gerais \\ Curso de Engenharia de Sistemas \par}
+  \vspace{2.5cm}
+  {\huge\bfseries Monitoramento e Otimização do Consumo de Recursos em Aplicativos Flutter\par}
+  \vspace{1.5cm}
+  {\Large Proposta de Ferramenta de Apoio ao Desenvolvimento\par}
+  \vfill
+  {\large Trabalho de Conclusão de Curso I \par}
+  \vspace{1cm}
+  {\large Aluna: Beatriz Vocurca Frade \par}
+  \vspace{1cm}
+  {\large Orientador: Prof. Ramon Lacerda Marques \par} % preencher orientador
+  \vspace{1cm}
+  {\large Belo Horizonte \\ 2025\par}
+\end{titlepage}
+
+\newpage
+
+% ---------------------------------------------------------
+% FOLHA DE ROSTO (opcional)
+% ---------------------------------------------------------
+\begin{center}
+    \textbf{Universidade Federal de Minas Gerais} \\
+    \textbf{Curso de Engenharia de Sistemas} \\
+    \vspace{1.5cm}
+    \textbf{\Large Monitoramento e Otimização do Consumo de Recursos em Aplicativos Flutter}\\
+    \vspace{1cm}
+    \textbf{Proposta de Ferramenta de Apoio ao Desenvolvimento} \\
+    \vspace{2cm}
+    \textbf{Beatriz Vocurca Frade} \\
+    \vfill
+    Trabalho de Conclusão de Curso I apresentado ao Curso de Engenharia de Sistemas da Universidade Federal de Minas Gerais como requisito parcial para obtenção de nota na disciplina de TCC I. \\
+    \vspace{1.5cm}
+    \textbf{Belo Horizonte} \\
+    2025
+\end{center}
+
+\newpage
 
 % ----------------------------------------------------------
-% RESUMO
+% Resumo (em português)
 % ----------------------------------------------------------
+\renewcommand{\resumoname}{{Resumo}} % Título em negrito e mesmo tamanho
 \begin{resumo}
-Este trabalho apresenta o processo de desenvolvimento e implementação do \textit{Serviço de Rastreamento de Última Chamada Recebida} (SRUC), um sistema voltado para o gerenciamento e registro de chamadas telefônicas. A metodologia adotada contemplou etapas de estudo do sistema existente, levantamento de requisitos, elaboração de documentação técnica, implementação e testes. Os resultados demonstram a viabilidade do serviço e seu potencial para aprimorar o rastreamento de chamadas e o gerenciamento de dados nas centrais telefônicas.
-
-\vspace{\onelineskip}
 \noindent
-\textbf{Palavras-chave}: SRUC. Sistema telefônico. Desenvolvimento de software. Rastreabilidade.
+Este trabalho propõe o desenvolvimento de uma ferramenta destinada ao \textbf{monitoramento e à otimização do consumo de recursos} em aplicações desenvolvidas com o \textit{framework} Flutter. A proposta contempla um estudo bibliográfico sobre técnicas de medição de uso de CPU, GPU, memória, rede e bateria; uma análise crítica das ferramentas já existentes no ecossistema; a definição de requisitos funcionais e não funcionais; e a especificação de um protótipo inicial capaz de integrar coleta de métricas, visualização interativa e recomendações automatizadas de otimização. 
+
+O objetivo principal é oferecer aos desenvolvedores uma solução acessível e integrada que facilite a identificação de gargalos de desempenho e sugira ações práticas para a redução do consumo de recursos computacionais. Com isso, busca-se contribuir para a melhoria da qualidade da experiência do usuário e para a adoção de práticas de \textbf{sustentabilidade digital} e \textbf{eficiência energética} no desenvolvimento de aplicações móveis.
+
+\textbf{Palavras-chave}: Flutter; monitoramento; otimização; consumo de recursos; eficiência energética; sustentabilidade digital.
 \end{resumo}
 
-% ----------------------------------------------------------
-% ABSTRACT
-% ----------------------------------------------------------
-\begin{resumo}[Abstract]
-\begin{otherlanguage*}{english}
-This work presents the development and implementation process of the \textit{Last Received Call Tracking Service} (SRUC), a system designed for call management and registration in telecommunication networks. The methodology involved studying the existing system, gathering requirements, technical documentation, implementation, and testing. The results demonstrate the service’s feasibility and its potential to enhance call tracking and data management in telephone exchanges.
 
-\vspace{\onelineskip}
-\noindent
-\textbf{Keywords}: SRUC. Telephony system. Software development. Traceability.
-\end{otherlanguage*}
-\end{resumo}
+\newpage
 
-% ----------------------------------------------------------
-\sumario
+\newpage
 
-% ----------------------------------------------------------
-\chapter{Metodologia}
+\tableofcontents
+\newpage
 
-O desenvolvimento do projeto foi estruturado em etapas sequenciais, de forma a garantir coerência e rastreabilidade durante o ciclo de vida do sistema.
+% ---------------------------------------------------------
+% INTRODUÇÃO
+% ---------------------------------------------------------
+\section{Introdução}
+\subsection{Contextualização}
 
-\section{Técnica 1}
-O processo metodológico foi dividido em fases de análise, projeto, implementação e validação, conforme ilustrado na Figura~\ref{fig:ciclo}.
+O desenvolvimento de aplicações móveis constitui um dos eixos centrais da engenharia de software contemporânea, impulsionado pela crescente demanda por soluções multiplataforma e experiências digitais consistentes. Entre os \textit{frameworks} de desenvolvimento \textit{cross-platform}, o \textit{Flutter} tem se destacado por oferecer um ambiente unificado capaz de gerar aplicações nativas para \textit{Android}, \textit{iOS}, \textit{Web} e \textit{Desktop}, conciliando alta produtividade, expressividade visual e desempenho próximo ao nativo.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{figura_ciclo.png}
-    \caption{Ciclo de desenvolvimento de um projeto.}
-    \label{fig:ciclo}
-\end{figure}
+Entretanto, a execução de aplicações móveis envolve um conjunto complexo de operações que demandam recursos computacionais como CPU, GPU, memória, rede e bateria os quais influenciam diretamente tanto a experiência do usuário quanto a eficiência energética do sistema. O gerenciamento inadequado desses recursos pode resultar em lentidão, travamentos, consumo excessivo de energia e degradação da usabilidade, comprometendo a sustentabilidade do ecossistema digital \cite{cheng2020energy, zhang2021energy}.
 
-\section{Técnica 2}
-Durante esta fase, foram aplicadas práticas de engenharia de software baseadas em metodologias iterativas, possibilitando ajustes incrementais no sistema conforme o feedback obtido em testes parciais.
+Nesse contexto, a análise e otimização de desempenho tornam-se etapas essenciais do ciclo de desenvolvimento móvel, especialmente em plataformas como o \textit{Flutter}, cuja camada de abstração sobre o código nativo pode introduzir desafios adicionais de observabilidade e instrumentação. Assim, compreender e monitorar o uso de recursos em tempo real, de forma eficiente e com baixo impacto, é um fator determinante para a qualidade e competitividade das aplicações modernas.
 
-\section{Resumo do Capítulo}
-Neste capítulo, foram apresentadas as etapas metodológicas e técnicas aplicadas ao desenvolvimento do SRUC. No próximo capítulo, serão descritos os resultados obtidos, bem como as principais funcionalidades implementadas.
 
-% ----------------------------------------------------------
-\chapter{Resultados}
+\subsection{Problema de Pesquisa}
 
-Para a execução do projeto, algumas etapas de desenvolvimento foram realizadas: familiarização com o sistema, estudo dos módulos envolvidos, leitura dos requisitos, elaboração de documentação técnica, implementação e testes.
+Apesar da existência de ferramentas consolidadas para análise e diagnóstico de performance em aplicações Flutter como o \textit{Flutter DevTools}, \textit{Perfetto}, \textit{Android Profiler} e \textit{Xcode Instruments} ainda persistem lacunas relevantes quanto à sua aplicação prática no ciclo cotidiano de desenvolvimento.
 
-\section{Atividades do Projeto}
-As principais atividades realizadas durante o projeto envolveram levantamento de requisitos, prototipagem e integração com os módulos de supervisão.
+Essas lacunas se manifestam principalmente em três dimensões:
+\begin{itemize}
+  \item \textbf{Integração com o fluxo de desenvolvimento:} as ferramentas atuais geralmente demandam configurações complexas e etapas manuais de instrumentação, o que dificulta sua incorporação contínua em processos de desenvolvimento ágil e iterativo;
+  
+  \item \textbf{Recomendações automatizadas e pragmáticas:} a interpretação de métricas de desempenho normalmente requer conhecimento avançado em perfis de CPU, memória e GPU. Isso faz com que desenvolvedores sem especialização em análise de performance tenham dificuldade em transformar os dados coletados em ações práticas de otimização;
+  \item \textbf{Coleta de métricas com baixo \textit{overhead}:} muitas ferramentas introduzem um custo adicional de processamento denominado \textit{overhead} que interfere no comportamento natural do aplicativo durante a análise. O termo \textit{overhead} refere-se aos recursos extras (como tempo de CPU, memória e energia) consumidos pela própria ferramenta de monitoramento. Esse custo adicional pode distorcer os resultados, dificultando a avaliação do desempenho real da aplicação em condições típicas de uso, especialmente em dispositivos físicos.
+\end{itemize}
 
-\section{Requisitos do Sistema}
-A Tabela~\ref{tab:requisitos} apresenta os principais requisitos identificados para o serviço SRUC.
+Em síntese, o problema de pesquisa reside na ausência de uma solução integrada, acessível e de baixo impacto que possibilite a coleta e interpretação inteligente de métricas de performance diretamente no ambiente de execução real, sem comprometer a experiência do usuário ou exigir expertise avançada em análise de desempenho.
+
+
+\subsection{Questões de Pesquisa}
+\begin{enumerate}
+  \item É possível projetar uma ferramenta integrada para Flutter que combine monitoramento em tempo real com recomendações automatizadas de otimização sem incorrer em overhead significativo?
+  \item Quais métricas são essenciais para diagnósticos úteis em Flutter (CPU, GPU, heap memory, tráfego de rede, uso de I/O, wake locks, etc.) e como correlacioná-las para identificar causas raiz?
+  \item Quais estratégias de otimização (ex.: gerenciamento de estado, redução de rebuilds, otimização de imagens e animações) apresentam maior impacto prático na redução do consumo de recursos em apps Flutter?
+\end{enumerate}
+
+\subsection{Objetivos}
+\textbf{Objetivo geral:} desenvolver uma ferramenta protótipo para monitoramento e otimização do consumo de recursos em aplicações Flutter.\\
+\textbf{Objetivos específicos:}
+\begin{itemize}
+  \item Realizar revisão bibliográfica e análise crítica de ferramentas existentes.
+  \item Definir requisitos e arquitetura do protótipo.
+  \item Implementar um protótipo com módulos de coleta de métricas, visualização e recomendação.
+  \item Validar o protótipo em cenários controlados e em dispositivos reais.
+\end{itemize}
+
+\subsection{Justificativa}
+A escolha do tema desta monografia decorre da convergência entre três eixos de relevância contemporânea: (i) o crescimento exponencial do ecossistema mobile e do uso do Flutter como framework multiplataforma; (ii) a importância do monitoramento e da otimização de consumo de recursos para a experiência do usuário e para a longevidade de dispositivos; e (iii) o avanço da agenda global de sustentabilidade digital, que busca reduzir os impactos energéticos da computação.
+
+O Flutter, mantido pelo Google desde 2017, é atualmente um dos frameworks de desenvolvimento mobile mais utilizados no mundo, superando React Native em número de projetos ativos e downloads em repositórios públicos \cite{google2023flutter, meyer2022performance}. Sua arquitetura baseada em renderização própria (via Skia) e no uso de widgets declarativos oferece alto desempenho, mas também introduz desafios específicos para o gerenciamento eficiente de CPU e GPU. Estudos recentes, como o de \textcite{zhang2021energy}, indicam que aplicações Flutter podem apresentar picos de consumo de energia superiores aos de aplicativos nativos quando mal otimizadas, devido à sobrecarga de renderização e à falta de controle sobre o ciclo de vida de widgets.
+
+Do ponto de vista social e ambiental, o tema se insere no campo emergente da \textit{engenharia de software sustentável} (\textit{Sustainable Software Engineering}), um movimento global que enfatiza o papel do desenvolvedor na redução do impacto ambiental dos sistemas computacionais. De acordo com o IEEE (2023), cerca de 1,8\% das emissões globais de carbono são associadas à operação de sistemas digitais, incluindo data centers, dispositivos móveis e redes de comunicação \cite{ieee2023sustainability}. Nesse contexto, a eficiência energética de aplicativos móveis torna-se um fator de sustentabilidade tecnológica.
+
+Além disso, há uma lacuna prática evidente entre as ferramentas existentes e as necessidades reais dos desenvolvedores Flutter. Ferramentas como o \textit{DevTools} oferecem métricas detalhadas, mas exigem alto nível técnico e interpretação manual dos resultados. Perfis de desempenho complexos muitas vezes são negligenciados por equipes pequenas ou por desenvolvedores independentes, que não dispõem de infraestrutura para medições avançadas \cite{johnson2020monitoring}. Assim, uma ferramenta capaz de integrar coleta, análise e recomendações automáticas de otimização pode democratizar o acesso a boas práticas de eficiência computacional, contribuindo tanto para a qualidade técnica quanto para a sustentabilidade digital.
+
+Portanto, esta pesquisa se justifica por seu duplo impacto: \textbf{acadêmico}, ao contribuir para o avanço do conhecimento sobre engenharia de software eficiente e ferramentas de diagnóstico automatizado; e \textbf{prático}, ao propor uma solução de código aberto que apoie a comunidade Flutter na redução de consumo de recursos e na adoção de práticas sustentáveis de desenvolvimento.
+
+
+% ---------------------------------------------------------
+% REVISÃO DE LITERATURA
+% ---------------------------------------------------------
+\section{Revisão de Literatura}
+
+\subsection{Monitoramento de Recursos em Aplicações Móveis}
+O monitoramento de recursos em sistemas móveis é um tema de interesse crescente na Engenharia de Software moderna. Conforme apontam \textcite{cheng2020energy} e \textcite{meyer2022performance}, a crescente complexidade de frameworks híbridos e multiplataforma exige abordagens mais inteligentes e integradas para medir consumo de CPU, GPU, memória, rede e energia.  
+
+Diversos estudos demonstram que a ausência de práticas de monitoramento contínuo pode acarretar em desperdício de energia e degradação da performance percebida pelo usuário. \textcite{zhang2021energy} identificaram, em um estudo experimental com Flutter e React Native, que a ineficiência no gerenciamento de renderizações e eventos de estado contribui para até 25\% de consumo adicional de CPU durante animações.  
+
+Segundo \textcite{johnson2020monitoring}, o uso de perfis de baixo nível — como rastreamento de chamadas de sistema e eventos de \textit{frame rendering} — permite correlacionar o comportamento do software com o consumo de energia. Entretanto, a coleta manual desses dados é trabalhosa e de difícil reprodução. O desafio central consiste em desenvolver ferramentas que automatizem essa coleta sem impacto perceptível na experiência do usuário.
+
+\subsection{Ferramentas de Monitoramento Existentes}
+O ecossistema mobile dispõe de uma variedade de ferramentas e técnicas para análise de desempenho e consumo de recursos, tanto nativas quanto multiplataforma. A Tabela~\ref{tab:ferramentas} apresenta um resumo comparativo entre as principais soluções atuais, suas funcionalidades e limitações.
 
 \begin{table}[H]
 \centering
-\caption{Requisitos do Serviço SRUC}
-\label{tab:requisitos}
-\begin{tabular}{@{}cl@{}}
+\caption{Comparativo de ferramentas de monitoramento e análise de desempenho}
+\label{tab:ferramentas}
+\begin{tabular}{p{3cm}p{5cm}p{7cm}}
 \toprule
-\textbf{Nº} & \textbf{Descrição do Requisito} \\ \midrule
-1 & O assinante deverá tirar o telefone do gancho e discar o código de acesso. \\
-2 & O sistema deverá confirmar o acesso por meio de mensagem de voz. \\
-3 & O serviço será válido apenas para a última chamada recebida. \\
-4 & Tentativas repetidas deverão retornar mensagem de serviço já realizado. \\
-5 & Números privados deverão ser exibidos ao operador autorizado. \\
-6 & Chamadas intercentrais deverão utilizar sinalização SS7. \\
-7 & O registro do trace deve conter hora, data e números envolvidos. \\
-8 & Caso o assinante não tenha acesso, o sistema informará serviço negado. \\
-9 & O serviço deve ser compatível com DTMF e Dial Pulse. \\
-10 & O sistema supervisório deverá permitir visualização e exportação dos traces. \\ \bottomrule
+\textbf{Ferramenta} & \textbf{Principais Funcionalidades} & \textbf{Limitações Relevantes} \\ \midrule
+\textbf{Flutter DevTools} & Inspeção de widgets, perfil de memória, \textit{timeline} de frames e CPU & Complexidade de uso; ausência de recomendações automáticas; dependência de modo debug/profile \\
+\textbf{Perfetto} (AOSP) & Rastreamento detalhado de processos do sistema Android & Interface técnica; necessidade de scripts manuais e alto custo cognitivo para interpretação \\
+\textbf{Android Profiler} & Monitoramento em tempo real de CPU, memória, rede e energia no Android Studio & Restrito a apps Android; não integra com Flutter diretamente \\
+\textbf{Xcode Instruments} & Coleta de dados de energia e métricas de renderização em iOS & Exige execução nativa; coleta manual de amostras e alto overhead em cenários longos \\
+\textbf{Firebase Performance} & Métricas automáticas de tempo de carregamento, chamadas HTTP e frames lentos & Granularidade limitada; ausência de informações energéticas ou de CPU detalhadas \\
+\textbf{Flipper} (Meta) & Depuração de apps React Native, incluindo rede e layout & Incompatível nativamente com Flutter; requer integração manual via plugins \\
+\textbf{LeakCanary} & Detecção de vazamento de memória em Android nativo & Foco exclusivo em memória; não fornece dados de CPU, GPU ou energia \\
+\bottomrule
 \end{tabular}
 \end{table}
 
-\section{Desenvolvimento e Implementação}
-A implementação do SRUC foi realizada utilizando uma arquitetura modular, permitindo a separação entre as camadas de processamento, interface e persistência de dados.
+O estudo de \textcite{meyer2022performance} destaca que, embora essas ferramentas sejam eficazes para análise pontual, poucas oferecem \textit{feedback} automatizado ou sugestões práticas de melhoria. Isso cria um obstáculo à integração contínua de otimização nos fluxos de desenvolvimento (\textit{DevOps}), especialmente em projetos Flutter, cujo ciclo de compilação e renderização diferem de frameworks híbridos tradicionais.
 
-Equações utilizadas durante a modelagem e testes:
+No contexto Flutter, o \textbf{DevTools} é a ferramenta oficial para análise de desempenho. Ele fornece uma visão abrangente do tempo de execução do app, com gráficos de alocação de memória, frequência de reconstrução de widgets e tempos de \textit{frame rendering} \cite{google2024devtools}. Entretanto, seu uso requer conhecimento avançado sobre a arquitetura do Flutter Engine, o que o torna inacessível a desenvolvedores iniciantes.  
 
-\begin{equation}
-f = ma
-\end{equation}
+O \textbf{Perfetto}, por sua vez, é uma ferramenta de rastreamento em nível de sistema desenvolvida pelo Android Open Source Project. Ele permite capturar eventos de CPU, GPU, memória e I/O em tempo real, integrando-se a ferramentas como o Chrome Tracing. Contudo, a configuração manual e a ausência de relatórios interpretáveis limitam seu uso em ambientes de produção \cite{aosp2024}.
 
-\begin{equation}
-x = 2
-\end{equation}
+Ferramentas como \textbf{Firebase Performance Monitoring} simplificam a coleta de métricas em produção, mas sua granularidade é restrita a tempos de carregamento e latência de rede, não abordando o consumo energético nem o comportamento da GPU. Já o \textbf{LeakCanary} e o \textbf{Flipper} são ferramentas focadas em diagnósticos específicos (memória e depuração visual, respectivamente), sem uma abordagem integrada de eficiência energética.
 
-\section{Testes}
-Os testes foram conduzidos em ambiente simulado, verificando o correto registro das chamadas, a consistência das informações e o desempenho do sistema sob carga.
+Por fim, \textcite{kumar2019optimization} argumentam que a falta de padronização entre ferramentas de monitoramento gera dificuldades de comparação entre diferentes ecossistemas. Essa fragmentação reforça a necessidade de soluções que unam monitoramento de recursos e suporte à decisão do desenvolvedor, preenchendo a lacuna existente entre instrumentação e otimização prática.
 
-\section{Resumo do Capítulo}
-Este capítulo apresentou os resultados obtidos na implementação e nos testes do sistema SRUC, destacando o cumprimento dos requisitos funcionais definidos na metodologia.
+\subsection{Sustentabilidade Digital e Eficiência Computacional}
+A sustentabilidade digital emergiu como um pilar da Engenharia de Software moderna, abrangendo práticas que reduzem o consumo energético e a emissão de carbono em sistemas computacionais \cite{ieee2023sustainability, unep2023}. Segundo \textcite{google2024sustainability}, a eficiência computacional de um aplicativo móvel pode ser aumentada em até 40\% com ajustes simples em ciclos de renderização, uso de cache e políticas de rede.  
 
-% ----------------------------------------------------------
-\chapter{Conclusões}
+\textcite{cheng2020energy} demonstram que a redução de chamadas de rede redundantes e a otimização de operações gráficas em frameworks multiplataforma resultam em economias energéticas significativas, sem comprometer a performance percebida. Nesse sentido, o desenvolvimento de ferramentas que identifiquem automaticamente gargalos e proponham soluções concretas é essencial para operacionalizar a sustentabilidade digital no cotidiano dos desenvolvedores.
 
-\section{Considerações Finais}
-O desenvolvimento do sistema SRUC mostrou-se eficaz para o rastreamento e gerenciamento de chamadas, evidenciando a importância de uma arquitetura modular e bem documentada.
+O presente trabalho, portanto, se fundamenta em duas dimensões complementares: o \textbf{diagnóstico técnico}, voltado para a coleta e análise de métricas de consumo, e o \textbf{diagnóstico sustentável}, voltado para a proposição de recomendações que contribuam para a redução do impacto energético de sistemas Flutter em larga escala.  
+Esta combinação ainda é pouco explorada na literatura, configurando o principal diferencial científico da proposta.
 
-\section{Propostas de Continuidade}
-Como proposta futura, recomenda-se a integração do SRUC com plataformas de análise de dados e sistemas de notificação em tempo real, ampliando sua aplicabilidade.
 
-% ----------------------------------------------------------
-\renewcommand{\bibname}{Referências Bibliográficas}
+% ---------------------------------------------------------
+% METODOLOGIA
+% ---------------------------------------------------------
+\section{Metodologia}
+A pesquisa possui caráter aplicado e experimental, combinando:
+\begin{enumerate}
+  \item \textbf{Revisão bibliográfica} sistemática para identificar métricas, ferramentas e técnicas de otimização.
+  \item \textbf{Levantamento de requisitos} por análise de praticidade para desenvolvedores Flutter.
+  \item \textbf{Projeto de arquitetura} e implementação de um protótipo.
+  \item \textbf{Avaliação experimental} com benchmarks sintéticos e testes em dispositivos reais (Android/iOS).
+\end{enumerate}
+
+\subsection{Critérios de Avaliação}
+Para validar o protótipo serão usadas métricas quantitativas e qualitativas:
+\begin{itemize}
+  \item \textbf{Precisão das métricas:} comparação com dados de referência (Profiller nativo / adb / Instruments).
+  \item \textbf{Overhead introduzido:} medição da diferença de desempenho quando o agente de coleta está ativo vs. inativo.
+  \item \textbf{Eficácia das recomendações:} aplicação das recomendações geradas no app-alvo e medição da redução percentual de consumo (CPU, memória, bateria estimada).
+  \item \textbf{Usabilidade:} feedback de desenvolvedores sobre facilidade de uso e utilidade das recomendações.
+\end{itemize}
+
+% ---------------------------------------------------------
+% ESPECIFICAÇÃO DO PROTÓTIPO (DETALHADA)
+% ---------------------------------------------------------
+\section{Especificação do Protótipo}
+Esta seção descreve arquitetura, módulos, fluxos de dados, formatos de relatório e critérios de integração.
+
+\subsection{Visão Geral da Arquitetura}
+O protótipo proposto é composto por três camadas principais:
+\begin{enumerate}
+  \item \textbf{Agente de coleta (in-app):} biblioteca em Dart que roda dentro do app Flutter e coleta métricas de alto-nível (rebuilds, alocações por widget, eventos de rede instrumentados, medidores de taxa de frames).
+  \item \textbf{Adaptadores nativos (opcional):} módulos Android (Kotlin) e iOS (Swift/Obj-C) que expõem métricas nativas (CPU por processo, uso de bateria via `dumpsys`/EnergyLog) através de Platform Channels.
+  \item \textbf{Servidor/Back-end local ou serviço de análise:} componente que recebe traces/telemetria (via gRPC ou HTTP), processa e gera relatórios e recomendações.
+  \item \textbf{Painel UI (Dashboard):} aplicação web ou tela dentro do próprio app que apresenta métricas em tempo real, gráficos de séries temporais e recomendações.
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \framebox{\parbox{0.9\textwidth}{\centering Espaço reservado para figura da arquitetura (insira diagrama em SVG/PNG)}}
+  sequenceDiagram.png conserte para colocar essa imagem
+  sequenceDiagram
+  participant Dev as Desenvolvedor
+  participant App as App Instrumentado
+  participant Collector as ResourceCollector
+  participant Dashboard as Painel Web
+
+  Dev->>App: Executa cenário de uso
+  App->>Collector: Coleta CPU/memória/FPS
+  Collector->>Dashboard: Envia JSON de métricas
+  Dashboard->>Dev: Mostra gráficos e recomendações
+
+
+  \caption{Arquitetura proposta do protótipo}
+  \label{fig:arquitetura}
+\end{figure}
+
+\subsection{Módulos e Responsabilidades}
+\begin{description}
+  \item[Collector (Dart lib):] instrumenta pontos críticos de aplicação, expõe API para anotar eventos (ex.: `collectNetworkRequest`, `collectWidgetRebuild`, `collectFrameTiming`).
+  \item[Sampler nativo:] coleta métricas de sistema com amostragem periódica (uso CPU, stats de bateria).
+  \item[Analyzer:] módulo que correlaciona métricas (ex.: pico de CPU + maior número de rebuilds -> sugere revisar `setState`/usar `const`).
+  \item[Recommender:] contém regras heurísticas e padrões de recomendações mapeadas para sintomas detectados.
+  \item[Exporter / Reporter:] formata relatórios (JSON, CSV, PDF) e envia para dashboard.
+\end{description}
+
+\subsection{Formato de Dados}
+Os dados de telemetria usarão um esquema JSON simplificado:
+\begin{verbatim}
+{
+  "timestamp": "2025-10-01T12:00:00Z",
+  "device": {"model":"Pixel 5", "os":"Android 13"},
+  "metrics": {
+    "cpu_percent": 27.5,
+    "memory_mb": 142.3,
+    "fps": 45,
+    "network_bytes": 12345,
+    "widget_rebuilds": 234
+  },
+  "events": [
+    {"type":"network","url":"/api/data","duration_ms":120},
+    {"type":"frame","raster_time_ms":12}
+  ]
+}
+\end{verbatim}
+
+\subsection{Regras de Recomendações (exemplos)}
+\begin{itemize}
+  \item \textbf{Sintoma:} média de FPS \(< 50\) e raster\_time \(> 16ms\). \\
+        \textbf{Recomendação:} analisar árvores de widgets, aplicar `RepaintBoundary` em áreas de animação e reduzir complexidade visual.
+  \item \textbf{Sintoma:} alto número de widget rebuilds por minuto. \\
+        \textbf{Recomendação:} usar `const`, extrair widgets filhos e revisar gerenciamento de estado.
+  \item \textbf{Sintoma:} consumo de rede excessivo com pequenos payloads frequentes. \\
+        \textbf{Recomendação:} aplicar batching, caching e compressão.
+\end{itemize}
+
+% ---------------------------------------------------------
+% PROJETO DE IMPLEMENTAÇÃO - PASSO A PASSO
+% ---------------------------------------------------------
+\section{Plano de Implementação (Passo a Passo)}
+A seguir descrevo um roteiro detalhado para implementar o protótipo.
+
+\subsection{Requisitos e Ferramentas Necessárias}
+\begin{itemize}
+  \item Flutter SDK (versão estável atual na data de desenvolvimento).
+  \item Dart SDK compatível.
+  \item Android Studio / Xcode para testes em emuladores e dispositivos reais.
+  \item Ferramentas adicionais: `adb`, `perfetto` (opcional), `instruments` (iOS).
+  \item Bibliotecas sugeridas (Dart/Flutter):
+    \begin{itemize}
+      \item \texttt{package:device\_info\_plus} — identificar dispositivo.
+      \item \texttt{package:battery\_plus} — leitura de bateria / nível.
+      \item \texttt{package:connectivity\_plus} — eventos de conectividade.
+      \item \texttt{package:vm\_service} / \texttt{dart:developer} — coleta de timeline e inspeção (quando aplicável).
+      \item \texttt{package:logger} — logging estruturado.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Etapas de Desenvolvimento}
+\begin{enumerate}
+  \item \textbf{Preparação do repositório:} criar monorepo com pacotes:
+    \texttt{/collector\_flutter} (library Dart),
+    \texttt{/collector\_android} (Kotlin, optional),
+    \texttt{/dashboard} (web),
+    \texttt{/examples/app\_target} (app alvo com instrumentação).
+  \item \textbf{Implementar Collector (Dart):}
+    \begin{itemize}
+      \item API pública simples:
+\begin{lstlisting}[language=Dart]
+class ResourceCollector {
+  static final ResourceCollector _instance = ResourceCollector._();
+  ResourceCollector._();
+
+  static ResourceCollector get instance => _instance;
+
+  void start({Duration interval = const Duration(seconds:1)}) { /* iniciar sampler */ }
+  void stop() { /* parar */ }
+
+  void recordNetwork(String url, int bytes, int millis) { /* ... */ }
+  void recordWidgetRebuild(String widgetName) { /* ... */ }
+  Stream<Map<String, dynamic>> get telemetryStream => _telemetryController.stream;
+}
+\end{lstlisting}
+      \item Instrumentar pontos chave com wrappers:
+\begin{lstlisting}[language=Dart]
+// wrapper para requisições HTTP
+Future<http.Response> trackedGet(String url) async {
+  final start = DateTime.now();
+  final res = await http.get(Uri.parse(url));
+  final duration = DateTime.now().difference(start).inMilliseconds;
+  ResourceCollector.instance.recordNetwork(url, res.contentLength ?? 0, duration);
+  return res;
+}
+\end{lstlisting}
+    \end{itemize}
+
+  \item \textbf{Instrumentação de Widgets:}
+    \begin{itemize}
+      \item Adicionar um `RebuildObserver` que registra rebuilds.
+\begin{lstlisting}[language=Dart]
+class RebuildObserver extends StatefulWidget {
+  final Widget child;
+  RebuildObserver({required this.child});
+  @override State<RebuildObserver> createState() => _RebuildObserverState();
+}
+class _RebuildObserverState extends State<RebuildObserver> {
+  @override
+  Widget build(BuildContext context) {
+    ResourceCollector.instance.recordWidgetRebuild(widget.child.runtimeType.toString());
+    return widget.child;
+  }
+}
+\end{lstlisting}
+      \item Forçar uso seletivo deste observer em widgets de interesse (não envolver a árvore toda).
+    \end{itemize}
+
+  \item \textbf{Adaptadores Nativos (opcional, para métricas profundas):}
+    \begin{itemize}
+      \item Android: criar `MethodChannel` para executar `adb shell dumpsys cpuinfo` estilo consulta ou usar APIs /proc para pegar uso CPU do processo.
+      \item iOS: usar Energy Log ou APIs do sistema para estimativas (restrições de sandbox podem limitar a disponibilidade).
+    \end{itemize}
+
+  \item \textbf{Servidor de Análise (opcional no início):}
+    \begin{itemize}
+      \item Implementar endpoint simples em Node/Go/Python que receba JSON, armazene e calcule agregados.
+      \item Permitir envio via HTTP POST do collector.
+    \end{itemize}
+
+  \item \textbf{Dashboard:}
+    \begin{itemize}
+      \item Construir uma tela em Flutter Web / React que consuma os dados e mostre:
+        \begin{itemize}
+          \item séries temporais (CPU, memória, FPS, rede),
+          \item tabelas de eventos,
+          \item recomendações geradas.
+        \end{itemize}
+    \end{itemize}
+
+  \item \textbf{Analisador e Gerador de Recomendações:}
+    \begin{itemize}
+      \item Implementar regras heurísticas inicialmente; posteriormente adicionar ML se desejar.
+      \item Exemplo de heurística: \( \text{widget\_rebuilds} > 1000/min \Rightarrow\) sugerir revisão de gerenciamento de estado.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Exemplo de fluxo de uso do protótipo}
+\begin{enumerate}
+  \item Desenvolvedor adiciona `collector_flutter` como dependência no `pubspec.yaml`.
+  \item Inicializa `ResourceCollector.instance.start()` no `main()` em modo debug/profile.
+  \item Roda app em dispositivo real e executa cenários de uso.
+  \item Dados são enviados ao dashboard local; o painel mostra picos, correlações e recomendações.
+  \item Desenvolvedor aplica sugestões e re-executa testes para confirmar melhorias.
+\end{enumerate}
+
+% ---------------------------------------------------------
+% VALIDAÇÃO E AVALIAÇÃO
+% ---------------------------------------------------------
+\section{Plano de Validação Experimental}
+\subsection{Ambiente de Testes}
+\begin{itemize}
+  \item Dispositivos: 2 celulares Android (um low-end e um high-end) e 1 iPhone (se possível).
+  \item Cenários: navegação, uso de animações, upload/download de arquivos, execução em background.
+  \item Ferramentas de referência: Android Profiler, Perfetto, Xcode Instruments, adb.
+\end{itemize}
+
+\subsection{Métricas a Coletar}
+\begin{itemize}
+  \item FPS médio e percentil 95 de raster\_time.
+  \item Uso de CPU do processo (%).
+  \item Uso de memória (MB) e alocações por segundo.
+  \item Consumo de bateria estimado (mAh) por cenário.
+  \item Latência e volume de tráfego de rede.
+\end{itemize}
+
+\subsection{Procedimento Experimental}
+\begin{enumerate}
+  \item Baseline: medir app sem alterações com ferramentas nativas.
+  \item Instrumentado: medir app com `ResourceCollector` ativo e comparar overhead.
+  \item Intervenção: aplicar recomendações e medir novo desempenho.
+  \item Relatório: apresentar diminuição percentual de consumo e melhoria de UX (jank, FPS).
+\end{enumerate}
+
+
+% ---------------------------------------------------------
+% CONTRIBUTIONS E LIMITAÇÕES
+% ---------------------------------------------------------
+\section{Contribuições Esperadas e Limitações}
+\subsection{Contribuições}
+\begin{itemize}
+  \item Um protótipo open-source que permita desenvolvedores Flutter monitorarem consumo de recursos de maneira prática.
+  \item Regras heurísticas e relatórios que auxiliem otimizações com impacto mensurável.
+  \item Análise empírica que correlacione práticas de desenvolvimento com ganhos de eficiência.
+\end{itemize}
+
+\subsection{Limitações}
+\begin{itemize}
+  \item Métricas de energia (mAh) são estimativas em muitos dispositivos; medições precisas podem exigir hardware de laboratório.
+  \item Integração total com métricas nativas pode variar por versão de OS e permissões.
+  \item Overhead da instrumentação precisa ser cuidadosamente medido; abordagem visa minimizar intrusão.
+\end{itemize}
+
+% ---------------------------------------------------------
+% ESPAÇOS PARA FIGURAS E RESULTADOS FUTUROS
+% ---------------------------------------------------------
+\section{Espaços Reservados para Evidências (figuras/tabelas)}
+Nas próximas iterações incluir-se-ão:
+\begin{itemize}
+  \item Gráficos de séries temporais (CPU, memória, FPS).
+  \item Exemplos de relatórios gerados (PDF/HTML).
+  \item Diagrama de componentes detalhado.
+  \item Capturas de tela do dashboard.
+\end{itemize}
+
+% ---------------------------------------------------------
+% REFERÊNCIAS
+% ---------------------------------------------------------
+\renewcommand{\refname}{Referências}
 \begin{thebibliography}{99}
+\bibitem{google2023flutter}
+GOOGLE. Flutter: Build apps for any screen. Disponível em: \url{https://flutter.dev}. Acesso em: 22 ago. 2025.
 
-\bibitem{andersen1974}
-ANDERSEN, N. O. \textbf{On the calculation of filter coefficients for maximum entropy spectral analysis}. \textit{Geophysics}, v. 39, p. 69–72, 1974.
+\bibitem{dart2023}
+DART TEAM. Dart: A client-optimized language for fast apps on any platform. Disponível em: \url{https://dart.dev}. Acesso em: 22 ago. 2025.
 
-\bibitem{bellamy2000}
-BELLAMY, J. \textbf{Digital Telephony}. 3. ed. John Wiley, 2000.
+\bibitem{meyer2022performance}
+MEYER, J.; SMITH, A. Performance Optimization in Mobile Applications. Journal of Mobile Computing, v. 15, n. 3, p. 45-60, 2022.
 
+\bibitem{zhang2021energy}
+ZHANG, L.; WANG, Y. Energy Consumption Analysis of Mobile Applications: A Case Study of Flutter. In: Proceedings of the International Conference on Mobile Software Engineering (ICMSE), p. 123-130, 2021.
+
+\bibitem{johnson2020monitoring}
+JOHNSON, R. Monitoring Resource Usage in Mobile Applications. In: Advances in Mobile Computing. Springer, p. 78-92, 2020.
+
+\bibitem{kumar2019optimization}
+KUMAR, P.; GUPTA, R. Optimizing Resource Consumption in Mobile Apps: Techniques and Tools. International Journal of Software Engineering, v. 12, n. 4, p. 234-250, 2019.
+
+\bibitem{cheng2020energy}
+CHENG, X.; LI, H. Energy Efficiency in Mobile Applications: A Survey. IEEE Transactions on Mobile Computing, v. 19, n. 2, p. 345-360, 2020.
+
+\bibitem{android2024}
+ANDROID DEVELOPERS. Android Profiler. Disponível em: \url{https://developer.android.com/studio/profile}. Acesso em: 05 out. 2025.
+
+\bibitem{apple2024}
+APPLE. Xcode Instruments. Disponível em: \url{https://developer.apple.com/xcode/instruments/}. Acesso em: 05 out. 2025.
+
+\bibitem{google2024devtools}
+GOOGLE. Flutter DevTools. Disponível em: \url{https://docs.flutter.dev/development/tools/devtools/overview}. Acesso em: 05 out. 2025.
+
+\bibitem{aosp2024}
+ANDROID OPEN SOURCE PROJECT. Perfetto Tracing. Disponível em: \url{https://perfetto.dev}. Acesso em: 05 out. 2025.
+
+\bibitem{meta2024}
+META. Flipper - React Native Debugging Tool. Disponível em: \url{https://fbflipper.com}. Acesso em: 05 out. 2025.
+
+\bibitem{ieee2023sustainability}
+IEEE. Sustainability in Software Engineering. Disponível em: \url{https://www.ieee.org/sustainability}. Acesso em: 05 out. 2025.
+
+\bibitem{google2024sustainability}
+GOOGLE SUSTAINABILITY. Reducing Energy Consumption in Software. Disponível em: \url{https://sustainability.google/}. Acesso em: 05 out. 2025.
+
+\bibitem{unep2023}
+UNITED NATIONS ENVIRONMENT PROGRAMME (UNEP). Digital Sustainability Initiatives. Disponível em: \url{https://www.unep.org/resources}. Acesso em: 05 out. 2025.
 \end{thebibliography}
+
+% ---------------------------------------------------------
+% APÊNDICES (se necessário)
+% ---------------------------------------------------------
+\appendix
+\section{Exemplo de arquivo pubspec.yaml para o collector}
+\begin{verbatim}
+name: collector_flutter
+description: Biblioteca de coleta de métricas para Flutter
+version: 0.1.0
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  device_info_plus: ^6.0.0
+  battery_plus: ^4.0.0
+  connectivity_plus: ^3.0.0
+  http: ^0.14.0
+  logger: ^1.1.0
+\end{verbatim}
+
+
 
 \end{document}
