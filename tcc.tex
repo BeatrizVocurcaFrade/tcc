@@ -561,8 +561,213 @@ Cada diretório representa uma camada lógica:
   \item \textbf{presentation:} camada de interface, blocos de controle e widgets;
   \item \textbf{example:} aplicação Flutter demonstrativa para execução e testes.
 \end{itemize}
+% ----------------------------------------------------------
+% ESPECIFICAÇÃO DO PROTÓTIPO (DETALHADA E ILUSTRADA)
+% ----------------------------------------------------------
+\chapter{Especificação do Protótipo}
 
----
+Esta seção descreve em detalhe a arquitetura, os módulos, o fluxo de dados, o formato de relatórios e os critérios de integração do protótipo desenvolvido. O objetivo é demonstrar a viabilidade de um sistema de monitoramento e análise de desempenho totalmente embutido em aplicações Flutter, sem dependência de adaptadores nativos ou de serviços externos.
+
+\subsection{Visão Geral da Arquitetura}
+
+O protótipo proposto é composto por três camadas principais, executadas integralmente dentro do aplicativo móvel:
+
+\begin{enumerate}
+  \item \textbf{Agente de coleta (\textit{in-app}):} biblioteca em Dart responsável por capturar métricas de alto nível, como reconstruções de widgets (\textit{rebuilds}), duração de quadros de renderização, uso estimado de memória, chamadas de rede instrumentadas e taxa média de quadros por segundo (FPS).
+  \item \textbf{Analisador e recomendador local:} módulo que processa as métricas coletadas, identifica padrões de degradação de desempenho e gera recomendações heurísticas de otimização.
+  \item \textbf{Painel de visualização (Dashboard):} interface embutida no próprio aplicativo, que apresenta gráficos em tempo real, séries históricas e sugestões de melhoria, sem necessidade de conexão com servidores externos.
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{images/sequenceDiagram.png}
+  \caption{Mapa conceitual da arquitetura do protótipo \texttt{collector\_flutter}, destacando os principais módulos e interações.}
+  \label{fig:sequenceDiagram}
+\end{figure}
+
+\noindent
+A arquitetura segue uma abordagem modular baseada na separação de responsabilidades, o que facilita a manutenção e a extensibilidade do sistema.  
+
+\begin{itemize}
+  \item \textbf{Arquitetura Geral:} reúne as três camadas centrais — \textit{Apresentação}, \textit{Domínio} e \textit{Dados}. A camada de Apresentação gerencia a interface e a visualização das métricas; a de Domínio concentra a lógica e os casos de uso; e a de Dados realiza a coleta e serialização das informações.
+  \item \textbf{Módulos Principais:} englobam os componentes \texttt{ResourceCollector} (coleta), \texttt{Analyzer} (análise), \texttt{Recommender} (recomendações) e \texttt{Dashboard} (visualização). 
+  \item \textbf{Fluxo de Dados:} compreende a sequência coleta → análise → exibição, permitindo observação contínua e processamento local das métricas.
+  \item \textbf{Tecnologias Utilizadas:} desenvolvida integralmente com Flutter e Dart, utilizando bibliotecas nativas de telemetria, gráficos e controle de estado.
+  \item \textbf{Vantagens do Modelo Local:} independência de servidores externos, execução multiplataforma, baixo overhead e aplicabilidade em contextos de desenvolvimento, ensino e pesquisa.
+\end{itemize}
+
+\vspace{0.5cm}
+\noindent
+\textbf{Espaço reservado para imagens do protótipo:}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/prototype_dashboard.png}
+  \caption{Tela do painel (\textit{Dashboard}) exibindo métricas em tempo real no aplicativo Flutter.}
+  \label{fig:prototype_dashboard}
+\end{figure}
+
+\subsection{Módulos e Responsabilidades}
+
+\begin{description}
+  \item[Collector (biblioteca Dart):] realiza a instrumentação dos pontos críticos da aplicação, expõe uma API para registrar eventos (\texttt{recordNetwork}, \texttt{recordWidgetRebuild}, \texttt{recordFrameTiming}) e transmite as métricas por \texttt{Streams} para o painel interno.
+  \item[Analyzer:] correlaciona métricas como aumento de tempo de renderização e alta frequência de reconstruções, detectando gargalos de desempenho.
+  \item[Recommender:] aplica regras heurísticas de boas práticas de Flutter, sugerindo otimizações automáticas.
+  \item[Dashboard:] exibe métricas e recomendações visualmente dentro do aplicativo, com atualização em tempo real.
+  \item[Exporter (opcional):] previsto para exportar relatórios JSON ou CSV para análise posterior.
+\end{description}
+
+\vspace{0.3cm}
+\noindent
+\textbf{Espaço reservado para imagem do painel com recomendações:}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/prototype_recommendations.png}
+  \caption{Exemplo de recomendações automáticas exibidas no painel de monitoramento.}
+  \label{fig:prototype_recommendations}
+\end{figure}
+
+\subsection{Formato de Dados}
+
+O formato de dados segue o padrão JSON, garantindo compatibilidade com as bibliotecas de serialização nativas do Dart. A estrutura foi projetada para representar tanto as métricas brutas quanto os eventos registrados pelo coletor, permitindo futura exportação ou análise estatística.
+
+\begin{verbatim}
+{
+  "timestamp": "2025-10-01T12:00:00Z",
+  "device": {"model": "Pixel 5", "os": "Android 13"},
+  "metrics": {
+    "memory_mb": 142.3,
+    "fps": 58,
+    "widget_rebuilds": 234
+  },
+  "events": [
+    {"type": "network", "url": "/api/data", "duration_ms": 120},
+    {"type": "frame", "raster_time_ms": 12}
+  ]
+}
+\end{verbatim}
+
+Essa estrutura permite o registro temporal e a categorização dos dados por tipo de evento, simplificando futuras integrações com sistemas de análise ou armazenamento local.
+
+\subsection{Regras de Recomendações (exemplos)}
+
+\begin{itemize}
+  \item \textbf{Sintoma:} média de FPS inferior a 50 e tempo de rasterização superior a 16 ms. \\
+        \textbf{Recomendação:} revisar árvores de widgets, utilizar \texttt{RepaintBoundary} em áreas animadas e reduzir a complexidade visual.
+  \item \textbf{Sintoma:} número elevado de reconstruções de widgets. \\
+        \textbf{Recomendação:} empregar \texttt{const} em widgets estáticos e otimizar o gerenciamento de estado.
+  \item \textbf{Sintoma:} excesso de requisições de rede com pequenos \textit{payloads}. \\
+        \textbf{Recomendação:} adotar técnicas de \textit{batching}, \textit{caching} e compressão de dados.
+\end{itemize}
+
+\vspace{0.5cm}
+\noindent
+\textbf{Espaço reservado para imagem da barra de controle inferior:}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/prototype_bottomBar.png}
+  \caption{Painel inferior com botões fixos para simulação de eventos e coleta de métricas.}
+  \label{fig:prototype_bottomBar}
+\end{figure}
+
+% ----------------------------------------------------------
+% IMPLEMENTAÇÃO
+% ----------------------------------------------------------
+\chapter{Implementação}
+
+A seguir descreve-se o processo de implementação do protótipo, incluindo sua arquitetura em camadas, principais componentes e etapas de desenvolvimento.
+
+\subsection{Arquitetura da Solução: Data, Domain e Presentation}
+
+A arquitetura do pacote \texttt{collector\_flutter} foi estruturada segundo os princípios da \textbf{Clean Architecture}, priorizando a separação de responsabilidades, testabilidade e extensibilidade.  
+
+\begin{figure}[H]
+\centering
+\framebox{\parbox{0.9\textwidth}{
+\centering
+\textbf{Presentation} \\[0.2cm]
+(UI, Widgets, Bloc/Cubit, Dashboard) \\[0.2cm]
+$\downarrow$\\[0.2cm]
+\textbf{Domain} \\[0.2cm]
+(Entidades, Casos de Uso, Interfaces de Repositório) \\[0.2cm]
+$\downarrow$\\[0.2cm]
+\textbf{Data} \\[0.2cm]
+(Fontes de dados, coleta Flutter, serialização JSON, persistência local)
+}}
+\caption{Camadas da arquitetura da solução baseada na Clean Architecture.}
+\label{fig:camadas}
+\end{figure}
+
+\subsubsection{Camada Data}
+
+A camada \textbf{Data} concentra a lógica de coleta e persistência, implementada integralmente em Dart.
+
+\begin{itemize}
+  \item \textbf{Responsabilidades:}
+    \begin{itemize}
+      \item Capturar métricas do ciclo de renderização do Flutter;
+      \item Armazenar dados temporariamente em memória ou persistência local;
+      \item Converter estruturas internas em modelos serializáveis (JSON).
+    \end{itemize}
+  \item \textbf{Principais componentes:}
+    \begin{itemize}
+      \item \texttt{ResourceDataSource} – coleta métricas internas de desempenho;
+      \item \texttt{TelemetryModel} – define o modelo de telemetria;
+      \item \texttt{TelemetryRepositoryImpl} – fornece acesso unificado às métricas para os casos de uso.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Camada Domain}
+
+A camada \textbf{Domain} implementa a lógica central e os casos de uso de coleta, análise e recomendação.
+
+\begin{itemize}
+  \item \textbf{Principais componentes:}
+    \begin{itemize}
+      \item \texttt{CollectMetricsUseCase} – gerencia o ciclo de coleta;
+      \item \texttt{AnalyzePerformanceUseCase} – interpreta e identifica anomalias;
+      \item \texttt{GenerateRecommendationsUseCase} – aplica heurísticas de otimização;
+      \item \texttt{IResourceRepository} – abstrai o acesso a dados de telemetria.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Camada Presentation}
+
+A camada \textbf{Presentation} é responsável pela interação com o usuário e pela exibição das métricas.
+
+\begin{itemize}
+  \item \textbf{Responsabilidades:}
+    \begin{itemize}
+      \item Gerenciar estado via \texttt{Bloc}/\texttt{Cubit};
+      \item Renderizar dashboards e gráficos dinâmicos;
+      \item Atualizar a UI conforme novas métricas são emitidas.
+    \end{itemize}
+  \item \textbf{Principais componentes:}
+    \begin{itemize}
+      \item \texttt{ResourceCollectorBloc};
+      \item \texttt{DashboardPage};
+      \item \texttt{MetricChartWidget}, \texttt{RecommendationCard}.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Fluxo de Dados entre as Camadas}
+
+\begin{enumerate}
+  \item A camada \textbf{Presentation} solicita coleta via \texttt{CollectMetricsUseCase};
+  \item O caso de uso acessa o repositório da camada \textbf{Data};
+  \item A \textbf{Domain} processa e gera recomendações;
+  \item O resultado é emitido à \textbf{Presentation}, que atualiza a interface.
+\end{enumerate}
+
+\vspace{0.5cm}
+\noindent
+\textbf{Espaço reservado para imagem do app em execução:}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/prototype_running.png}
+  \caption{Execução do protótipo \texttt{collector\_flutter} com coleta de métricas e recomendações em tempo real.}
+  \label{fig:prototype_running}
+\end{figure}
+
 
 % ----------------------------------------------------------
 % TABELA DE MÉTRICAS E FONTES DE COLETA
