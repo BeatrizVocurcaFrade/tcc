@@ -37,8 +37,8 @@
 
 % Configuração de títulos (ABNT mais formal)
 \titleformat{\section}{\normalfont\bfseries\Large}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\itshape\normalsize}{\thesubsubsection}{1em}{}
+\titleformat{\section}{\normalfont\bfseries\normalsize}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\itshape\normalsize}{\thesubsection}{1em}{}
 
 % Configuração de código-fonte
 \lstset{
@@ -129,7 +129,7 @@ O objetivo principal é oferecer aos desenvolvedores uma solução acessível e 
 % INTRODUÇÃO
 % ----------------------------------------------------------
 \chapter{Introdução}
-\subsection{Contextualização}
+\section{Contextualização}
 O desenvolvimento de aplicações móveis constitui um dos eixos centrais da engenharia de software contemporânea, impulsionado pela crescente demanda por soluções multiplataforma e experiências digitais consistentes. Entre os \textit{frameworks} de desenvolvimento \textit{cross-platform}, o \textit{Flutter} tem se destacado por oferecer um ambiente unificado capaz de gerar aplicações nativas para \textit{Android}, \textit{iOS}, \textit{Web} e \textit{Desktop}, conciliando alta produtividade, expressividade visual e desempenho próximo ao nativo.
 
 Entretanto, a execução de aplicações móveis envolve um conjunto complexo de operações que demandam recursos computacionais como CPU, GPU, memória, rede e bateria os quais influenciam diretamente tanto a experiência do usuário quanto a eficiência energética do sistema. O gerenciamento inadequado desses recursos pode resultar em lentidão, travamentos, consumo excessivo de energia e degradação da usabilidade, comprometendo a sustentabilidade do ecossistema digital \cite{cheng2020energy, zhang2021energy}.
@@ -137,7 +137,7 @@ Entretanto, a execução de aplicações móveis envolve um conjunto complexo de
 Nesse contexto, a análise e otimização de desempenho tornam-se etapas essenciais do ciclo de desenvolvimento móvel, especialmente em plataformas como o \textit{Flutter}, cuja camada de abstração sobre o código nativo pode introduzir desafios adicionais de observabilidade e instrumentação. Assim, compreender e monitorar o uso de recursos em tempo real, de forma eficiente e com baixo impacto, é um fator determinante para a qualidade e competitividade das aplicações modernas.
 
 
-\subsection{Problema de Pesquisa}
+\section{Problema de Pesquisa}
 
 Apesar da existência de ferramentas consolidadas para análise e diagnóstico de performance em aplicações Flutter como o \textit{Flutter DevTools}, \textit{Perfetto}, \textit{Android Profiler} e \textit{Xcode Instruments} ainda persistem lacunas relevantes quanto à sua aplicação prática no ciclo cotidiano de desenvolvimento.
 
@@ -152,7 +152,7 @@ Essas lacunas se manifestam principalmente em três dimensões:
 Em síntese, o problema de pesquisa reside na ausência de uma solução integrada, acessível e de baixo impacto que possibilite a coleta e interpretação inteligente de métricas de performance diretamente no ambiente de execução real, sem comprometer a experiência do usuário ou exigir expertise avançada em análise de desempenho.
 
 
-\subsection{Questões de Pesquisa}
+\section{Questões de Pesquisa}
 
 Diante das lacunas identificadas quanto à ausência de ferramentas acessíveis, integradas e de baixo impacto para análise de desempenho em Flutter, este trabalho busca responder às seguintes questões de pesquisa:
 
@@ -167,7 +167,7 @@ Diante das lacunas identificadas quanto à ausência de ferramentas acessíveis,
 \end{enumerate}
 
 
-\subsection{Objetivos}
+\section{Objetivos}
 
 A presente pesquisa tem como propósito geral o \textbf{desenvolvimento de um protótipo de ferramenta voltada ao monitoramento e à otimização do consumo de recursos em aplicações Flutter}, de modo a apoiar o desenvolvedor na detecção de gargalos e na adoção de boas práticas de eficiência computacional.
 
@@ -196,13 +196,13 @@ Projetar e implementar uma ferramenta experimental capaz de coletar, analisar e 
   \item Documentar, disponibilizar e divulgar o protótipo desenvolvido em formato de código aberto, promovendo sua reprodutibilidade e utilidade para a comunidade de desenvolvedores Flutter.
 
 \end{itemize}
-\subsection{Disponibilização e Reprodutibilidade do Protótipo}
+\section{Disponibilização e Reprodutibilidade do Protótipo}
 
 Com o intuito de maximizar o alcance e a utilidade da pesquisa, o protótipo desenvolvido será disponibilizado como projeto de código aberto, acompanhado de documentação técnica e instruções de uso. O repositório será hospedado em plataforma pública (GitHub), sob licença permissiva, permitindo a reprodução dos experimentos e o aprimoramento colaborativo da ferramenta pela comunidade de desenvolvedores Flutter.
 
 Essa iniciativa visa não apenas promover a transparência e a reprodutibilidade científica, mas também fomentar a adoção de práticas sustentáveis e eficientes no desenvolvimento de aplicativos móveis. Espera-se que a ferramenta sirva como base para futuras pesquisas em engenharia de software eficiente, além de apoiar diretamente desenvolvedores na otimização de desempenho e consumo energético de seus projetos.
 
-\subsection{Justificativa}
+\section{Justificativa}
 A escolha do tema desta monografia decorre da convergência entre três eixos de relevância contemporânea: (i) o crescimento exponencial do ecossistema mobile e do uso do Flutter como framework multiplataforma; (ii) a importância do monitoramento e da otimização de consumo de recursos para a experiência do usuário e para a longevidade de dispositivos; e (iii) o avanço da agenda global de sustentabilidade digital, que busca reduzir os impactos energéticos da computação.
 
   O Flutter, mantido pelo Google desde 2017, é atualmente um dos frameworks de desenvolvimento mobile mais utilizados no mundo, superando React Native em número de projetos ativos e downloads em repositórios públicos \cite{google2023flutter, meyer2022performance}. Sua arquitetura baseada em renderização própria (via Skia) e no uso de widgets declarativos oferece alto desempenho, mas também introduz desafios específicos para o gerenciamento eficiente de CPU e GPU. Estudos recentes, como o de \textcite{zhang2021energy}, indicam que aplicações Flutter podem apresentar picos de consumo de energia superiores aos de aplicativos nativos quando mal otimizadas, devido à sobrecarga de renderização e à falta de controle sobre o ciclo de vida de widgets.
@@ -214,7 +214,7 @@ Além disso, há uma lacuna prática evidente entre as ferramentas existentes e 
 Portanto, esta pesquisa se justifica por seu duplo impacto: \textbf{acadêmico}, ao contribuir para o avanço do conhecimento sobre engenharia de software eficiente e ferramentas de diagnóstico automatizado; e \textbf{prático}, ao propor uma solução de código aberto que apoie a comunidade Flutter na redução de consumo de recursos e na adoção de práticas sustentáveis de desenvolvimento.
 
 
-\subsection{Métrica de Eficiência Energética e Sustentabilidade Digital}
+\section{Métrica de Eficiência Energética e Sustentabilidade Digital}
 
 Considerando o alinhamento da pesquisa com a agenda de sustentabilidade digital, será incluída uma métrica voltada à avaliação do consumo energético das aplicações instrumentadas. O objetivo é verificar se o uso do protótipo e as recomendações geradas contribuem para uma execução mais eficiente do ponto de vista energético.
 
@@ -226,33 +226,58 @@ Essa métrica permitirá não apenas validar a eficácia técnica da ferramenta,
 % ---------------------------------------------------------
 \chapter{Metodologia}
 
-A presente pesquisa caracteriza-se como um estudo de natureza \textbf{aplicada} e abordagem \textbf{experimental}, voltado ao desenvolvimento e à avaliação de um protótipo funcional para monitoramento e otimização de recursos em aplicações móveis desenvolvidas com o \textit{framework} Flutter.  
+A presente pesquisa caracteriza-se como um estudo de natureza \textbf{aplicada} e abordagem \textbf{experimental}, voltado ao desenvolvimento e à avaliação de um protótipo funcional para monitoramento e otimização de recursos em aplicações móveis desenvolvidas com o \textit{framework} Flutter. 
 
-O método adotado combina etapas quantitativas e qualitativas, organizadas conforme descrito a seguir:
+O método adotado combina etapas quantitativas e qualitativas, de modo a integrar a fundamentação teórica, o desenvolvimento técnico e a análise empírica dos resultados obtidos.
+
+\section{Estratégia de Pesquisa}
+
+A estratégia metodológica compreende quatro etapas principais, conduzidas de forma iterativa e orientada por evidências empíricas:
 
 \begin{enumerate}
-  \item \textbf{Revisão bibliográfica sistemática:} levantamento e análise crítica de publicações científicas e técnicas sobre métricas de desempenho, consumo energético e ferramentas de monitoramento em dispositivos móveis. Essa etapa fundamenta as decisões de projeto e estabelece os parâmetros de comparação adotados.
+  \item \textbf{Revisão bibliográfica sistemática:} levantamento e análise crítica de publicações científicas e técnicas sobre métricas de desempenho, consumo energético e ferramentas de monitoramento em dispositivos móveis. Essa etapa fundamenta as decisões de projeto e estabelece os parâmetros de comparação adotados. 
   
-  \item \textbf{Levantamento de requisitos:} análise exploratória das necessidades de desenvolvedores Flutter, considerando aspectos de praticidade, integração com o ambiente de desenvolvimento e impacto sobre o fluxo de trabalho.
-  
-  \item \textbf{Projeto e implementação do protótipo:} definição da arquitetura de software, escolha das bibliotecas e tecnologias de suporte, e codificação do sistema de monitoramento. O protótipo foi desenvolvido com base nos princípios de modularidade, baixo acoplamento e reuso de componentes.
-  
-  \item \textbf{Avaliação experimental:} execução de testes controlados em dispositivos reais (Android e iOS) e em ambientes sintéticos, com o objetivo de mensurar o comportamento do sistema sob diferentes condições de carga e verificar a confiabilidade dos dados coletados.
+  \item \textbf{Levantamento de requisitos:} análise exploratória das necessidades de desenvolvedores Flutter, considerando aspectos de praticidade, integração com o ambiente de desenvolvimento e impacto sobre o fluxo de trabalho. 
+
+  \item \textbf{Projeto e implementação do protótipo:} definição da arquitetura de software, escolha das bibliotecas e tecnologias de suporte, e codificação do sistema de monitoramento. O protótipo foi desenvolvido com base nos princípios de modularidade, baixo acoplamento e reuso de componentes. 
+
+  \item \textbf{Avaliação experimental:} execução de testes controlados em dispositivos reais (Android e iOS) e em ambientes sintéticos, com o objetivo de mensurar o comportamento do sistema sob diferentes condições de carga e verificar a confiabilidade dos dados coletados. 
 \end{enumerate}
 
-\subsection{Critérios de Avaliação}
+\section{Critérios de Avaliação}
 
 A validação do protótipo será conduzida com base em métricas quantitativas e qualitativas, definidas conforme os seguintes critérios:
 
 \begin{itemize}
-  \item \textbf{Precisão das métricas:} comparação dos dados coletados pela ferramenta com medições obtidas por ferramentas de referência, como o Android Profiler, o \texttt{adb} e o Xcode Instruments, avaliando a proximidade dos resultados.
+  \item \textbf{Precisão das métricas:} comparação dos dados coletados pela ferramenta com medições obtidas por ferramentas de referência, como o Android Profiler, o \texttt{adb} e o Xcode Instruments, avaliando a proximidade dos resultados. 
   
-  \item \textbf{Overhead introduzido:} quantificação do impacto da execução do agente de coleta sobre o desempenho do aplicativo, comparando tempos de resposta, uso de CPU e consumo energético com o monitoramento ativado e desativado.
+  \item \textbf{Overhead introduzido:} quantificação do impacto da execução do agente de coleta sobre o desempenho do aplicativo, comparando tempos de resposta, uso de CPU e consumo energético com o monitoramento ativado e desativado. 
   
-  \item \textbf{Eficácia das recomendações:} análise da redução percentual no consumo de recursos (CPU, memória e energia estimada) após a aplicação das recomendações sugeridas pela ferramenta ao aplicativo monitorado.
+  \item \textbf{Eficácia das recomendações:} análise da redução percentual no consumo de recursos (CPU, memória e energia estimada) após a aplicação das recomendações sugeridas pela ferramenta ao aplicativo monitorado. 
   
   \item \textbf{Usabilidade:} avaliação qualitativa com desenvolvedores, por meio de questionário estruturado, considerando critérios como clareza das informações apresentadas, facilidade de uso e relevância das recomendações fornecidas.
 \end{itemize}
+
+\section{Ferramentas e Ambientes de Desenvolvimento}
+
+O ambiente experimental foi configurado de modo a garantir a reprodutibilidade dos resultados e a comparabilidade entre plataformas. As principais ferramentas e recursos empregados incluem:
+
+\begin{itemize}
+  \item \textbf{Ambiente de desenvolvimento:} \textit{Visual Studio Code} e \textit{Android Studio}, com SDKs atualizados do Flutter (\texttt{>=3.22.0}) e Dart.
+  \item \textbf{Dispositivos de teste:} smartphones Android (versões 12 e 13) e iOS (versão 16), representando diferentes arquiteturas e níveis de desempenho.
+  \item \textbf{Ferramentas de referência:} Android Profiler, \texttt{adb}, Xcode Instruments e \textit{Power Monitor}, utilizados para aferição de desempenho e consumo energético.
+  \item \textbf{Frameworks de apoio:} bibliotecas como \texttt{provider}, \texttt{flutter\_bloc} e \texttt{http}, empregadas para controle de estado, requisições e integração com os módulos do protótipo.
+  \item \textbf{Ambiente de testes automatizados:} uso de \texttt{Flutter Test} e \texttt{Integration Test} para execução de cenários controlados e coleta sistemática de métricas.
+\end{itemize}
+
+Essa configuração garante a consistência entre as medições, permitindo uma avaliação rigorosa da precisão, eficiência e usabilidade do sistema desenvolvido.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{images/metodologia.png}
+  \caption{ Mapa mental da metodologia}
+  \label{fig:metodologia}
+\end{figure}
+
 
 % ---------------------------------------------------------
 % REVISÃO DE LITERATURA
@@ -260,7 +285,7 @@ A validação do protótipo será conduzida com base em métricas quantitativas 
 \chapter{Revisão de Literatura}
 
 
-\subsection{Monitoramento de Recursos em Aplicações Móveis}
+\section{Monitoramento de Recursos em Aplicações Móveis}
 
 O monitoramento de recursos em sistemas móveis constitui um tema de interesse crescente na Engenharia de Software contemporânea. Conforme apontam \citeonline{cheng2020energy} \cite{cheng2020energy} e \citeonline{meyer2022performance} \cite{meyer2022performance}, a crescente complexidade dos \textit{frameworks} híbridos e multiplataforma exige abordagens mais inteligentes e integradas para mensurar o consumo de CPU, GPU, memória, rede e energia.  
 
@@ -271,7 +296,7 @@ De acordo com \citeonline{johnson2020monitoring} \cite{johnson2020monitoring}, o
 Além disso, o relatório \textit{Google Sustainability} \cite{google2024sustainability} destaca que a otimização do consumo de energia em aplicações é uma das frentes mais relevantes para a sustentabilidade digital, uma vez que pequenas reduções no processamento local podem representar economias expressivas em escala global.
 
 
-\subsection{Ferramentas de Monitoramento Existentes}
+\section{Ferramentas de Monitoramento Existentes}
 O ecossistema mobile dispõe de uma variedade de ferramentas e técnicas para análise de desempenho e consumo de recursos, tanto nativas quanto multiplataforma. A Tabela~\ref{tab:ferramentas} apresenta um resumo comparativo entre as principais soluções atuais, suas funcionalidades e limitações.
 
 \begin{table}[H]
@@ -302,7 +327,7 @@ Ferramentas como \textbf{Firebase Performance Monitoring} simplificam a coleta d
 
 Por fim, \textcite{kumar2019optimization} \cite{kumar2019optimization} argumentam que a falta de padronização entre ferramentas de monitoramento gera dificuldades de comparação entre diferentes ecossistemas. Essa fragmentação reforça a necessidade de soluções que unam monitoramento de recursos e suporte à decisão do desenvolvedor, preenchendo a lacuna existente entre instrumentação e otimização prática.
  
-\subsection{Sustentabilidade Digital e Eficiência Computacional}
+\section{Sustentabilidade Digital e Eficiência Computacional}
 A sustentabilidade digital emergiu como um pilar da Engenharia de Software moderna, abrangendo práticas que reduzem o consumo energético e a emissão de carbono em sistemas computacionais \cite{ieee2023sustainability, unep2023}. Segundo \textcite{google2024sustainability} \cite{google2024sustainability}, a eficiência computacional de um aplicativo móvel pode ser aumentada em até 40\% com ajustes simples em ciclos de renderização, uso de cache e políticas de rede.  
 
 \textcite{cheng2020energy} \cite{cheng2020energy} demonstram que a redução de chamadas de rede redundantes e a otimização de operações gráficas em frameworks multiplataforma resultam em economias energéticas significativas, sem comprometer a performance percebida. Nesse sentido, o desenvolvimento de ferramentas que identifiquem automaticamente gargalos e proponham soluções concretas é essencial para operacionalizar a sustentabilidade digital no cotidiano dos desenvolvedores.
@@ -310,59 +335,81 @@ A sustentabilidade digital emergiu como um pilar da Engenharia de Software moder
 O presente trabalho, portanto, se fundamenta em duas dimensões complementares: o \textbf{diagnóstico técnico}, voltado para a coleta e análise de métricas de consumo, e o \textbf{diagnóstico sustentável}, voltado para a proposição de recomendações que contribuam para a redução do impacto energético de sistemas Flutter em larga escala.  
 Esta combinação ainda é pouco explorada na literatura, configurando o principal diferencial científico da proposta.
 
-
 % ---------------------------------------------------------
 % ESPECIFICAÇÃO DO PROTÓTIPO (DETALHADA)
 % ---------------------------------------------------------
 \chapter{Especificação do Protótipo}
 
-Esta seção descreve a arquitetura, os módulos, o fluxo de dados, o formato de relatórios e os critérios de integração do protótipo desenvolvido. O foco é demonstrar a viabilidade de um sistema de monitoramento e análise de desempenho totalmente embutido no aplicativo Flutter, sem dependência de adaptadores nativos ou serviços externos.
+Esta seção descreve detalhadamente a arquitetura, os módulos, o fluxo de dados, o formato de relatórios e os critérios de integração do protótipo desenvolvido. O foco é demonstrar a viabilidade de um sistema de monitoramento e análise de desempenho totalmente embutido no aplicativo Flutter, sem dependência de adaptadores nativos ou serviços externos.
 
-\subsection{Visão Geral da Arquitetura}
+\section{Visão Geral da Arquitetura}
 
 O protótipo proposto é composto por três camadas principais e executa inteiramente dentro do aplicativo:
 
 \begin{enumerate}
-  \item \textbf{Agente de coleta (\textit{in-app}):} biblioteca em Dart responsável por capturar métricas de alto nível, como reconstruções de widgets (\textit{rebuilds}), duração de quadros de renderização, uso de memória estimado, chamadas de rede instrumentadas e taxa média de quadros por segundo (FPS).
-  \item \textbf{Analisador e recomendador local:} módulo que processa as métricas coletadas, identifica padrões de degradação de desempenho e gera recomendações heurísticas de otimização.
+  \item \textbf{Agente de coleta (\textit{in-app}):} biblioteca em Dart responsável por capturar métricas de alto nível, como reconstruções de widgets (\textit{rebuilds}), duração de quadros de renderização, uso de memória estimado, chamadas de rede instrumentadas e taxa média de quadros por segundo (FPS). 
+  
+  \item \textbf{Analisador e recomendador local:} módulo que processa as métricas coletadas, identifica padrões de degradação de desempenho e gera recomendações heurísticas de otimização. 
+  
   \item \textbf{Painel de visualização (Dashboard):} interface embutida no próprio aplicativo, que apresenta gráficos em tempo real, séries históricas e sugestões de melhoria, sem necessidade de conexão com servidores externos.
 \end{enumerate}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.9\textwidth]{images/sequenceDiagram.png}
-  \caption{ Mapa mental da arquitetura do protótipo \texttt{collector\_flutter}, ilustrando a estrutura conceitual e os principais módulos do sistema. O diagrama está organizado de forma hierárquica}
-  \label{fig:sequenceDiagram}
-\end{figure}
+\begin{itemize}
+  \item \textbf{Arquitetura Geral:} reúne as três camadas centrais do sistema — \textit{Apresentação}, \textit{Domínio} e \textit{Dados}. A primeira trata da interface e visualização das métricas; a segunda define regras e casos de uso; e a terceira é responsável pela coleta, armazenamento e serialização das informações.
+  
+  \item \textbf{Módulos Principais:} descreve os componentes funcionais implementados, como o \texttt{ResourceCollector} (coleta), o \texttt{Analyzer} (análise), o \texttt{Recommender} (recomendações) e o \texttt{Dashboard} (visualização).
+  
+  \item \textbf{Fluxo de Dados:} apresenta a sequência de execução do monitoramento — coleta de métricas, processamento, emissão e atualização visual.
+  
+  \item \textbf{Tecnologias Utilizadas:} lista o conjunto de ferramentas e bibliotecas do ecossistema Flutter/Dart aplicadas na implementação e nos testes.
+  
+  \item \textbf{Vantagens do Modelo Local:} sintetiza os benefícios do protótipo, destacando sua independência de servidores externos, execução multiplataforma, baixo overhead e aplicabilidade em ambientes de desenvolvimento e pesquisa.
+\end{itemize}
 
-  \begin{itemize}
-    \item \textbf{Arquitetura Geral:} reúne as três camadas centrais do sistema \textit{Apresentação}, \textit{Domínio} e \textit{Dados}. A primeira trata da interface e visualização das métricas; a segunda define regras e casos de uso; e a terceira é responsável pela coleta, armazenamento e serialização das informações.
-    \item \textbf{Módulos Principais:} descreve os componentes funcionais implementados, como o \texttt{ResourceCollector} (coleta), o \texttt{Analyzer} (análise), o \texttt{Recommender} (recomendações) e o \texttt{Dashboard} (visualização). 
-    \item \textbf{Fluxo de Dados:} apresenta a sequência de execução do monitoramento — coleta de métricas, processamento, emissão e atualização visual.
-    \item \textbf{Tecnologias Utilizadas:} lista o conjunto de ferramentas e bibliotecas do ecossistema Flutter/Dart aplicadas na implementação e nos testes.
-    \item \textbf{Vantagens do Modelo Local:} sintetiza os benefícios do protótipo, destacando sua independência de servidores externos, execução multiplataforma, baixo overhead e aplicabilidade em ambientes de desenvolvimento e pesquisa.
-  \end{itemize}
 
-\subsection{Módulos e Responsabilidades}
+\section{Módulos e Responsabilidades}
+
+Os módulos do sistema foram projetados de forma modular e coesa, priorizando o reuso e a clareza de responsabilidades:
 
 \begin{description}
-  \item[Collector (biblioteca Dart):] realiza a instrumentação de pontos críticos da aplicação, expõe uma API para registrar eventos (\texttt{recordNetwork}, \texttt{recordWidgetRebuild}, \texttt{recordFrameTiming}) e envia as métricas para o painel interno por meio de \texttt{Streams}.
-  \item[Analyzer:] correlaciona as métricas capturadas (por exemplo, aumento de tempo de quadro e alta frequência de \textit{rebuilds}) e identifica possíveis causas de lentidão.
-  \item[Recommender:] aplica regras heurísticas baseadas em boas práticas de desenvolvimento Flutter e recomenda otimizações específicas.
-  \item[Dashboard:] exibe as métricas e recomendações localmente, utilizando gráficos e indicadores visuais atualizados em tempo real.
-  \item[Exporter (opcional):] possibilita exportar relatórios em formato JSON ou CSV, permitindo análises posteriores.
+  \item[\textbf{Collector (biblioteca Dart):}] realiza a instrumentação de pontos críticos da aplicação, expõe uma API para registrar eventos (\texttt{recordNetwork}, \texttt{recordWidgetRebuild}, \texttt{recordFrameTiming}) e envia as métricas para o painel interno por meio de \texttt{Streams}.
+  
+  \item[\textbf{Analyzer:}] correlaciona as métricas capturadas (por exemplo, aumento de tempo de quadro e alta frequência de \textit{rebuilds}) e identifica possíveis causas de lentidão.
+  
+  \item[\textbf{Recommender:}] aplica regras heurísticas baseadas em boas práticas de desenvolvimento Flutter e recomenda otimizações específicas.
+  
+  \item[\textbf{Dashboard:}] exibe as métricas e recomendações localmente, utilizando gráficos e indicadores visuais atualizados em tempo real.
+  
+  \item[\textbf{Exporter (opcional):}] possibilita exportar relatórios em formato JSON ou CSV, permitindo análises posteriores e integração com ferramentas externas.
 \end{description}
 
-\subsection{Regras de Recomendações (exemplos)}
+\section{Descrição das Partes do Painel de Monitoramento}
+
+O painel integrado (\texttt{Dashboard}) tem o objetivo de tornar o monitoramento compreensível e acessível ao desenvolvedor durante o uso da aplicação. Ele é dividido em quatro seções funcionais:
+
+\begin{enumerate}
+  \item \textbf{Resumo Geral:} apresenta estatísticas em tempo real, como FPS médio, consumo de CPU e número de reconstruções de widgets.
+  \item \textbf{Gráficos Temporais:} exibe a variação das métricas ao longo do tempo, permitindo a identificação visual de picos de uso ou gargalos.
+  \item \textbf{Análises e Alertas:} destaca comportamentos anômalos detectados pelo módulo \texttt{Analyzer}, com ícones e cores indicativas.
+  \item \textbf{Recomendações:} lista sugestões de otimização geradas pelo módulo \texttt{Recommender}, priorizadas por impacto estimado.
+\end{enumerate}
+
+O painel é construído com componentes Flutter reativos, garantindo atualização contínua via \texttt{Streams} e suporte a diferentes tamanhos de tela (telefones e tablets).
+
+\section{Regras de Recomendações (exemplos)}
+
+As recomendações fornecidas pelo módulo \texttt{Recommender} são baseadas em heurísticas e padrões recorrentes em aplicações Flutter, conforme demonstrado a seguir:
 
 \begin{itemize}
-  \item \textbf{Sintoma:} média de FPS inferior a 50 e tempo de rasterização superior a 16 ms. \\
-        \textbf{Recomendação:} revisar árvores de widgets, aplicar \texttt{RepaintBoundary} em áreas com animações e reduzir a complexidade visual.
-  \item \textbf{Sintoma:} número elevado de reconstruções de widgets por minuto. \\
-        \textbf{Recomendação:} utilizar \texttt{const} sempre que possível, extrair widgets estáticos e aprimorar o gerenciamento de estado.
-  \item \textbf{Sintoma:} excesso de requisições de rede com pequenos \textit{payloads}. \\
-        \textbf{Recomendação:} adotar técnicas de \textit{batching}, \textit{caching} e compressão.
+  \item \textbf{Rebuilds frequentes:} “Evite reconstruções excessivas de widgets. Utilize \texttt{const constructors} ou extraia subárvores estáticas.”
+  \item \textbf{FPS abaixo de 50:} “Verifique a presença de operações pesadas no ciclo de renderização. Considere o uso de \texttt{RepaintBoundary}.”
+  \item \textbf{Uso elevado de memória:} “Otimize o descarte de objetos não utilizados e evite listas extensas em memória sem paginação.”
+  \item \textbf{Chamadas de rede lentas:} “Implemente cache local e operações assíncronas com controle de tempo de resposta.”
+  \item \textbf{Layout sobrecarregado:} “Simplifique a hierarquia de widgets ou utilize \texttt{ListView.builder} para renderização sob demanda.”
 \end{itemize}
+
+Essas regras não substituem ferramentas profissionais de análise, mas fornecem suporte contextualizado e em tempo real, promovendo uma melhoria iterativa durante o desenvolvimento.
+
 
 % ----------------------------------------------------------
 % IMPLEMENTAÇÃO
@@ -372,7 +419,7 @@ O protótipo proposto é composto por três camadas principais e executa inteira
 
 A seguir descreve-se o processo de implementação do protótipo, incluindo sua arquitetura em camadas, principais componentes e etapas de desenvolvimento.
 
-\subsection{Arquitetura da Solução: Data, Domain e Presentation}
+\section{Arquitetura da Solução: Data, Domain e Presentation}
 
 A arquitetura do pacote \texttt{collector\_flutter} foi estruturada segundo os princípios da \textbf{Clean Architecture}, priorizando a separação de responsabilidades, testabilidade e facilidade de manutenção. A Figura~\ref{fig:camadas} apresenta o modelo conceitual adotado.
 
@@ -393,7 +440,7 @@ $\downarrow$\\[0.2cm]
 \label{fig:camadas}
 \end{figure}
 
-\subsubsection{Camada Data}
+\subsection{Camada Data}
 
 A camada \textbf{Data} concentra a lógica de coleta e persistência de dados, implementada inteiramente em Dart.  
 
@@ -412,7 +459,7 @@ A camada \textbf{Data} concentra a lógica de coleta e persistência de dados, i
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Camada Domain}
+\subsection{Camada Domain}
 
 A camada \textbf{Domain} implementa a lógica de negócio e os casos de uso que orquestram a coleta, análise e geração de recomendações.
 
@@ -426,7 +473,7 @@ A camada \textbf{Domain} implementa a lógica de negócio e os casos de uso que 
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Camada Presentation}
+\subsection{Camada Presentation}
 
 A camada \textbf{Presentation} é responsável pela interação com o usuário e pela exibição dos resultados.  
 
@@ -445,7 +492,7 @@ A camada \textbf{Presentation} é responsável pela interação com o usuário e
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Fluxo de Dados entre as Camadas}
+\subsection{Fluxo de Dados entre as Camadas}
 
 \begin{enumerate}
   \item O módulo \textbf{Presentation} solicita ao \texttt{CollectMetricsUseCase} a coleta de dados.
@@ -456,7 +503,7 @@ A camada \textbf{Presentation} é responsável pela interação com o usuário e
 
 Essa arquitetura modulariza o sistema e permite sua execução autônoma, sem necessidade de integração com plataformas externas.
 
-\subsection{Requisitos e Ferramentas Necessárias}
+\section{Requisitos e Ferramentas Necessárias}
 
 \begin{itemize}
   \item Flutter SDK (versão estável mais recente na data de desenvolvimento);
@@ -476,7 +523,7 @@ Essa arquitetura modulariza o sistema e permite sua execução autônoma, sem ne
 % ESTRUTURA DO PACOTE COLLECTOR_FLUTTER
 % ----------------------------------------------------------
 
-\subsection{Estrutura do Pacote \texttt{collector\_flutter}}
+\section{Estrutura do Pacote \texttt{collector\_flutter}}
 
 A seguir apresenta-se a estrutura modular do pacote desenvolvido, organizada segundo os princípios da \textbf{Clean Architecture}. Essa organização visa garantir independência entre camadas, testabilidade e facilidade de manutenção.
 
@@ -548,7 +595,7 @@ Cada diretório representa uma camada lógica:
 
 Esta seção descreve em detalhe a arquitetura, os módulos, o fluxo de dados, o formato de relatórios e os critérios de integração do protótipo desenvolvido. O objetivo é demonstrar a viabilidade de um sistema de monitoramento e análise de desempenho totalmente embutido em aplicações Flutter, sem dependência de adaptadores nativos ou de serviços externos.
 
-\subsection{Visão Geral da Arquitetura}
+\section{Visão Geral da Arquitetura}
 
 O protótipo proposto é composto por três camadas principais, executadas integralmente dentro do aplicativo móvel:
 
@@ -577,7 +624,7 @@ A arquitetura segue uma abordagem modular baseada na separação de responsabili
 \end{itemize}
 
 
-\subsection{Módulos e Responsabilidades}
+\section{Módulos e Responsabilidades}
 
 \begin{description}
   \item[Collector (biblioteca Dart):] responsável pela instrumentação dos pontos críticos da aplicação. Monitora eventos como reconstruções de widgets, uso de memória e duração de quadros (\textit{frame timings}), além de chamadas de rede instrumentadas. Exibe uma API acessível ao desenvolvedor, com funções como \texttt{recordNetwork}, \texttt{recordWidgetRebuild} e \texttt{recordFrameTiming}, enviando os dados por meio de \texttt{Streams} reativas ao painel interno.
@@ -621,7 +668,7 @@ A arquitetura segue uma abordagem modular baseada na separação de responsabili
   \label{fig:prototype_icon}
 \end{figure}
 
-\subsubsection{Descrição das Partes do Painel de Monitoramento}
+\subsection{Descrição das Partes do Painel de Monitoramento}
 
 O painel (\textit{Dashboard}) é o principal ponto de interação com o sistema, composto pelos seguintes elementos funcionais:
 
@@ -643,7 +690,7 @@ O painel (\textit{Dashboard}) é o principal ponto de interação com o sistema,
 \vspace{0.3cm}
 Essa estrutura modular favorece a compreensão do desempenho da aplicação de forma interativa e imediata, permitindo ao desenvolvedor reagir a anomalias com base em dados visuais e recomendações contextualizadas. O design do painel prioriza a legibilidade, o contraste de cores e a atualização contínua das métricas, sem a necessidade de ferramentas externas.
 
-\subsection{Regras de Recomendações (exemplos)}
+\section{Regras de Recomendações (exemplos)}
 
 \begin{itemize}
   \item \textbf{Sintoma:} média de FPS inferior a 50 e tempo de rasterização superior a 16 ms. \\
@@ -660,7 +707,7 @@ Essa estrutura modular favorece a compreensão do desempenho da aplicação de f
 
 Essa estrutura permite o registro temporal e a categorização dos dados por tipo de evento, simplificando futuras integrações com sistemas de análise ou armazenamento local.
 
-\subsection{Regras de Recomendações (exemplos)}
+\section{Regras de Recomendações (exemplos)}
 
 \begin{itemize}
   \item \textbf{Sintoma:} média de FPS inferior a 50 e tempo de rasterização superior a 16 ms. \\
@@ -680,7 +727,7 @@ Essa estrutura permite o registro temporal e a categorização dos dados por tip
 
 A seguir descreve-se o processo de implementação do protótipo, incluindo sua arquitetura em camadas, principais componentes e etapas de desenvolvimento.
 
-\subsection{Arquitetura da Solução: Data, Domain e Presentation}
+\section{Arquitetura da Solução: Data, Domain e Presentation}
 
 A arquitetura do pacote \texttt{collector\_flutter} foi estruturada segundo os princípios da \textbf{Clean Architecture}, priorizando a separação de responsabilidades, testabilidade e extensibilidade.  
 
@@ -701,7 +748,7 @@ $\downarrow$\\[0.2cm]
 \label{fig:camadas}
 \end{figure}
 
-\subsubsection{Camada Data}
+\subsection{Camada Data}
 
 A camada \textbf{Data} concentra a lógica de coleta e persistência, implementada integralmente em Dart.
 
@@ -720,7 +767,7 @@ A camada \textbf{Data} concentra a lógica de coleta e persistência, implementa
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Camada Domain}
+\subsection{Camada Domain}
 
 A camada \textbf{Domain} implementa a lógica central e os casos de uso de coleta, análise e recomendação.
 
@@ -734,7 +781,7 @@ A camada \textbf{Domain} implementa a lógica central e os casos de uso de colet
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Camada Presentation}
+\subsection{Camada Presentation}
 
 A camada \textbf{Presentation} é responsável pela interação com o usuário e pela exibição das métricas.
 
@@ -753,7 +800,7 @@ A camada \textbf{Presentation} é responsável pela interação com o usuário e
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Fluxo de Dados entre as Camadas}
+\subsection{Fluxo de Dados entre as Camadas}
 
 \begin{enumerate}
   \item A camada \textbf{Presentation} solicita coleta via \texttt{CollectMetricsUseCase};
@@ -764,20 +811,32 @@ A camada \textbf{Presentation} é responsável pela interação com o usuário e
 
 \vspace{0.5cm}
 \noindent
-\textbf{Espaço reservado para imagem do app em execução:}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/prototype_running.png}
-  \caption{Execução do protótipo \texttt{collector\_flutter} com coleta de métricas e recomendações em tempo real.}
-  \label{fig:prototype_running}
-\end{figure}
+\textbf{Demonstração em vídeo do protótipo em execução:}
+
+
+\vspace{0.4cm}
+\noindent
+O vídeo completo da execução do aplicativo, demonstrando a coleta de métricas e a geração de recomendações heurísticas em tempo real, está disponível no link abaixo:
+
+\begin{center}
+  \textbf{Acesse o vídeo completo:} \\
+  \url{https://drive.google.com/file/d/1KUQ7fFMNRIhe-NSW8loG3wTkQhb_eyOE/view?usp=drive_link}
+\end{center}
+
+\vspace{0.3cm}
+\noindent
+O código-fonte e demais arquivos do projeto estão disponíveis no repositório público:
+
+\begin{center}
+  \url{https://github.com/BeatrizVocurcaFrade/collector_flutter}
+\end{center}
 
 
 % ----------------------------------------------------------
 % TABELA DE MÉTRICAS E FONTES DE COLETA
 % ----------------------------------------------------------
 
-\subsection{Métricas Monitoradas e Fontes de Coleta}
+\section{Métricas Monitoradas e Fontes de Coleta}
 
 A Tabela~\ref{tab:metricas-coleta} apresenta as métricas coletadas pelo protótipo, suas fontes e a forma de instrumentação adotada em cada caso.
 
@@ -820,7 +879,7 @@ Essas métricas são coletadas localmente e enviadas para o \textit{dashboard} i
   \item \textbf{Validação:} executar testes em dispositivos reais e comparar métricas obtidas com ferramentas nativas (\textit{Profiler}, \textit{Instruments}) para avaliar precisão e overhead.
 \end{enumerate}
 
-\subsection{Exemplo de Fluxo de Uso do Protótipo}
+\section{Exemplo de Fluxo de Uso do Protótipo}
 
 \begin{enumerate}
   \item O desenvolvedor adiciona o pacote \texttt{collector\_flutter} ao arquivo \texttt{pubspec.yaml}.
@@ -834,14 +893,14 @@ Essas métricas são coletadas localmente e enviadas para o \textit{dashboard} i
 % VALIDAÇÃO E AVALIAÇÃO
 % ---------------------------------------------------------
 \chapter{Validação}
-\subsection{Ambiente de Testes}
+\section{Ambiente de Testes}
 \begin{itemize}
   \item Dispositivos: 2 celulares Android (um low-end e um high-end) e 1 iPhone (se possível).
   \item Cenários: navegação, uso de animações, upload/download de arquivos, execução em background.
   \item Ferramentas de referência: Android Profiler, Perfetto, Xcode Instruments, adb.
 \end{itemize}
 
-\subsection{Métricas a Coletar}
+\section{Métricas a Coletar}
 \begin{itemize}
   \item FPS médio e percentil 95 de raster\_time.
   \item Uso de CPU do processo (%).
@@ -850,7 +909,7 @@ Essas métricas são coletadas localmente e enviadas para o \textit{dashboard} i
   \item Latência e volume de tráfego de rede.
 \end{itemize}
 
-\subsection{Procedimento Experimental}
+\section{Procedimento Experimental}
 \begin{enumerate}
   \item Baseline: medir app sem alterações com ferramentas nativas.
   \item Instrumentado: medir app com `ResourceCollector` ativo e comparar overhead.
@@ -863,14 +922,14 @@ Essas métricas são coletadas localmente e enviadas para o \textit{dashboard} i
 % CONTRIBUTIONS E LIMITAÇÕES
 % ---------------------------------------------------------
 \chapter{Conclusões e Trabalhos Futuros}
-\subsection{Contribuições}
+\section{Contribuições}
 \begin{itemize}
   \item Um protótipo open-source que permita desenvolvedores Flutter monitorarem consumo de recursos de maneira prática.
   \item Regras heurísticas e relatórios que auxiliem otimizações com impacto mensurável.
   \item Análise empírica que correlacione práticas de desenvolvimento com ganhos de eficiência.
 \end{itemize}
 
-\subsection{Limitações}
+\section{Limitações}
 \begin{itemize}
   \item Métricas de energia (mAh) são estimativas em muitos dispositivos; medições precisas podem exigir hardware de laboratório.
   \item Integração total com métricas nativas pode variar por versão de OS e permissões.
