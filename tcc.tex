@@ -353,26 +353,6 @@ O protótipo proposto é composto por três camadas principais e executa inteira
   \item[Exporter (opcional):] possibilita exportar relatórios em formato JSON ou CSV, permitindo análises posteriores.
 \end{description}
 
-\subsection{Formato de Dados}
-
-O formato de dados segue o padrão JSON, permitindo compatibilidade com bibliotecas de serialização nativas do Dart:
-
-\begin{verbatim}
-{
-  "timestamp": "2025-10-01T12:00:00Z",
-  "device": {"model": "Pixel 5", "os": "Android 13"},
-  "metrics": {
-    "memory_mb": 142.3,
-    "fps": 58,
-    "widget_rebuilds": 234
-  },
-  "events": [
-    {"type": "network", "url": "/api/data", "duration_ms": 120},
-    {"type": "frame", "raster_time_ms": 12}
-  ]
-}
-\end{verbatim}
-
 \subsection{Regras de Recomendações (exemplos)}
 
 \begin{itemize}
@@ -596,55 +576,87 @@ A arquitetura segue uma abordagem modular baseada na separação de responsabili
   \item \textbf{Vantagens do Modelo Local:} independência de servidores externos, execução multiplataforma, baixo overhead e aplicabilidade em contextos de desenvolvimento, ensino e pesquisa.
 \end{itemize}
 
-\vspace{0.5cm}
-\noindent
-\textbf{Espaço reservado para imagens do protótipo:}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/prototype_dashboard.png}
-  \caption{Tela do painel (\textit{Dashboard}) exibindo métricas em tempo real no aplicativo Flutter.}
-  \label{fig:prototype_dashboard}
-\end{figure}
 
 \subsection{Módulos e Responsabilidades}
 
 \begin{description}
-  \item[Collector (biblioteca Dart):] realiza a instrumentação dos pontos críticos da aplicação, expõe uma API para registrar eventos (\texttt{recordNetwork}, \texttt{recordWidgetRebuild}, \texttt{recordFrameTiming}) e transmite as métricas por \texttt{Streams} para o painel interno.
-  \item[Analyzer:] correlaciona métricas como aumento de tempo de renderização e alta frequência de reconstruções, detectando gargalos de desempenho.
-  \item[Recommender:] aplica regras heurísticas de boas práticas de Flutter, sugerindo otimizações automáticas.
-  \item[Dashboard:] exibe métricas e recomendações visualmente dentro do aplicativo, com atualização em tempo real.
-  \item[Exporter (opcional):] previsto para exportar relatórios JSON ou CSV para análise posterior.
+  \item[Collector (biblioteca Dart):] responsável pela instrumentação dos pontos críticos da aplicação. Monitora eventos como reconstruções de widgets, uso de memória e duração de quadros (\textit{frame timings}), além de chamadas de rede instrumentadas. Exibe uma API acessível ao desenvolvedor, com funções como \texttt{recordNetwork}, \texttt{recordWidgetRebuild} e \texttt{recordFrameTiming}, enviando os dados por meio de \texttt{Streams} reativas ao painel interno.
+  
+  \item[Analyzer:] interpreta os dados coletados, correlacionando métricas (como aumento do tempo médio de renderização, baixa taxa de FPS e frequência de reconstruções). Identifica gargalos e anomalias de desempenho com base em limiares heurísticos, adaptados para os modos \textit{debug} e \textit{release}.
+  
+  \item[Recommender:] aplica regras de boas práticas do ecossistema Flutter, como o uso de \texttt{const widgets}, o isolamento de renderizações com \texttt{RepaintBoundary} e a redução de rebuilds excessivos. Gera recomendações automáticas priorizadas por severidade (baixa, média, alta).
+  
+  \item[Dashboard:] interface visual embutida no aplicativo que apresenta as métricas em tempo real por meio de gráficos e indicadores dinâmicos. Exibe também as recomendações geradas automaticamente, permitindo ao desenvolvedor avaliar o estado de performance da aplicação de forma intuitiva.
+  
+  \item[Exporter (opcional):] módulo previsto para exportar relatórios de telemetria em formato JSON ou CSV, possibilitando análises externas ou integração com ferramentas de monitoramento.
 \end{description}
+
+\vspace{0.4cm}
+\noindent
+\textbf{Exemplo de painel com desempenho ideal:}
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=0.8\textwidth]{images/prototipoquandoestaok.jpeg}
+  \caption{Tela do painel do aplicativo quando o desempenho está estável, com indicadores verdes e recomendações informativas.}
+  \label{fig:prototype_ok}
+\end{figure}
+
+\vspace{0.4cm}
+\noindent
+\textbf{Exemplo de painel com gargalos detectados:}
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=0.8\textwidth]{images/prototipoquandonaoestaok.jpeg}
+  \caption{Tela do painel quando o sistema detecta anomalias de desempenho, como FPS baixo ou uso de memória elevado. As recomendações aparecem destacadas conforme a severidade.}
+  \label{fig:prototype_notok}
+\end{figure}
 
 \vspace{0.3cm}
 \noindent
-\textbf{Espaço reservado para imagem do painel com recomendações:}
+\textbf{Ícone do aplicativo exemplo:}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{images/prototype_recommendations.png}
-  \caption{Exemplo de recomendações automáticas exibidas no painel de monitoramento.}
-  \label{fig:prototype_recommendations}
+  \includegraphics[height=0.3\textwidth]{images/iconedoappexamplo.jpeg}
+  \caption{Ícone do aplicativo de demonstração \texttt{Collector Flutter}.}
+  \label{fig:prototype_icon}
 \end{figure}
 
-\subsection{Formato de Dados}
+\subsubsection{Descrição das Partes do Painel de Monitoramento}
 
-O formato de dados segue o padrão JSON, garantindo compatibilidade com as bibliotecas de serialização nativas do Dart. A estrutura foi projetada para representar tanto as métricas brutas quanto os eventos registrados pelo coletor, permitindo futura exportação ou análise estatística.
+O painel (\textit{Dashboard}) é o principal ponto de interação com o sistema, composto pelos seguintes elementos funcionais:
 
-\begin{verbatim}
-{
-  "timestamp": "2025-10-01T12:00:00Z",
-  "device": {"model": "Pixel 5", "os": "Android 13"},
-  "metrics": {
-    "memory_mb": 142.3,
-    "fps": 58,
-    "widget_rebuilds": 234
-  },
-  "events": [
-    {"type": "network", "url": "/api/data", "duration_ms": 120},
-    {"type": "frame", "raster_time_ms": 12}
-  ]
-}
-\end{verbatim}
+\begin{itemize}
+  \item \textbf{Cabeçalho superior:} exibe o título da aplicação e um resumo das métricas gerais, permitindo rápida visualização do estado do sistema.
+  \item \textbf{Cards de métricas principais:} apresentam indicadores de \textbf{FPS}, \textbf{uso de memória} e \textbf{jank} (quadros lentos). Cada card utiliza cores e ícones distintos para facilitar a interpretação visual: verde para desempenho adequado, laranja para atenção e vermelho para alerta crítico.
+  \item \textbf{Gráfico temporal de desempenho:} renderizado em tempo real, mostra a variação do tempo de renderização de quadros (em milissegundos). Permite observar flutuações de performance e identificar períodos de lentidão ou travamentos.
+  \item \textbf{Seção de recomendações automáticas:} lista textual gerada pelo módulo \texttt{Recommender}, categorizando as sugestões por severidade. As recomendações são atualizadas automaticamente conforme novas métricas são analisadas.
+  \item \textbf{Área inferior (barra de ações):} contém os botões de simulação, permitindo gerar cenários artificiais de carga como:
+  \begin{itemize}
+    \item \texttt{Jank:} executa operações intensas no \textit{main thread} para simular travamentos.
+    \item \texttt{Memória:} aloca blocos grandes em memória para testar vazamentos.
+    \item \texttt{Rede:} dispara múltiplas requisições simultâneas.
+    \item \texttt{Rebuilds:} força reconstruções em massa da árvore de widgets.
+  \end{itemize}
+  Essa funcionalidade é essencial para validar o comportamento do coletor em diferentes condições de estresse.
+\end{itemize}
+
+\vspace{0.3cm}
+Essa estrutura modular favorece a compreensão do desempenho da aplicação de forma interativa e imediata, permitindo ao desenvolvedor reagir a anomalias com base em dados visuais e recomendações contextualizadas. O design do painel prioriza a legibilidade, o contraste de cores e a atualização contínua das métricas, sem a necessidade de ferramentas externas.
+
+\subsection{Regras de Recomendações (exemplos)}
+
+\begin{itemize}
+  \item \textbf{Sintoma:} média de FPS inferior a 50 e tempo de rasterização superior a 16 ms. \\
+        \textbf{Recomendação:} revisar a hierarquia de widgets, aplicar \texttt{RepaintBoundary} em seções com animações e reduzir o número de componentes renderizados simultaneamente.
+        
+  \item \textbf{Sintoma:} número elevado de reconstruções de widgets. \\
+        \textbf{Recomendação:} empregar \texttt{const} em widgets estáticos, otimizar o gerenciamento de estado (ex.: \texttt{Bloc}, \texttt{Provider}) e eliminar rebuilds redundantes.
+        
+  \item \textbf{Sintoma:} excesso de requisições de rede com pequenos \textit{payloads}. \\
+        \textbf{Recomendação:} adotar técnicas de \textit{batching}, \textit{caching} e compressão para reduzir a sobrecarga de rede e o consumo energético.
+\end{itemize}
+
+
 
 Essa estrutura permite o registro temporal e a categorização dos dados por tipo de evento, simplificando futuras integrações com sistemas de análise ou armazenamento local.
 
@@ -659,15 +671,7 @@ Essa estrutura permite o registro temporal e a categorização dos dados por tip
         \textbf{Recomendação:} adotar técnicas de \textit{batching}, \textit{caching} e compressão de dados.
 \end{itemize}
 
-\vspace{0.5cm}
-\noindent
-\textbf{Espaço reservado para imagem da barra de controle inferior:}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/prototype_bottomBar.png}
-  \caption{Painel inferior com botões fixos para simulação de eventos e coleta de métricas.}
-  \label{fig:prototype_bottomBar}
-\end{figure}
+
 
 % ----------------------------------------------------------
 % IMPLEMENTAÇÃO
