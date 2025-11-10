@@ -19,26 +19,26 @@
 \usepackage{geometry}
 \usepackage{fancyhdr}
 \usepackage{listings}
-\usepackage{caption}
 \usepackage{subcaption}
 \usepackage{titlesec}
+\usepackage{indentfirst}
 
 % Margens e espaçamento ABNT
 \geometry{a4paper, left=3cm, right=2cm, top=3cm, bottom=2cm}
 \setlength{\parindent}{1.25cm}
 \setstretch{1.5}
 
-% Configuração de cabeçalhos e rodapés
+% Cabeçalhos e rodapés
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[R]{\thepage}
 \fancyhead[L]{Monitoramento e Otimização de Recursos em Flutter}
 \renewcommand{\headrulewidth}{0.4pt}
 
-% Configuração de títulos (ABNT mais formal)
+% Títulos de seções conforme ABNT
 \titleformat{\section}{\normalfont\bfseries\Large}{\thesection}{1em}{}
-\titleformat{\section}{\normalfont\bfseries\normalsize}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\itshape\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\itshape\normalsize}{\thesubsubsection}{1em}{}
 
 % Configuração de código-fonte
 \lstset{
@@ -49,7 +49,7 @@
   captionpos=b
 }
 
-% Hiperlinks
+% Hiperlinks discretos e acadêmicos
 \hypersetup{
   colorlinks=true,
   linkcolor=black,
@@ -64,28 +64,30 @@
 % ----------------------------------------------------------
 \title{Monitoramento e Otimização do Consumo de Recursos em Aplicativos Flutter: Proposta de Ferramenta de Apoio ao Desenvolvimento}
 \author{Beatriz Vocurca Frade}
-\date{22 de agosto de 2025}
+\date{Belo Horizonte, 2025}
 
 \begin{document}
 
 \begin{titlepage}
   \centering
-  {\large Universidade Federal de Minas Gerais \\ Curso de Engenharia de Sistemas \par}
-  \vspace{2.5cm}
-  {\huge\bfseries Monitoramento e Otimização do Consumo de Recursos em Aplicativos Flutter\par}
-  \vspace{1.5cm}
+  {\large \textbf{UNIVERSIDADE FEDERAL DE MINAS GERAIS} \\ 
+  \textbf{CURSO DE ENGENHARIA DE SISTEMAS} \par}
+  \vspace{3cm}
+  {\huge \textbf{MONITORAMENTO E OTIMIZAÇÃO DO CONSUMO DE RECURSOS EM APLICATIVOS FLUTTER}\par}
+  \vspace{1cm}
   {\Large Proposta de Ferramenta de Apoio ao Desenvolvimento\par}
   \vfill
-  {\large Trabalho de Conclusão de Curso I \par}
+  {\large Trabalho de Conclusão de Curso I\par}
   \vspace{1cm}
-  {\large Aluna: Beatriz Vocurca Frade \par}
-  \vspace{1cm}
-  {\large Orientador: Prof. Ramon Lacerda Marques \par}
-  \vspace{1cm}
+  {\large Aluna: Beatriz Vocurca Frade\par}
+  \vspace{0.5cm}
+  {\large Orientador: Prof. Ramon Lacerda Marques\par}
+  \vfill
   {\large Belo Horizonte \\ 2025\par}
 \end{titlepage}
 
 \newpage
+
 
 % ----------------------------------------------------------
 % FOLHA DE ROSTO
@@ -230,7 +232,7 @@ A presente pesquisa caracteriza-se como um estudo de natureza \textbf{aplicada} 
 
 O método adotado combina etapas quantitativas e qualitativas, de modo a integrar a fundamentação teórica, o desenvolvimento técnico e a análise empírica dos resultados obtidos.
 
-\section{Estratégia de Pesquisa}
+\section{Abordagem Metodológica}
 
 A estratégia metodológica compreende quatro etapas principais, conduzidas de forma iterativa e orientada por evidências empíricas:
 
@@ -257,24 +259,26 @@ A validação do protótipo será conduzida com base em métricas quantitativas 
   
   \item \textbf{Usabilidade:} avaliação qualitativa com desenvolvedores, por meio de questionário estruturado, considerando critérios como clareza das informações apresentadas, facilidade de uso e relevância das recomendações fornecidas.
 \end{itemize}
-
 \section{Ferramentas e Ambientes de Desenvolvimento}
 
 O ambiente experimental foi configurado de modo a garantir a reprodutibilidade dos resultados e a comparabilidade entre plataformas. As principais ferramentas e recursos empregados incluem:
 
 \begin{itemize}
-  \item \textbf{Ambiente de desenvolvimento:} \textit{Visual Studio Code} e \textit{Android Studio}, com SDKs atualizados do Flutter (\texttt{>=3.22.0}) e Dart.
-  \item \textbf{Dispositivos de teste:} smartphones Android (versões 12 e 13) e iOS (versão 16), representando diferentes arquiteturas e níveis de desempenho.
-  \item \textbf{Ferramentas de referência:} Android Profiler, \texttt{adb}, Xcode Instruments e \textit{Power Monitor}, utilizados para aferição de desempenho e consumo energético.
-  \item \textbf{Frameworks de apoio:} bibliotecas como \texttt{provider}, \texttt{flutter\_bloc} e \texttt{http}, empregadas para controle de estado, requisições e integração com os módulos do protótipo.
-  \item \textbf{Ambiente de testes automatizados:} uso de \texttt{Flutter Test} e \texttt{Integration Test} para execução de cenários controlados e coleta sistemática de métricas.
+  \item \textit{Ambiente de desenvolvimento:} Visual Studio Code e Android Studio, com SDKs atualizados do Flutter (\texttt{>=3.22.0}) e Dart.
+  \item \textit{Dispositivos de teste:} smartphones Android (versões 12 e 13) e iOS (versão 16), representando diferentes arquiteturas e níveis de desempenho.
+  \item \textit{Ferramentas de referência:} Android Profiler, \texttt{adb}, Xcode Instruments e Power Monitor, utilizados para aferição de desempenho e consumo energético.
+  \item \textit{Frameworks de apoio:} bibliotecas como \texttt{provider}, \texttt{flutter\_bloc} e \texttt{http}, empregadas para controle de estado, requisições e integração com os módulos do protótipo.
+  \item \textit{Ambiente de testes automatizados:} uso de \texttt{Flutter Test} e \texttt{Integration Test} para execução de cenários controlados e coleta sistemática de métricas.
 \end{itemize}
 
+\vspace{0.5em}
+
 Essa configuração garante a consistência entre as medições, permitindo uma avaliação rigorosa da precisão, eficiência e usabilidade do sistema desenvolvido.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{images/metodologia.png}
-  \caption{ Mapa mental da metodologia}
+  \caption{Mapa mental da metodologia utilizada no estudo}
   \label{fig:metodologia}
 \end{figure}
 
@@ -370,7 +374,11 @@ O protótipo proposto é composto por três camadas principais e executa inteira
 \section{Módulos e Responsabilidades}
 
 Os módulos do sistema foram projetados de forma modular e coesa, priorizando o reuso e a clareza de responsabilidades:
-
+   \subsection{Collector}
+    \subsection{Analyzer}
+    \subsection{Recommender}
+    \subsection{Dashboard}
+    \subsection{Exporter (Opcional)}
 \begin{description}
   \item[\textbf{Collector (biblioteca Dart):}] realiza a instrumentação de pontos críticos da aplicação, expõe uma API para registrar eventos (\texttt{recordNetwork}, \texttt{recordWidgetRebuild}, \texttt{recordFrameTiming}) e envia as métricas para o painel interno por meio de \texttt{Streams}.
   
@@ -384,7 +392,9 @@ Os módulos do sistema foram projetados de forma modular e coesa, priorizando o 
 \end{description}
 
 \section{Descrição das Partes do Painel de Monitoramento}
-
+ \subsection{Área de Métricas}
+    \subsection{Área de Recomendações}
+    \subsection{Botões de Simulação}
 O painel integrado (\texttt{Dashboard}) tem o objetivo de tornar o monitoramento compreensível e acessível ao desenvolvedor durante o uso da aplicação. Ele é dividido em quatro seções funcionais:
 
 \begin{enumerate}
@@ -669,7 +679,9 @@ A arquitetura segue uma abordagem modular baseada na separação de responsabili
 \end{figure}
 
 \subsection{Descrição das Partes do Painel de Monitoramento}
-
+    \subsection{Área de Métricas}
+    \subsection{Área de Recomendações}
+    \subsection{Botões de Simulação}
 O painel (\textit{Dashboard}) é o principal ponto de interação com o sistema, composto pelos seguintes elementos funcionais:
 
 \begin{itemize}
@@ -690,22 +702,6 @@ O painel (\textit{Dashboard}) é o principal ponto de interação com o sistema,
 \vspace{0.3cm}
 Essa estrutura modular favorece a compreensão do desempenho da aplicação de forma interativa e imediata, permitindo ao desenvolvedor reagir a anomalias com base em dados visuais e recomendações contextualizadas. O design do painel prioriza a legibilidade, o contraste de cores e a atualização contínua das métricas, sem a necessidade de ferramentas externas.
 
-\section{Regras de Recomendações (exemplos)}
-
-\begin{itemize}
-  \item \textbf{Sintoma:} média de FPS inferior a 50 e tempo de rasterização superior a 16 ms. \\
-        \textbf{Recomendação:} revisar a hierarquia de widgets, aplicar \texttt{RepaintBoundary} em seções com animações e reduzir o número de componentes renderizados simultaneamente.
-        
-  \item \textbf{Sintoma:} número elevado de reconstruções de widgets. \\
-        \textbf{Recomendação:} empregar \texttt{const} em widgets estáticos, otimizar o gerenciamento de estado (ex.: \texttt{Bloc}, \texttt{Provider}) e eliminar rebuilds redundantes.
-        
-  \item \textbf{Sintoma:} excesso de requisições de rede com pequenos \textit{payloads}. \\
-        \textbf{Recomendação:} adotar técnicas de \textit{batching}, \textit{caching} e compressão para reduzir a sobrecarga de rede e o consumo energético.
-\end{itemize}
-
-
-
-Essa estrutura permite o registro temporal e a categorização dos dados por tipo de evento, simplificando futuras integrações com sistemas de análise ou armazenamento local.
 
 \section{Regras de Recomendações (exemplos)}
 
@@ -910,6 +906,9 @@ Essas métricas são coletadas localmente e enviadas para o \textit{dashboard} i
 \end{itemize}
 
 \section{Procedimento Experimental}
+ \subsection{Cenário 1 — Jank Pesado}
+  \subsection{Cenário 2 — Uso Intensivo de Memória}
+  \subsection{Cenário 3 — Rebuilds Excessivos}
 \begin{enumerate}
   \item Baseline: medir app sem alterações com ferramentas nativas.
   \item Instrumentado: medir app com `ResourceCollector` ativo e comparar overhead.
