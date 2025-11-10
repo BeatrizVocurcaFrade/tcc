@@ -343,82 +343,86 @@ Esta combinação ainda é pouco explorada na literatura, configurando o princip
 % ---------------------------------------------------------
 \chapter{Especificação do Protótipo}
 
-Esta seção descreve detalhadamente a arquitetura, os módulos, o fluxo de dados, o formato de relatórios e os critérios de integração do protótipo desenvolvido. O objetivo é demonstrar a viabilidade de um sistema de monitoramento e análise de desempenho totalmente embutido no aplicativo Flutter, sem dependência de adaptadores nativos ou serviços externos.
+Esta seção apresenta detalhadamente a arquitetura, os módulos, o fluxo de dados, o formato de relatórios e os critérios de integração do protótipo desenvolvido. O objetivo é demonstrar a viabilidade de um sistema de monitoramento e análise de desempenho totalmente embutido no aplicativo Flutter, sem dependência de adaptadores nativos ou serviços externos.
 
-\section{Visão Geral da Arquitetura}
+\section{Arquitetura e Componentes Principais}
 
-O protótipo proposto foi concebido para operar inteiramente dentro do aplicativo Flutter, sem componentes externos. Ele é estruturado em três camadas principais:
+\subsection{Visão Geral da Arquitetura}
+
+O protótipo proposto foi concebido para operar inteiramente dentro do aplicativo Flutter, sem componentes externos. Ele é estruturado em três camadas principais, que funcionam de forma integrada:
 
 \begin{enumerate}
-  \item \textbf{Agente de Coleta (\textit{in-app}):} biblioteca em Dart responsável por capturar métricas de alto nível, como reconstruções de widgets (\textit{rebuilds}), duração de quadros de renderização, uso estimado de memória, chamadas de rede instrumentadas e taxa média de quadros por segundo (FPS). 
+  \item \textbf{Agente de Coleta (\textit{in-app}):} biblioteca desenvolvida em Dart responsável por capturar métricas de alto nível, como reconstruções de widgets (\textit{rebuilds}), duração de quadros de renderização, uso estimado de memória, chamadas de rede instrumentadas e taxa média de quadros por segundo (FPS). 
 
-  \item \textbf{Analisador e Recomendador Local:} módulo responsável por processar as métricas coletadas, identificar padrões de degradação de desempenho e gerar recomendações heurísticas de otimização.
+  \item \textbf{Analisador e Recomendador Local:} módulo encarregado de processar as métricas coletadas, identificar padrões de degradação de desempenho e gerar recomendações heurísticas de otimização.
 
   \item \textbf{Painel de Visualização (\textit{Dashboard}):} interface embutida no próprio aplicativo, que apresenta gráficos em tempo real, séries históricas e sugestões de melhoria, sem necessidade de conexão com servidores externos.
 \end{enumerate}
 
-Essas camadas se integram por meio de uma arquitetura modular e independente, organizada em três domínios conceituais: \textit{Apresentação}, \textit{Domínio} e \textit{Dados}. A camada de Apresentação trata da interface e visualização das métricas; a de Domínio define as regras e casos de uso; e a de Dados é responsável pela coleta, armazenamento e serialização das informações.
+A arquitetura geral do sistema é organizada em três camadas conceituais — \textit{Apresentação}, \textit{Domínio} e \textit{Dados}.  
+A camada de Apresentação trata da interface e visualização das métricas; a de Domínio define regras e casos de uso; e a de Dados é responsável pela coleta, armazenamento e serialização das informações.
 
-Outros aspectos estruturais do sistema incluem:
+Outros aspectos complementares incluem:
+
 \begin{itemize}
-  \item \textbf{Módulos principais:} os componentes \texttt{ResourceCollector}, \texttt{Analyzer}, \texttt{Recommender} e \texttt{Dashboard} implementam, respectivamente, a coleta, análise, recomendação e visualização das métricas.
-  \item \textbf{Fluxo de dados:} segue a sequência lógica de coleta de métricas, processamento, emissão de resultados e atualização visual contínua.
-  \item \textbf{Tecnologias utilizadas:} o protótipo emprega bibliotecas como \texttt{provider}, \texttt{flutter\_bloc} e \texttt{http}, que auxiliam no controle de estado, integração de dados e comunicação entre módulos.
-  \item \textbf{Vantagens do modelo local:} destaca-se pela independência de servidores, execução multiplataforma, baixo \textit{overhead} e aplicabilidade tanto em ambientes de desenvolvimento quanto de pesquisa.
+  \item \textbf{Módulos principais:} os componentes \texttt{ResourceCollector}, \texttt{Analyzer}, \texttt{Recommender} e \texttt{Dashboard} implementam, respectivamente, as funções de coleta, análise, recomendação e visualização das métricas.
+  \item \textbf{Fluxo de dados:} segue a sequência lógica de coleta das métricas, processamento local, emissão dos resultados e atualização visual em tempo real.
+  \item \textbf{Tecnologias utilizadas:} bibliotecas do ecossistema Flutter/Dart, como \texttt{provider}, \texttt{flutter\_bloc} e \texttt{http}, empregadas para controle de estado, integração de dados e comunicação entre módulos.
+  \item \textbf{Vantagens do modelo local:} independência de servidores externos, execução multiplataforma, baixo \textit{overhead} e aplicabilidade tanto em ambientes de desenvolvimento quanto em pesquisa experimental.
 \end{itemize}
 
-\section{Módulos e Responsabilidades}
+\subsection{Módulos e Responsabilidades}
 
-Os módulos do sistema foram projetados de forma coesa e modular, priorizando o reuso de componentes e a clareza das responsabilidades de cada parte.
+Os módulos foram projetados de forma modular e coesa, priorizando a clareza de responsabilidades e a facilidade de manutenção. A seguir, são descritas suas principais funções.
 
-\subsection{Collector}
+\subsubsection{Collector}
 O módulo \texttt{Collector} realiza a instrumentação de pontos críticos da aplicação. Ele expõe uma API em Dart para registrar eventos como \texttt{recordNetwork}, \texttt{recordWidgetRebuild} e \texttt{recordFrameTiming}, enviando as métricas coletadas ao painel interno por meio de \texttt{Streams}.  
-Seu principal objetivo é capturar informações de desempenho em tempo real com o mínimo de impacto na execução do aplicativo.
+Seu objetivo é capturar informações de desempenho em tempo real, com o mínimo impacto na execução do aplicativo.
 
-\subsection{Analyzer}
-O módulo \texttt{Analyzer} é responsável por processar e correlacionar as métricas capturadas. Ele identifica padrões que possam indicar degradação de desempenho, como aumento no tempo de renderização, excesso de reconstruções ou variações bruscas no FPS.  
-Os resultados são convertidos em alertas e enviados ao módulo \texttt{Recommender} para posterior interpretação.
+\subsubsection{Analyzer}
+O módulo \texttt{Analyzer} é responsável por processar e correlacionar as métricas capturadas, identificando padrões que indiquem degradação de desempenho — como aumento no tempo de renderização, excesso de reconstruções de widgets ou variações bruscas no FPS.  
+Os resultados são então convertidos em alertas e enviados ao módulo \texttt{Recommender} para posterior interpretação.
 
-\subsection{Recommender}
-O módulo \texttt{Recommender} aplica um conjunto de regras heurísticas baseadas em boas práticas do ecossistema Flutter. A partir das métricas analisadas, ele gera recomendações específicas e contextualizadas, classificando-as de acordo com o impacto estimado sobre o desempenho da aplicação.
+\subsubsection{Recommender}
+O módulo \texttt{Recommender} aplica regras heurísticas baseadas em boas práticas do ecossistema Flutter. A partir das métricas analisadas, ele gera recomendações específicas e contextualizadas, classificando-as de acordo com o impacto estimado sobre o desempenho da aplicação.
 
-\subsection{Dashboard}
-O módulo \texttt{Dashboard} é o painel visual integrado ao aplicativo, responsável por exibir métricas, alertas e recomendações em tempo real.  
+\subsubsection{Dashboard}
+O módulo \texttt{Dashboard} constitui o painel visual integrado ao aplicativo, exibindo métricas, alertas e recomendações em tempo real.  
 Ele utiliza componentes reativos do Flutter e gráficos dinâmicos que se atualizam automaticamente via \texttt{Streams}, garantindo visualização fluida e responsiva em diferentes tamanhos de tela (smartphones e tablets).
 
-\subsection{Exporter (opcional)}
-O módulo \texttt{Exporter} permite a exportação dos relatórios e métricas em formatos JSON ou CSV, viabilizando análises posteriores e integração com outras ferramentas de inspeção de desempenho.
+\subsubsection{Exporter (Opcional)}
+O módulo \texttt{Exporter} possibilita a exportação dos relatórios e métricas em formatos JSON ou CSV, permitindo análises posteriores e integração com ferramentas externas de diagnóstico.
 
-\section{Descrição do Painel de Monitoramento}
+\subsection{Painel de Monitoramento}
 
-O painel integrado (\texttt{Dashboard}) foi projetado para tornar o monitoramento compreensível e acessível ao desenvolvedor, mantendo a análise de desempenho no próprio ambiente do aplicativo.  
-Ele é dividido em quatro áreas funcionais, conforme descrito a seguir.
+O painel de monitoramento (\texttt{Dashboard}) foi projetado para tornar o acompanhamento de desempenho compreensível e acessível ao desenvolvedor, mantendo toda a análise no ambiente interno do aplicativo.  
+Ele é composto por quatro áreas funcionais:
 
-\subsection{Área de Métricas}
-Apresenta estatísticas gerais em tempo real, como FPS médio, uso de CPU e número de reconstruções de widgets, permitindo uma visão instantânea da performance do aplicativo.
+\subsubsection{Área de Métricas}
+Apresenta estatísticas em tempo real, como FPS médio, consumo de CPU e número de reconstruções de widgets, oferecendo uma visão instantânea do desempenho global do aplicativo.
 
-\subsection{Área de Recomendações}
-Lista as sugestões de otimização geradas pelo módulo \texttt{Recommender}, priorizadas por impacto estimado e relevância, auxiliando o desenvolvedor na tomada de decisões de melhoria.
+\subsubsection{Área de Recomendações}
+Exibe as sugestões de otimização geradas pelo módulo \texttt{Recommender}, priorizadas por impacto estimado e relevância técnica, auxiliando o desenvolvedor na melhoria contínua da aplicação.
 
-\subsection{Área de Análises e Alertas}
-Exibe comportamentos anômalos detectados pelo \texttt{Analyzer}, destacando gargalos e variações de desempenho por meio de ícones e cores indicativas.
+\subsubsection{Área de Análises e Alertas}
+Destaca comportamentos anômalos identificados pelo módulo \texttt{Analyzer}, como quedas de FPS ou consumo excessivo de recursos. As notificações são apresentadas de forma visual, com ícones e cores indicativas.
 
-\subsection{Botões de Simulação}
-Permitem a execução de cenários de teste ou a simulação de eventos (como aumento de carga ou execução de chamadas de rede) para observar a resposta do sistema em tempo real.
+\subsubsection{Botões de Simulação}
+Permitem a execução de cenários de teste controlados, como aumento de carga ou atraso em chamadas de rede, possibilitando observar o comportamento do aplicativo em diferentes condições operacionais.
 
-\section{Regras de Recomendações}
+\subsection{Regras de Recomendações}
 
-As recomendações geradas pelo módulo \texttt{Recommender} baseiam-se em heurísticas e padrões recorrentes no desenvolvimento Flutter. Alguns exemplos são apresentados a seguir:
+As recomendações fornecidas pelo módulo \texttt{Recommender} baseiam-se em heurísticas e padrões recorrentes em aplicações Flutter. Alguns exemplos incluem:
 
 \begin{itemize}
   \item \textbf{Rebuilds frequentes:} “Evite reconstruções excessivas de widgets. Utilize \texttt{const constructors} ou extraia subárvores estáticas.”
-  \item \textbf{FPS abaixo de 50:} “Verifique operações pesadas no ciclo de renderização. Considere o uso de \texttt{RepaintBoundary}.”
+  \item \textbf{FPS abaixo de 50:} “Verifique a presença de operações pesadas no ciclo de renderização. Considere o uso de \texttt{RepaintBoundary}.”
   \item \textbf{Uso elevado de memória:} “Otimize o descarte de objetos não utilizados e evite listas extensas em memória sem paginação.”
   \item \textbf{Chamadas de rede lentas:} “Implemente cache local e operações assíncronas com controle de tempo de resposta.”
   \item \textbf{Layout sobrecarregado:} “Simplifique a hierarquia de widgets ou utilize \texttt{ListView.builder} para renderização sob demanda.”
 \end{itemize}
 
-Essas recomendações não substituem ferramentas profissionais de análise, mas oferecem suporte contextualizado e em tempo real, promovendo uma melhoria contínua durante o desenvolvimento do aplicativo.
+Essas regras não substituem ferramentas profissionais de análise, mas fornecem suporte contextualizado e em tempo real, promovendo uma melhoria iterativa e contínua durante o desenvolvimento do aplicativo.
 
 % ----------------------------------------------------------
 % IMPLEMENTAÇÃO
@@ -839,28 +843,34 @@ A Tabela~\ref{tab:metricas-coleta} apresenta as métricas coletadas pelo protót
 \centering
 \caption{Métricas de desempenho coletadas pelo protótipo \texttt{collector\_flutter}.}
 \label{tab:metricas-coleta}
-\begin{tabular}{|p{4cm}|p{10cm}|}
-\hline
-\textbf{Métrica} & \textbf{Fonte / Implementação} \\ \hline
+\renewcommand{\arraystretch}{1.4} % aumenta o espaçamento entre linhas
+\begin{tabular}{p{4cm} p{11cm}}
+\toprule
+\textbf{Métrica} & \textbf{Fonte / Implementação} \\ 
+\midrule
+
 \textbf{FPS e Jank} &
-Capturados via \texttt{SchedulerBinding.instance.addTimingsCallback()}, permitindo medir o tempo de renderização de cada quadro e identificar travamentos (\textit{janks}) visuais. \\ \hline
+Capturados via \texttt{SchedulerBinding.instance.addTimingsCallback()}, permitindo medir o tempo de renderização de cada quadro e identificar travamentos (\textit{janks}) visuais. \\[0.5em]
 
 \textbf{Rebuilds de Widgets} &
-Monitorados pelo componente \texttt{RebuildObserver}, que incrementa contadores sempre que um widget é reconstruído, fornecendo um indicador direto de eficiência da árvore de renderização. \\ \hline
+Monitorados pelo componente \texttt{RebuildObserver}, que incrementa contadores sempre que um widget é reconstruído, fornecendo um indicador direto de eficiência da árvore de renderização. \\[0.5em]
 
 \textbf{Alocações / Memória} &
-Obtidas através de \texttt{vmService.getAllocationProfile()} do pacote \texttt{vm\_service}, ativo em modo \textit{profile}. Essa métrica reflete o uso de heap e a alocação de objetos em tempo de execução. \\ \hline
+Obtidas através de \texttt{vmService.getAllocationProfile()} do pacote \texttt{vm\_service}, ativo em modo \textit{profile}. Essa métrica reflete o uso de heap e a alocação de objetos em tempo de execução. \\[0.5em]
 
 \textbf{Rede (HTTP)} &
-Instrumentação automática de chamadas \texttt{HTTP} por meio de um \textit{wrapper} sobre o pacote \texttt{http}. Cada requisição registrada inclui duração, URL, tamanho da resposta e código de status, utilizando o método \texttt{recordNetwork()}. \\ \hline
+Instrumentação automática de chamadas \texttt{HTTP} por meio de um \textit{wrapper} sobre o pacote \texttt{http}. Cada requisição registrada inclui duração, URL, tamanho da resposta e código de status, utilizando o método \texttt{recordNetwork()}. \\[0.5em]
 
 \textbf{Tempo de Frame} &
-Extraído diretamente dos objetos \texttt{FrameTiming} no retorno do callback do \texttt{SchedulerBinding}, contendo métricas detalhadas de \textit{build}, \textit{raster} e \textit{vsync}. \\ \hline
+Extraído diretamente dos objetos \texttt{FrameTiming} retornados pelo callback de \texttt{SchedulerBinding}, contendo métricas detalhadas de \textit{build}, \textit{raster} e \textit{vsync}. \\[0.5em]
 
 \textbf{Eventos Customizados} &
-Registrados via API pública \texttt{recordEvent(String name, dynamic value)}, permitindo ao desenvolvedor adicionar métricas específicas conforme o contexto da aplicação. \\ \hline
+Registrados via API pública \texttt{recordEvent(String name, dynamic value)}, permitindo ao desenvolvedor adicionar métricas específicas conforme o contexto da aplicação. \\
+
+\bottomrule
 \end{tabular}
 \end{table}
+
 
 Essas métricas são coletadas localmente e enviadas para o \textit{dashboard} interno, que processa os dados em tempo real, exibe gráficos interativos e aplica regras heurísticas para sugerir otimizações de desempenho.
 
@@ -885,66 +895,140 @@ Essas métricas são coletadas localmente e enviadas para o \textit{dashboard} i
 \end{enumerate}
 
 % ---------------------------------------------------------
-% VALIDAÇÃO E AVALIAÇÃO
+% VALIDAÇÃO E AVALIAÇÃO DO PROTÓTIPO
 % ---------------------------------------------------------
-\chapter{Validação}
+\chapter{Validação e Avaliação do Protótipo}
+
+Esta seção apresenta o processo de validação do protótipo desenvolvido, descrevendo o ambiente de testes, as métricas coletadas, os cenários experimentais e o procedimento de análise dos resultados. O objetivo é avaliar a precisão das medições, o impacto do monitoramento sobre o desempenho (\textit{overhead}) e a eficácia das recomendações geradas pelo sistema.
+
 \section{Ambiente de Testes}
+
+O ambiente experimental foi configurado para garantir a reprodutibilidade dos resultados e a comparabilidade entre dispositivos e sistemas operacionais. Os testes foram conduzidos utilizando os seguintes recursos:
+
 \begin{itemize}
-  \item Dispositivos: 2 celulares Android (um low-end e um high-end) e 1 iPhone (se possível).
-  \item Cenários: navegação, uso de animações, upload/download de arquivos, execução em background.
-  \item Ferramentas de referência: Android Profiler, Perfetto, Xcode Instruments, adb.
+  \item \textbf{Dispositivos:} dois smartphones Android, representando diferentes faixas de desempenho — um modelo de entrada (\textit{low-end}) e um modelo avançado (\textit{high-end}) — e um dispositivo iOS, quando disponível, para comparação multiplataforma.
+  \item \textbf{Cenários de uso:} navegação entre telas, execução de animações complexas, operações de upload e download de arquivos e execução em segundo plano (\textit{background}).
+  \item \textbf{Ferramentas de referência:} Android Profiler, Perfetto, Xcode Instruments e \texttt{adb}, utilizadas para aferição paralela de desempenho, garantindo consistência entre as medições nativas e as obtidas pelo protótipo.
 \end{itemize}
 
-\section{Métricas a Coletar}
+Essas condições experimentais asseguram a coleta padronizada de dados e permitem avaliar a confiabilidade e o custo computacional das medições realizadas pelo sistema.
+
+\section{Métricas Coletadas}
+
+As métricas de desempenho foram definidas de forma a abranger os principais recursos afetados pela execução de aplicativos Flutter, permitindo uma análise comparativa entre os diferentes cenários de uso. As variáveis monitoradas incluem:
+
 \begin{itemize}
-  \item FPS médio e percentil 95 de raster\_time.
-  \item Uso de CPU do processo (%).
-  \item Uso de memória (MB) e alocações por segundo.
-  \item Consumo de bateria estimado (mAh) por cenário.
-  \item Latência e volume de tráfego de rede.
+  \item \textbf{Taxa de quadros por segundo (FPS):} média e percentil 95 do tempo de rasterização (\texttt{raster\_time}), refletindo a fluidez da interface e a ocorrência de \textit{jank}.
+  \item \textbf{Uso de CPU:} porcentagem de processamento consumido pelo aplicativo durante a execução de cada cenário.
+  \item \textbf{Uso de memória:} consumo médio em megabytes (MB) e número de alocações por segundo.
+  \item \textbf{Consumo de energia:} estimativa em miliampères-hora (mAh) obtida por medição indireta do impacto energético em cada cenário.
+  \item \textbf{Tráfego de rede:} latência média, tempo de resposta e volume total de dados transmitidos e recebidos (em MB).
 \end{itemize}
+
+Essas métricas permitem quantificar de forma objetiva a eficiência e a estabilidade do aplicativo, tanto antes quanto após a aplicação das recomendações geradas pelo protótipo.
 
 \section{Procedimento Experimental}
- \subsection{Cenário 1 — Jank Pesado}
-  \subsection{Cenário 2 — Uso Intensivo de Memória}
-  \subsection{Cenário 3 — Rebuilds Excessivos}
+
+Os experimentos foram realizados de forma controlada e repetível, buscando avaliar a precisão das medições e o impacto do protótipo sobre o desempenho da aplicação.  
+Cada cenário foi executado em três etapas distintas:
+
 \begin{enumerate}
-  \item Baseline: medir app sem alterações com ferramentas nativas.
-  \item Instrumentado: medir app com `ResourceCollector` ativo e comparar overhead.
-  \item Intervenção: aplicar recomendações e medir novo desempenho.
-  \item Relatório: apresentar diminuição percentual de consumo e melhoria de UX (jank, FPS).
+  \item \textbf{Medição base (\textit{baseline}):} execução do aplicativo sem instrumentação, utilizando apenas ferramentas nativas (Android Profiler, Perfetto e Xcode Instruments).
+  \item \textbf{Medição instrumentada:} execução do mesmo aplicativo com o módulo \texttt{ResourceCollector} ativo, a fim de identificar o impacto (\textit{overhead}) introduzido pela coleta interna.
+  \item \textbf{Medição pós-intervenção:} aplicação das recomendações fornecidas pelo módulo \texttt{Recommender} e reavaliação do desempenho para observar melhorias nas métricas de eficiência e fluidez da interface.
 \end{enumerate}
 
+Ao final de cada ciclo experimental, foram calculadas as diferenças percentuais entre os resultados das etapas, permitindo estimar a redução de consumo, o ganho de FPS e a melhoria na experiência de uso (\textit{UX}).
+
+\subsection{Cenário 1 – Jank Pesado}
+
+Este cenário simula uma interface com alto custo de renderização, envolvendo múltiplas animações simultâneas e widgets dinâmicos.  
+O objetivo é observar o comportamento do aplicativo sob condições de alta carga gráfica e mensurar o impacto da coleta de métricas sobre a taxa de quadros (\textit{frame rate}) e o tempo de rasterização.
+
+\subsection{Cenário 2 – Uso Intensivo de Memória}
+
+Neste caso, o foco é avaliar o gerenciamento de memória em operações que envolvem grandes listas, carregamento de imagens e criação de objetos temporários.  
+A análise considera o uso médio de memória, o número de alocações por segundo e o comportamento do coletor de lixo (\textit{garbage collector}) durante o uso prolongado.
+
+\subsection{Cenário 3 – Rebuilds Excessivos}
+
+O terceiro cenário busca quantificar o custo associado à reconstrução frequente de widgets, provocada por atualizações desnecessárias de estado.  
+A métrica principal é a frequência de reconstruções (\textit{rebuilds per second}), correlacionada com variações na fluidez da interface e no consumo de CPU.
+
+\section{Avaliação dos Resultados}
+
+Os resultados obtidos em cada cenário serão comparados com as medições de referência, destacando o comportamento do aplicativo nas três condições (base, instrumentado e otimizado).  
+A análise considerará os seguintes aspectos:
+
+\begin{itemize}
+  \item Variação percentual do FPS e do tempo médio de renderização.
+  \item Diferença no consumo de CPU e memória entre as etapas.
+  \item Redução estimada de consumo energético.
+  \item Efeito das recomendações sobre o desempenho e a responsividade da interface.
+\end{itemize}
+
+Essa abordagem permite validar a eficácia do protótipo, demonstrando se as melhorias propostas de fato resultam em ganho de desempenho e eficiência energética mensurável.
 
 % ---------------------------------------------------------
-% CONTRIBUTIONS E LIMITAÇÕES
+% CONCLUSÕES E TRABALHOS FUTUROS
 % ---------------------------------------------------------
 \chapter{Conclusões e Trabalhos Futuros}
+
+O desenvolvimento do presente trabalho possibilitou a elaboração de um protótipo funcional de monitoramento de recursos para aplicações Flutter, voltado à análise de desempenho e à promoção de práticas de desenvolvimento mais eficientes.  
+Esta primeira etapa do projeto concentrou-se no estudo, concepção e implementação inicial dos módulos principais, visando demonstrar a viabilidade de um sistema de coleta e análise totalmente integrado ao ambiente do aplicativo.
+
 \section{Contribuições}
+
+Os resultados obtidos até o momento permitem destacar as seguintes contribuições principais:
+
 \begin{itemize}
-  \item Um protótipo open-source que permita desenvolvedores Flutter monitorarem consumo de recursos de maneira prática.
-  \item Regras heurísticas e relatórios que auxiliem otimizações com impacto mensurável.
-  \item Análise empírica que correlacione práticas de desenvolvimento com ganhos de eficiência.
+  \item \textbf{Desenvolvimento de um protótipo open-source:} implementação de uma biblioteca funcional capaz de monitorar métricas de consumo de recursos — como CPU, memória e FPS — diretamente em aplicações Flutter, sem necessidade de ferramentas externas.
+  
+  \item \textbf{Definição de regras heurísticas de otimização:} elaboração de um conjunto inicial de recomendações baseadas em boas práticas, capazes de orientar desenvolvedores na redução de gargalos e desperdícios de processamento.
+  
+  \item \textbf{Estrutura modular e expansível:} concepção de uma arquitetura organizada em camadas (\textit{coleta, análise e visualização}), permitindo futuras extensões e integração com novos tipos de métricas.
+  
+  \item \textbf{Análise empírica preliminar:} experimentos iniciais que correlacionam práticas de desenvolvimento Flutter com indicadores de eficiência e fluidez da interface, evidenciando o potencial do sistema como ferramenta de apoio à otimização.
 \end{itemize}
 
-\section{Limitações}
+Essas contribuições representam um avanço significativo na etapa de concepção e validação inicial do protótipo, servindo como base sólida para os aprimoramentos previstos no TCC II.
+
+\section{Limitações Identificadas}
+
+Apesar dos avanços alcançados, algumas limitações foram observadas durante o desenvolvimento e os testes realizados:
+
 \begin{itemize}
-  \item Métricas de energia (mAh) são estimativas em muitos dispositivos; medições precisas podem exigir hardware de laboratório.
-  \item Integração total com métricas nativas pode variar por versão de OS e permissões.
-  \item Overhead da instrumentação precisa ser cuidadosamente medido; abordagem visa minimizar intrusão.
+  \item \textbf{Estimativas de energia:} as métricas de consumo energético (\textit{mAh}) obtidas são baseadas em estimativas, podendo variar conforme o dispositivo e as restrições do sistema operacional. Medições precisas exigiriam o uso de hardware especializado de laboratório.
+  
+  \item \textbf{Dependência de versões e permissões nativas:} a integração com métricas do sistema pode apresentar diferenças entre versões do Android e do iOS, devido às mudanças nas APIs e políticas de segurança.
+  
+  \item \textbf{Overhead de instrumentação:} embora o impacto da coleta tenha sido minimizado, ainda há necessidade de quantificar com precisão o custo computacional introduzido pela instrumentação interna.
+  
+  \item \textbf{Escopo limitado de validação:} os experimentos conduzidos até o momento focaram em cenários controlados e um número reduzido de dispositivos, o que restringe a generalização dos resultados.
 \end{itemize}
 
-% ---------------------------------------------------------
-% ESPAÇOS PARA FIGURAS E RESULTADOS FUTUROS
-% ---------------------------------------------------------
-\section{Espaços Reservados para Evidências (figuras/tabelas)}
-Nas próximas iterações incluir-se-ão:
+Essas limitações indicam oportunidades de aprimoramento que serão exploradas na continuação do projeto.
+
+\section{Trabalhos Futuros}
+
+A segunda etapa do trabalho (TCC II) terá como foco a expansão, validação e refinamento do protótipo desenvolvido, com o objetivo de torná-lo uma ferramenta mais robusta, precisa e aplicável em contextos reais de desenvolvimento.  
+As principais direções de continuidade incluem:
+
 \begin{itemize}
-  \item Gráficos de séries temporais (CPU, memória, FPS).
-  \item Exemplos de relatórios gerados (PDF/HTML).
-  \item Diagrama de componentes detalhado.
-  \item Capturas de tela do dashboard.
+  \item \textbf{Validação ampliada:} realização de experimentos em um conjunto maior de dispositivos e cenários, incluindo medições controladas de consumo energético com instrumentos laboratoriais.
+  
+  \item \textbf{Integração nativa avançada:} implementação de camadas específicas para acesso a métricas de baixo nível (por exemplo, via \texttt{Platform Channels} ou \textit{FFI}), visando maior precisão nas medições.
+  
+  \item \textbf{Aprimoramento do painel visual:} desenvolvimento de novas visualizações e relatórios interativos, permitindo a comparação entre execuções e a exportação automática de resultados.
+  
+  \item \textbf{Expansão das heurísticas de recomendação:} inclusão de novas regras baseadas em métricas empíricas e aprendizado de máquina, possibilitando sugestões mais contextuais e personalizadas.
+  
+  \item \textbf{Avaliação de impacto em projetos reais:} aplicação do protótipo em aplicativos de código aberto e ambientes de desenvolvimento colaborativo, com o objetivo de avaliar sua eficácia prática e aceitação pela comunidade.
 \end{itemize}
+
+Com esses aprimoramentos, espera-se que o TCC II consolide a ferramenta proposta como uma solução acessível e cientificamente embasada para monitoramento e otimização de desempenho em aplicações Flutter.
+
+
 
 % ---------------------------------------------------------
 % REFERÊNCIAS
