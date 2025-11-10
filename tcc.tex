@@ -338,88 +338,87 @@ A sustentabilidade digital emergiu como um pilar da Engenharia de Software moder
 
 O presente trabalho, portanto, se fundamenta em duas dimensões complementares: o \textbf{diagnóstico técnico}, voltado para a coleta e análise de métricas de consumo, e o \textbf{diagnóstico sustentável}, voltado para a proposição de recomendações que contribuam para a redução do impacto energético de sistemas Flutter em larga escala.  
 Esta combinação ainda é pouco explorada na literatura, configurando o principal diferencial científico da proposta.
-
 % ---------------------------------------------------------
 % ESPECIFICAÇÃO DO PROTÓTIPO (DETALHADA)
 % ---------------------------------------------------------
 \chapter{Especificação do Protótipo}
 
-Esta seção descreve detalhadamente a arquitetura, os módulos, o fluxo de dados, o formato de relatórios e os critérios de integração do protótipo desenvolvido. O foco é demonstrar a viabilidade de um sistema de monitoramento e análise de desempenho totalmente embutido no aplicativo Flutter, sem dependência de adaptadores nativos ou serviços externos.
+Esta seção descreve detalhadamente a arquitetura, os módulos, o fluxo de dados, o formato de relatórios e os critérios de integração do protótipo desenvolvido. O objetivo é demonstrar a viabilidade de um sistema de monitoramento e análise de desempenho totalmente embutido no aplicativo Flutter, sem dependência de adaptadores nativos ou serviços externos.
 
 \section{Visão Geral da Arquitetura}
 
-O protótipo proposto é composto por três camadas principais e executa inteiramente dentro do aplicativo:
+O protótipo proposto foi concebido para operar inteiramente dentro do aplicativo Flutter, sem componentes externos. Ele é estruturado em três camadas principais:
 
 \begin{enumerate}
-  \item \textbf{Agente de coleta (\textit{in-app}):} biblioteca em Dart responsável por capturar métricas de alto nível, como reconstruções de widgets (\textit{rebuilds}), duração de quadros de renderização, uso de memória estimado, chamadas de rede instrumentadas e taxa média de quadros por segundo (FPS). 
-  
-  \item \textbf{Analisador e recomendador local:} módulo que processa as métricas coletadas, identifica padrões de degradação de desempenho e gera recomendações heurísticas de otimização. 
-  
-  \item \textbf{Painel de visualização (Dashboard):} interface embutida no próprio aplicativo, que apresenta gráficos em tempo real, séries históricas e sugestões de melhoria, sem necessidade de conexão com servidores externos.
+  \item \textbf{Agente de Coleta (\textit{in-app}):} biblioteca em Dart responsável por capturar métricas de alto nível, como reconstruções de widgets (\textit{rebuilds}), duração de quadros de renderização, uso estimado de memória, chamadas de rede instrumentadas e taxa média de quadros por segundo (FPS). 
+
+  \item \textbf{Analisador e Recomendador Local:} módulo responsável por processar as métricas coletadas, identificar padrões de degradação de desempenho e gerar recomendações heurísticas de otimização.
+
+  \item \textbf{Painel de Visualização (\textit{Dashboard}):} interface embutida no próprio aplicativo, que apresenta gráficos em tempo real, séries históricas e sugestões de melhoria, sem necessidade de conexão com servidores externos.
 \end{enumerate}
 
-\begin{itemize}
-  \item \textbf{Arquitetura Geral:} reúne as três camadas centrais do sistema — \textit{Apresentação}, \textit{Domínio} e \textit{Dados}. A primeira trata da interface e visualização das métricas; a segunda define regras e casos de uso; e a terceira é responsável pela coleta, armazenamento e serialização das informações.
-  
-  \item \textbf{Módulos Principais:} descreve os componentes funcionais implementados, como o \texttt{ResourceCollector} (coleta), o \texttt{Analyzer} (análise), o \texttt{Recommender} (recomendações) e o \texttt{Dashboard} (visualização).
-  
-  \item \textbf{Fluxo de Dados:} apresenta a sequência de execução do monitoramento — coleta de métricas, processamento, emissão e atualização visual.
-  
-  \item \textbf{Tecnologias Utilizadas:} lista o conjunto de ferramentas e bibliotecas do ecossistema Flutter/Dart aplicadas na implementação e nos testes.
-  
-  \item \textbf{Vantagens do Modelo Local:} sintetiza os benefícios do protótipo, destacando sua independência de servidores externos, execução multiplataforma, baixo overhead e aplicabilidade em ambientes de desenvolvimento e pesquisa.
-\end{itemize}
+Essas camadas se integram por meio de uma arquitetura modular e independente, organizada em três domínios conceituais: \textit{Apresentação}, \textit{Domínio} e \textit{Dados}. A camada de Apresentação trata da interface e visualização das métricas; a de Domínio define as regras e casos de uso; e a de Dados é responsável pela coleta, armazenamento e serialização das informações.
 
+Outros aspectos estruturais do sistema incluem:
+\begin{itemize}
+  \item \textbf{Módulos principais:} os componentes \texttt{ResourceCollector}, \texttt{Analyzer}, \texttt{Recommender} e \texttt{Dashboard} implementam, respectivamente, a coleta, análise, recomendação e visualização das métricas.
+  \item \textbf{Fluxo de dados:} segue a sequência lógica de coleta de métricas, processamento, emissão de resultados e atualização visual contínua.
+  \item \textbf{Tecnologias utilizadas:} o protótipo emprega bibliotecas como \texttt{provider}, \texttt{flutter\_bloc} e \texttt{http}, que auxiliam no controle de estado, integração de dados e comunicação entre módulos.
+  \item \textbf{Vantagens do modelo local:} destaca-se pela independência de servidores, execução multiplataforma, baixo \textit{overhead} e aplicabilidade tanto em ambientes de desenvolvimento quanto de pesquisa.
+\end{itemize}
 
 \section{Módulos e Responsabilidades}
 
-Os módulos do sistema foram projetados de forma modular e coesa, priorizando o reuso e a clareza de responsabilidades:
-   \subsection{Collector}
-    \subsection{Analyzer}
-    \subsection{Recommender}
-    \subsection{Dashboard}
-    \subsection{Exporter (Opcional)}
-\begin{description}
-  \item[\textbf{Collector (biblioteca Dart):}] realiza a instrumentação de pontos críticos da aplicação, expõe uma API para registrar eventos (\texttt{recordNetwork}, \texttt{recordWidgetRebuild}, \texttt{recordFrameTiming}) e envia as métricas para o painel interno por meio de \texttt{Streams}.
-  
-  \item[\textbf{Analyzer:}] correlaciona as métricas capturadas (por exemplo, aumento de tempo de quadro e alta frequência de \textit{rebuilds}) e identifica possíveis causas de lentidão.
-  
-  \item[\textbf{Recommender:}] aplica regras heurísticas baseadas em boas práticas de desenvolvimento Flutter e recomenda otimizações específicas.
-  
-  \item[\textbf{Dashboard:}] exibe as métricas e recomendações localmente, utilizando gráficos e indicadores visuais atualizados em tempo real.
-  
-  \item[\textbf{Exporter (opcional):}] possibilita exportar relatórios em formato JSON ou CSV, permitindo análises posteriores e integração com ferramentas externas.
-\end{description}
+Os módulos do sistema foram projetados de forma coesa e modular, priorizando o reuso de componentes e a clareza das responsabilidades de cada parte.
 
-\section{Descrição das Partes do Painel de Monitoramento}
- \subsection{Área de Métricas}
-    \subsection{Área de Recomendações}
-    \subsection{Botões de Simulação}
-O painel integrado (\texttt{Dashboard}) tem o objetivo de tornar o monitoramento compreensível e acessível ao desenvolvedor durante o uso da aplicação. Ele é dividido em quatro seções funcionais:
+\subsection{Collector}
+O módulo \texttt{Collector} realiza a instrumentação de pontos críticos da aplicação. Ele expõe uma API em Dart para registrar eventos como \texttt{recordNetwork}, \texttt{recordWidgetRebuild} e \texttt{recordFrameTiming}, enviando as métricas coletadas ao painel interno por meio de \texttt{Streams}.  
+Seu principal objetivo é capturar informações de desempenho em tempo real com o mínimo de impacto na execução do aplicativo.
 
-\begin{enumerate}
-  \item \textbf{Resumo Geral:} apresenta estatísticas em tempo real, como FPS médio, consumo de CPU e número de reconstruções de widgets.
-  \item \textbf{Gráficos Temporais:} exibe a variação das métricas ao longo do tempo, permitindo a identificação visual de picos de uso ou gargalos.
-  \item \textbf{Análises e Alertas:} destaca comportamentos anômalos detectados pelo módulo \texttt{Analyzer}, com ícones e cores indicativas.
-  \item \textbf{Recomendações:} lista sugestões de otimização geradas pelo módulo \texttt{Recommender}, priorizadas por impacto estimado.
-\end{enumerate}
+\subsection{Analyzer}
+O módulo \texttt{Analyzer} é responsável por processar e correlacionar as métricas capturadas. Ele identifica padrões que possam indicar degradação de desempenho, como aumento no tempo de renderização, excesso de reconstruções ou variações bruscas no FPS.  
+Os resultados são convertidos em alertas e enviados ao módulo \texttt{Recommender} para posterior interpretação.
 
-O painel é construído com componentes Flutter reativos, garantindo atualização contínua via \texttt{Streams} e suporte a diferentes tamanhos de tela (telefones e tablets).
+\subsection{Recommender}
+O módulo \texttt{Recommender} aplica um conjunto de regras heurísticas baseadas em boas práticas do ecossistema Flutter. A partir das métricas analisadas, ele gera recomendações específicas e contextualizadas, classificando-as de acordo com o impacto estimado sobre o desempenho da aplicação.
 
-\section{Regras de Recomendações (exemplos)}
+\subsection{Dashboard}
+O módulo \texttt{Dashboard} é o painel visual integrado ao aplicativo, responsável por exibir métricas, alertas e recomendações em tempo real.  
+Ele utiliza componentes reativos do Flutter e gráficos dinâmicos que se atualizam automaticamente via \texttt{Streams}, garantindo visualização fluida e responsiva em diferentes tamanhos de tela (smartphones e tablets).
 
-As recomendações fornecidas pelo módulo \texttt{Recommender} são baseadas em heurísticas e padrões recorrentes em aplicações Flutter, conforme demonstrado a seguir:
+\subsection{Exporter (opcional)}
+O módulo \texttt{Exporter} permite a exportação dos relatórios e métricas em formatos JSON ou CSV, viabilizando análises posteriores e integração com outras ferramentas de inspeção de desempenho.
+
+\section{Descrição do Painel de Monitoramento}
+
+O painel integrado (\texttt{Dashboard}) foi projetado para tornar o monitoramento compreensível e acessível ao desenvolvedor, mantendo a análise de desempenho no próprio ambiente do aplicativo.  
+Ele é dividido em quatro áreas funcionais, conforme descrito a seguir.
+
+\subsection{Área de Métricas}
+Apresenta estatísticas gerais em tempo real, como FPS médio, uso de CPU e número de reconstruções de widgets, permitindo uma visão instantânea da performance do aplicativo.
+
+\subsection{Área de Recomendações}
+Lista as sugestões de otimização geradas pelo módulo \texttt{Recommender}, priorizadas por impacto estimado e relevância, auxiliando o desenvolvedor na tomada de decisões de melhoria.
+
+\subsection{Área de Análises e Alertas}
+Exibe comportamentos anômalos detectados pelo \texttt{Analyzer}, destacando gargalos e variações de desempenho por meio de ícones e cores indicativas.
+
+\subsection{Botões de Simulação}
+Permitem a execução de cenários de teste ou a simulação de eventos (como aumento de carga ou execução de chamadas de rede) para observar a resposta do sistema em tempo real.
+
+\section{Regras de Recomendações}
+
+As recomendações geradas pelo módulo \texttt{Recommender} baseiam-se em heurísticas e padrões recorrentes no desenvolvimento Flutter. Alguns exemplos são apresentados a seguir:
 
 \begin{itemize}
   \item \textbf{Rebuilds frequentes:} “Evite reconstruções excessivas de widgets. Utilize \texttt{const constructors} ou extraia subárvores estáticas.”
-  \item \textbf{FPS abaixo de 50:} “Verifique a presença de operações pesadas no ciclo de renderização. Considere o uso de \texttt{RepaintBoundary}.”
+  \item \textbf{FPS abaixo de 50:} “Verifique operações pesadas no ciclo de renderização. Considere o uso de \texttt{RepaintBoundary}.”
   \item \textbf{Uso elevado de memória:} “Otimize o descarte de objetos não utilizados e evite listas extensas em memória sem paginação.”
   \item \textbf{Chamadas de rede lentas:} “Implemente cache local e operações assíncronas com controle de tempo de resposta.”
   \item \textbf{Layout sobrecarregado:} “Simplifique a hierarquia de widgets ou utilize \texttt{ListView.builder} para renderização sob demanda.”
 \end{itemize}
 
-Essas regras não substituem ferramentas profissionais de análise, mas fornecem suporte contextualizado e em tempo real, promovendo uma melhoria iterativa durante o desenvolvimento.
-
+Essas recomendações não substituem ferramentas profissionais de análise, mas oferecem suporte contextualizado e em tempo real, promovendo uma melhoria contínua durante o desenvolvimento do aplicativo.
 
 % ----------------------------------------------------------
 % IMPLEMENTAÇÃO
